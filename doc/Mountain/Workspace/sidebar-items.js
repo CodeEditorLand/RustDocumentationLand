@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["WorkSpaceFileService"]};
+window.SIDEBAR_ITEMS = {"mod":["WorkspaceFileService"]};

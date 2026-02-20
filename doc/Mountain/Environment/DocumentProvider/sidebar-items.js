@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NotifyModelRemoved"]};
+window.SIDEBAR_ITEMS = {"mod":["ApplyChanges","Notifications","OpenDocument","SaveOperations"]};
