@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/DebugProvider.rs`."><title>DebugProvider.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>DebugProvider.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # DebugProvider (Environment)
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/DebugProvider.rs`."><title>DebugProvider.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>DebugProvider.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # DebugProvider (Environment)
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! RESPONSIBILITIES:
 <a href=#4 id=4 data-nosnippet>4</a>//! - Implements [`DebugService`](CommonLibrary::Debug::DebugService) for
@@ -79,14 +79,14 @@
 <a href=#79 id=79 data-nosnippet>79</a>	IPC::{<a href="../../../CommonLibrary/IPC/DTO/ProxyTarget/enum.ProxyTarget.html">DTO::ProxyTarget::ProxyTarget</a>, <a href="../../../CommonLibrary/IPC/IPCProvider/trait.IPCProvider.html">IPCProvider::IPCProvider</a>},
 <a href=#80 id=80 data-nosnippet>80</a>};
 <a href=#81 id=81 data-nosnippet>81</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
-<a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info</a>;
 <a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#85 id=85 data-nosnippet>85</a>
-<a href=#86 id=86 data-nosnippet>86</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#220-230"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#86 id=86 data-nosnippet>86</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#219-229"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a><span class="attr">#[async_trait]
-<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/Debug/DebugService/trait.DebugService.html">DebugService</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
+<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/Debug/DebugService/trait.DebugService.html">DebugService</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#219-229">MountainEnvironment</a> {
 <a href=#90 id=90 data-nosnippet>90</a>	<span class="kw">async fn </span>RegisterDebugConfigurationProvider(
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="kw-2">&amp;</span><a class="self" href="#91">self</a>,
 <a href=#92 id=92 data-nosnippet>92</a>
@@ -109,14 +109,14 @@
 <a href=#109 id=109 data-nosnippet>109</a>			DebugType, ProviderHandle, SideCarIdentifier
 <a href=#110 id=110 data-nosnippet>110</a>		);
 <a href=#111 id=111 data-nosnippet>111</a>
-<a href=#112 id=112 data-nosnippet>112</a>		<span class="comment">// TODO: Store debug configuration provider registration in ApplicationState
-<a href=#113 id=113 data-nosnippet>113</a>		// to enable debug adapter resolution and lifecycle management. Should:
-<a href=#114 id=114 data-nosnippet>114</a>		// - Map debug_type to (provider_handle, sidecar_identifier) tuple
-<a href=#115 id=115 data-nosnippet>115</a>		// - Support multiple providers per debug type with priority ordering
-<a href=#116 id=116 data-nosnippet>116</a>		// - Validate that debug type is not already registered to prevent conflicts
-<a href=#117 id=117 data-nosnippet>117</a>		// - Track registration source (extension ID) for debugging and cleanup
+<a href=#112 id=112 data-nosnippet>112</a>		<span class="comment">// Store debug configuration provider registration in ApplicationState
+<a href=#113 id=113 data-nosnippet>113</a>		</span><a class="self" href="#91">self</a>.ApplicationState
+<a href=#114 id=114 data-nosnippet>114</a>			.Feature
+<a href=#115 id=115 data-nosnippet>115</a>			.Debug
+<a href=#116 id=116 data-nosnippet>116</a>			.<a href="../ApplicationState/State/FeatureState/Debug/DebugState.rs.html#74-94">RegisterDebugConfigurationProvider</a>(<a href="#93">DebugType</a>, <a href="#95">ProviderHandle</a>, <a href="#97">SideCarIdentifier</a>)
+<a href=#117 id=117 data-nosnippet>117</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| CommonError::<a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html#variant.Unknown">Unknown</a> { Description:<a href="#117">e</a> })<span class="question-mark">?</span>;
 <a href=#118 id=118 data-nosnippet>118</a>
-<a href=#119 id=119 data-nosnippet>119</a>		</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#119 id=119 data-nosnippet>119</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#120 id=120 data-nosnippet>120</a>	}
 <a href=#121 id=121 data-nosnippet>121</a>
 <a href=#122 id=122 data-nosnippet>122</a>	<span class="kw">async fn </span>RegisterDebugAdapterDescriptorFactory(
@@ -141,18 +141,18 @@
 <a href=#141 id=141 data-nosnippet>141</a>			DebugType, FactoryHandle, SideCarIdentifier
 <a href=#142 id=142 data-nosnippet>142</a>		);
 <a href=#143 id=143 data-nosnippet>143</a>
-<a href=#144 id=144 data-nosnippet>144</a>		<span class="comment">// TODO: Store debug adapter descriptor factory registration in ApplicationState
-<a href=#145 id=145 data-nosnippet>145</a>		// for use during debug session creation. Should:
-<a href=#146 id=146 data-nosnippet>146</a>		// - Map debug_type to (factory_handle, sidecar_identifier)
-<a href=#147 id=147 data-nosnippet>147</a>		// - Support multiple adapter factories with fallback chain for resilience
-<a href=#148 id=148 data-nosnippet>148</a>		// - Allow factory override based on debug configuration version
-<a href=#149 id=149 data-nosnippet>149</a>		// - Enable runtime lookup of appropriate factory for requested debug type
+<a href=#144 id=144 data-nosnippet>144</a>		<span class="comment">// Store debug adapter descriptor factory registration in ApplicationState
+<a href=#145 id=145 data-nosnippet>145</a>		</span><a class="self" href="#123">self</a>.ApplicationState
+<a href=#146 id=146 data-nosnippet>146</a>			.Feature
+<a href=#147 id=147 data-nosnippet>147</a>			.Debug
+<a href=#148 id=148 data-nosnippet>148</a>			.<a href="../ApplicationState/State/FeatureState/Debug/DebugState.rs.html#105-125">RegisterDebugAdapterDescriptorFactory</a>(<a href="#125">DebugType</a>, <a href="#127">FactoryHandle</a>, <a href="#129">SideCarIdentifier</a>)
+<a href=#149 id=149 data-nosnippet>149</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| CommonError::<a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html#variant.Unknown">Unknown</a> { Description:<a href="#149">e</a> })<span class="question-mark">?</span>;
 <a href=#150 id=150 data-nosnippet>150</a>
-<a href=#151 id=151 data-nosnippet>151</a>		</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#151 id=151 data-nosnippet>151</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#152 id=152 data-nosnippet>152</a>	}
 <a href=#153 id=153 data-nosnippet>153</a>
 <a href=#154 id=154 data-nosnippet>154</a>	<span class="kw">async fn </span>StartDebugging(<span class="kw-2">&amp;</span><a class="self" href="#154">self</a>, <a href="#154">_FolderURI</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;, <a href="#154">Configuration</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#155 id=155 data-nosnippet>155</a>		<span class="kw">let </span>SessionID = uuid::<a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
+<a href=#155 id=155 data-nosnippet>155</a>		<span class="kw">let </span>SessionID = uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#156 id=156 data-nosnippet>156</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(
 <a href=#157 id=157 data-nosnippet>157</a>			<span class="string">"[DebugProvider] Starting debug session '{}' with config: {:?}"</span>,
 <a href=#158 id=158 data-nosnippet>158</a>			SessionID, Configuration

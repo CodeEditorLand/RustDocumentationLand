@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["PerformanceLevel","Platform","ReliabilityLevel"],"struct":["BrowserCapabilities","EnvironmentInfo","TransportConstraints","TransportContext","TransportRegistry","TransportRequirements","TransportSelector"]};

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/TauriIPCServer.rs`."><title>TauriIPCServer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>TauriIPCServer.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # TauriIPCServer - Mountain-Wind IPC Bridge
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/TauriIPCServer.rs`."><title>TauriIPCServer.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>TauriIPCServer.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # TauriIPCServer - Mountain-Wind IPC Bridge
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! **File Responsibilities:**
 <a href=#4 id=4 data-nosnippet>4</a>//! This module serves as the core IPC (Inter-Process Communication) server for
@@ -170,7 +170,7 @@
 <a href=#170 id=170 data-nosnippet>170</a>
 <a href=#171 id=171 data-nosnippet>171</a><span class="doccomment">/// IPC message structure matching Wind's ITauriIPCMessage interface
 <a href=#172 id=172 data-nosnippet>172</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#173 id=173 data-nosnippet>173</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCMessage.html">TauriIPCMessage</a> {
+<a href=#173 id=173 data-nosnippet>173</a></span><span class="kw">pub struct </span><a href="#173-178">TauriIPCMessage</a> {
 <a href=#174 id=174 data-nosnippet>174</a>	<span class="kw">pub </span>channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="kw">pub </span>data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#176 id=176 data-nosnippet>176</a>	<span class="kw">pub </span>sender:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
@@ -179,7 +179,7 @@
 <a href=#179 id=179 data-nosnippet>179</a>
 <a href=#180 id=180 data-nosnippet>180</a><span class="doccomment">/// Connection status message
 <a href=#181 id=181 data-nosnippet>181</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#182 id=182 data-nosnippet>182</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStatus.html">ConnectionStatus</a> {
+<a href=#182 id=182 data-nosnippet>182</a></span><span class="kw">pub struct </span><a href="#182-184">ConnectionStatus</a> {
 <a href=#183 id=183 data-nosnippet>183</a>	<span class="kw">pub </span>connected:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#184 id=184 data-nosnippet>184</a>}
 <a href=#185 id=185 data-nosnippet>185</a>
@@ -188,7 +188,7 @@
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a><span class="doccomment">/// Mountain's IPC Server counterpart to Wind's TauriIPCServer
 <a href=#190 id=190 data-nosnippet>190</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#191 id=191 data-nosnippet>191</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCServer.html">TauriIPCServer</a> {
+<a href=#191 id=191 data-nosnippet>191</a></span><span class="kw">pub struct </span><a href="#191-196">TauriIPCServer</a> {
 <a href=#192 id=192 data-nosnippet>192</a>	app_handle:AppHandle,
 <a href=#193 id=193 data-nosnippet>193</a>	listeners:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#187">ListenerCallback</a>&gt;&gt;&gt;&gt;,
 <a href=#194 id=194 data-nosnippet>194</a>	is_connected:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;&gt;,
@@ -637,13 +637,13 @@
 <a href=#637 id=637 data-nosnippet>637</a>	MaxConnections:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#638 id=638 data-nosnippet>638</a>	ConnectionTimeout:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
 <a href=#639 id=639 data-nosnippet>639</a>	Semaphore:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Semaphore&gt;,
-<a href=#640 id=640 data-nosnippet>640</a>	ActiveConnections:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;AsyncMutex&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#646-652">ConnectionHandle</a>&gt;&gt;&gt;,
+<a href=#640 id=640 data-nosnippet>640</a>	ActiveConnection:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;AsyncMutex&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#646-652">ConnectionHandle</a>&gt;&gt;&gt;,
 <a href=#641 id=641 data-nosnippet>641</a>	HealthChecker:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;AsyncMutex&lt;<a href="#797-799">ConnectionHealthChecker</a>&gt;&gt;,
 <a href=#642 id=642 data-nosnippet>642</a>}
 <a href=#643 id=643 data-nosnippet>643</a>
 <a href=#644 id=644 data-nosnippet>644</a><span class="doccomment">/// Handle representing an active connection
 <a href=#645 id=645 data-nosnippet>645</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#646 id=646 data-nosnippet>646</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.ConnectionHandle.html">ConnectionHandle</a> {
+<a href=#646 id=646 data-nosnippet>646</a></span><span class="kw">pub struct </span><a href="#646-652">ConnectionHandle</a> {
 <a href=#647 id=647 data-nosnippet>647</a>	<span class="kw">pub </span>id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#648 id=648 data-nosnippet>648</a>	<span class="kw">pub </span>created_at:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>,
 <a href=#649 id=649 data-nosnippet>649</a>	<span class="kw">pub </span>last_used:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>,
@@ -655,7 +655,7 @@
 <a href=#655 id=655 data-nosnippet>655</a>	<span class="doccomment">/// Create a new connection handle with health monitoring
 <a href=#656 id=656 data-nosnippet>656</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
 <a href=#657 id=657 data-nosnippet>657</a>		<span class="self">Self </span>{
-<a href=#658 id=658 data-nosnippet>658</a>			id:uuid::<a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#658 id=658 data-nosnippet>658</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#659 id=659 data-nosnippet>659</a>			created_at:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html#method.now">now</a>(),
 <a href=#660 id=660 data-nosnippet>660</a>			last_used:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html#method.now">now</a>(),
 <a href=#661 id=661 data-nosnippet>661</a>			health_score:<span class="number">100.0</span>,
@@ -686,7 +686,7 @@
 <a href=#686 id=686 data-nosnippet>686</a>			<a href="#684">MaxConnections</a>,
 <a href=#687 id=687 data-nosnippet>687</a>			<a href="#684">ConnectionTimeout</a>,
 <a href=#688 id=688 data-nosnippet>688</a>			Semaphore:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(Semaphore::new(<a href="#684">MaxConnections</a>)),
-<a href=#689 id=689 data-nosnippet>689</a>			ActiveConnections:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(AsyncMutex::new(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())),
+<a href=#689 id=689 data-nosnippet>689</a>			ActiveConnection:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(AsyncMutex::new(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())),
 <a href=#690 id=690 data-nosnippet>690</a>			HealthChecker:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(AsyncMutex::new(<a href="#797-799">ConnectionHealthChecker</a>::<a href="#802">new</a>())),
 <a href=#691 id=691 data-nosnippet>691</a>		}
 <a href=#692 id=692 data-nosnippet>692</a>	}
@@ -701,7 +701,7 @@
 <a href=#701 id=701 data-nosnippet>701</a>		<span class="kw">let </span>handle = ConnectionHandle::new();
 <a href=#702 id=702 data-nosnippet>702</a>
 <a href=#703 id=703 data-nosnippet>703</a>		{
-<a href=#704 id=704 data-nosnippet>704</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnections.lock().<span class="kw">await</span>;
+<a href=#704 id=704 data-nosnippet>704</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
 <a href=#705 id=705 data-nosnippet>705</a>			connections.insert(handle.id.clone(), handle.clone());
 <a href=#706 id=706 data-nosnippet>706</a>		}
 <a href=#707 id=707 data-nosnippet>707</a>
@@ -714,7 +714,7 @@
 <a href=#714 id=714 data-nosnippet>714</a>	<span class="doccomment">/// Release a connection handle back to the pool
 <a href=#715 id=715 data-nosnippet>715</a>	</span><span class="kw">pub async fn </span>ReleaseConnection(<span class="kw-2">&amp;</span><span class="self">self</span>, handle:<a href="#646-652">ConnectionHandle</a>) {
 <a href=#716 id=716 data-nosnippet>716</a>		{
-<a href=#717 id=717 data-nosnippet>717</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnections.lock().<span class="kw">await</span>;
+<a href=#717 id=717 data-nosnippet>717</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
 <a href=#718 id=718 data-nosnippet>718</a>			connections.remove(<span class="kw-2">&amp;</span>handle.id);
 <a href=#719 id=719 data-nosnippet>719</a>		}
 <a href=#720 id=720 data-nosnippet>720</a>
@@ -723,7 +723,7 @@
 <a href=#723 id=723 data-nosnippet>723</a>
 <a href=#724 id=724 data-nosnippet>724</a>	<span class="doccomment">/// Get connection statistics for monitoring
 <a href=#725 id=725 data-nosnippet>725</a>	</span><span class="kw">pub async fn </span>GetStats(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ConnectionStats {
-<a href=#726 id=726 data-nosnippet>726</a>		<span class="kw">let </span>connections = <span class="self">self</span>.ActiveConnections.lock().<span class="kw">await</span>;
+<a href=#726 id=726 data-nosnippet>726</a>		<span class="kw">let </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
 <a href=#727 id=727 data-nosnippet>727</a>		<span class="kw">let </span>healthy_connections = connections.values().filter(|h| h.is_healthy()).count();
 <a href=#728 id=728 data-nosnippet>728</a>
 <a href=#729 id=729 data-nosnippet>729</a>		ConnectionStats {
@@ -737,7 +737,7 @@
 <a href=#737 id=737 data-nosnippet>737</a>
 <a href=#738 id=738 data-nosnippet>738</a>	<span class="doccomment">/// Clean up stale connections
 <a href=#739 id=739 data-nosnippet>739</a>	</span><span class="kw">pub async fn </span>CleanUpStaleConnections(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
-<a href=#740 id=740 data-nosnippet>740</a>		<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnections.lock().<span class="kw">await</span>;
+<a href=#740 id=740 data-nosnippet>740</a>		<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
 <a href=#741 id=741 data-nosnippet>741</a>		<span class="kw">let </span>now = std::time::Instant::now();
 <a href=#742 id=742 data-nosnippet>742</a>		<span class="comment">// Stale connections are those unused for 5 minutes (300 seconds)
 <a href=#743 id=743 data-nosnippet>743</a>		</span><span class="kw">let </span>stale_threshold = Duration::from_secs(<span class="number">300</span>);
@@ -759,7 +759,7 @@
 <a href=#759 id=759 data-nosnippet>759</a>	<span class="doccomment">/// Start health monitoring for a connection
 <a href=#760 id=760 data-nosnippet>760</a>	</span><span class="kw">async fn </span>StartHealthMonitoring(<span class="kw-2">&amp;</span><span class="self">self</span>, connection_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
 <a href=#761 id=761 data-nosnippet>761</a>		<span class="kw">let </span>health_checker = <span class="self">self</span>.HealthChecker.clone();
-<a href=#762 id=762 data-nosnippet>762</a>		<span class="kw">let </span>active_connections = <span class="self">self</span>.ActiveConnections.clone();
+<a href=#762 id=762 data-nosnippet>762</a>		<span class="kw">let </span>active_connection = <span class="self">self</span>.ActiveConnection.clone();
 <a href=#763 id=763 data-nosnippet>763</a>		<span class="kw">let </span>connection_id = connection_id.to_string();
 <a href=#764 id=764 data-nosnippet>764</a>
 <a href=#765 id=765 data-nosnippet>765</a>		tokio::spawn(<span class="kw">async move </span>{
@@ -768,8 +768,8 @@
 <a href=#768 id=768 data-nosnippet>768</a>			<span class="kw">loop </span>{
 <a href=#769 id=769 data-nosnippet>769</a>				interval.tick().<span class="kw">await</span>;
 <a href=#770 id=770 data-nosnippet>770</a>
-<a href=#771 id=771 data-nosnippet>771</a>				<span class="kw">let </span><span class="kw-2">mut </span>checker = health_checker.lock().<span class="kw">await</span>;
-<a href=#772 id=772 data-nosnippet>772</a>				<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="kw">match </span>active_connections.try_lock() {
+<a href=#771 id=771 data-nosnippet>771</a>				<span class="kw">let </span>checker = health_checker.lock().<span class="kw">await</span>;
+<a href=#772 id=772 data-nosnippet>772</a>				<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="kw">match </span>active_connection.try_lock() {
 <a href=#773 id=773 data-nosnippet>773</a>					<span class="prelude-val">Ok</span>(conns) =&gt; conns,
 <a href=#774 id=774 data-nosnippet>774</a>					<span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
 <a href=#775 id=775 data-nosnippet>775</a>				};
@@ -819,7 +819,7 @@
 <a href=#819 id=819 data-nosnippet>819</a>
 <a href=#820 id=820 data-nosnippet>820</a><span class="doccomment">/// Connection statistics
 <a href=#821 id=821 data-nosnippet>821</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
-<a href=#822 id=822 data-nosnippet>822</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStats.html">ConnectionStats</a> {
+<a href=#822 id=822 data-nosnippet>822</a></span><span class="kw">pub struct </span><a href="#822-828">ConnectionStats</a> {
 <a href=#823 id=823 data-nosnippet>823</a>	<span class="kw">pub </span>total_connections:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#824 id=824 data-nosnippet>824</a>	<span class="kw">pub </span>healthy_connections:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#825 id=825 data-nosnippet>825</a>	<span class="kw">pub </span>max_connections:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
@@ -915,7 +915,7 @@
 <a href=#915 id=915 data-nosnippet>915</a>
 <a href=#916 id=916 data-nosnippet>916</a><span class="doccomment">/// Encrypted message structure
 <a href=#917 id=917 data-nosnippet>917</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#918 id=918 data-nosnippet>918</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.EncryptedMessage.html">EncryptedMessage</a> {
+<a href=#918 id=918 data-nosnippet>918</a></span><span class="kw">pub struct </span><a href="#918-922">EncryptedMessage</a> {
 <a href=#919 id=919 data-nosnippet>919</a>	nonce:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#920 id=920 data-nosnippet>920</a>	ciphertext:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#921 id=921 data-nosnippet>921</a>	hmac_tag:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
@@ -994,7 +994,7 @@
 <a href=#994 id=994 data-nosnippet>994</a>
 <a href=#995 id=995 data-nosnippet>995</a><span class="doccomment">/// Security context for permission validation
 <a href=#996 id=996 data-nosnippet>996</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#997 id=997 data-nosnippet>997</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.SecurityContext.html">SecurityContext</a> {
+<a href=#997 id=997 data-nosnippet>997</a></span><span class="kw">pub struct </span><a href="#997-1003">SecurityContext</a> {
 <a href=#998 id=998 data-nosnippet>998</a>	<span class="kw">pub </span>user_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#999 id=999 data-nosnippet>999</a>	<span class="kw">pub </span>roles:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#1000 id=1000 data-nosnippet>1000</a>	<span class="kw">pub </span>permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
@@ -1011,7 +1011,7 @@
 <a href=#1011 id=1011 data-nosnippet>1011</a>
 <a href=#1012 id=1012 data-nosnippet>1012</a><span class="doccomment">/// Security event for auditing
 <a href=#1013 id=1013 data-nosnippet>1013</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#1014 id=1014 data-nosnippet>1014</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.SecurityEvent.html">SecurityEvent</a> {
+<a href=#1014 id=1014 data-nosnippet>1014</a></span><span class="kw">pub struct </span><a href="#1014-1020">SecurityEvent</a> {
 <a href=#1015 id=1015 data-nosnippet>1015</a>	<span class="kw">pub </span>event_type:<a href="#1023-1029">SecurityEventType</a>,
 <a href=#1016 id=1016 data-nosnippet>1016</a>	<span class="kw">pub </span>user_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#1017 id=1017 data-nosnippet>1017</a>	<span class="kw">pub </span>operation:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -1020,7 +1020,7 @@
 <a href=#1020 id=1020 data-nosnippet>1020</a>}
 <a href=#1021 id=1021 data-nosnippet>1021</a>
 <a href=#1022 id=1022 data-nosnippet>1022</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#1023 id=1023 data-nosnippet>1023</a></span><span class="kw">pub enum </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/enum.SecurityEventType.html">SecurityEventType</a> {
+<a href=#1023 id=1023 data-nosnippet>1023</a></span><span class="kw">pub enum </span><a href="#1023-1029">SecurityEventType</a> {
 <a href=#1024 id=1024 data-nosnippet>1024</a>	PermissionDenied,
 <a href=#1025 id=1025 data-nosnippet>1025</a>	AccessGranted,
 <a href=#1026 id=1026 data-nosnippet>1026</a>	ConfigurationChange,
@@ -1030,7 +1030,7 @@
 <a href=#1030 id=1030 data-nosnippet>1030</a>
 <a href=#1031 id=1031 data-nosnippet>1031</a><span class="doccomment">/// Role definition for RBAC
 <a href=#1032 id=1032 data-nosnippet>1032</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#1033 id=1033 data-nosnippet>1033</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.Role.html">Role</a> {
+<a href=#1033 id=1033 data-nosnippet>1033</a></span><span class="kw">pub struct </span><a href="#1033-1037">Role</a> {
 <a href=#1034 id=1034 data-nosnippet>1034</a>	<span class="kw">pub </span>name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#1035 id=1035 data-nosnippet>1035</a>	<span class="kw">pub </span>permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#1036 id=1036 data-nosnippet>1036</a>	<span class="kw">pub </span>description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -1038,7 +1038,7 @@
 <a href=#1038 id=1038 data-nosnippet>1038</a>
 <a href=#1039 id=1039 data-nosnippet>1039</a><span class="doccomment">/// Permission definition
 <a href=#1040 id=1040 data-nosnippet>1040</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#1041 id=1041 data-nosnippet>1041</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.Permission.html">Permission</a> {
+<a href=#1041 id=1041 data-nosnippet>1041</a></span><span class="kw">pub struct </span><a href="#1041-1045">Permission</a> {
 <a href=#1042 id=1042 data-nosnippet>1042</a>	<span class="kw">pub </span>name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#1043 id=1043 data-nosnippet>1043</a>	<span class="kw">pub </span>description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#1044 id=1044 data-nosnippet>1044</a>	<span class="kw">pub </span>category:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,

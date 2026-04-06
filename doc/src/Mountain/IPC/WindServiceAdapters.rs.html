@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindServiceAdapters.rs`."><title>WindServiceAdapters.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>WindServiceAdapters.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Wind Service Adapters - Type Conversion &amp; Service Bridging
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindServiceAdapters.rs`."><title>WindServiceAdapters.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>WindServiceAdapters.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Wind Service Adapters - Type Conversion &amp; Service Bridging
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! **File Responsibilities:**
 <a href=#4 id=4 data-nosnippet>4</a>//! This module provides the adapter layer that handles type conversion and
@@ -23,7 +23,7 @@
 <a href=#23 id=23 data-nosnippet>23</a>//! This module implements the Adapter design pattern to bridge the interface
 <a href=#24 id=24 data-nosnippet>24</a>//! gap:
 <a href=#25 id=25 data-nosnippet>25</a>//!
-<a href=#26 id=26 data-nosnippet>26</a>//! ```
+<a href=#26 id=26 data-nosnippet>26</a>//! ```text
 <a href=#27 id=27 data-nosnippet>27</a>//! Wind's IFileService (TypeScript interface)
 <a href=#28 id=28 data-nosnippet>28</a>//!        |
 <a href=#29 id=29 data-nosnippet>29</a>//!        |  Expected interface
@@ -145,8 +145,8 @@
 <a href=#145 id=145 data-nosnippet>145</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
 <a href=#146 id=146 data-nosnippet>146</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#147 id=147 data-nosnippet>147</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
-<a href=#148 id=148 data-nosnippet>148</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
-<a href=#149 id=149 data-nosnippet>149</a><span class="kw">use </span>CommonLibrary::{
+<a href=#148 id=148 data-nosnippet>148</a><span class="comment">// use url::Url; // Temporarily disabled - verify usage
+<a href=#149 id=149 data-nosnippet>149</a></span><span class="kw">use </span>CommonLibrary::{
 <a href=#150 id=150 data-nosnippet>150</a>	Configuration::{
 <a href=#151 id=151 data-nosnippet>151</a>		<a href="../../../CommonLibrary/Configuration/ConfigurationProvider/trait.ConfigurationProvider.html">ConfigurationProvider::ConfigurationProvider</a>,
 <a href=#152 id=152 data-nosnippet>152</a>		DTO::{
@@ -169,7 +169,7 @@
 <a href=#169 id=169 data-nosnippet>169</a><span class="doccomment">/// Wind desktop configuration structure
 <a href=#170 id=170 data-nosnippet>170</a>/// Mirrors Wind's IDesktopConfiguration interface
 <a href=#171 id=171 data-nosnippet>171</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#172 id=172 data-nosnippet>172</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.WindDesktopConfiguration.html">WindDesktopConfiguration</a> {
+<a href=#172 id=172 data-nosnippet>172</a></span><span class="kw">pub struct </span><a href="#172-195">WindDesktopConfiguration</a> {
 <a href=#173 id=173 data-nosnippet>173</a>	<span class="kw">pub </span>window_id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#174 id=174 data-nosnippet>174</a>	<span class="kw">pub </span>app_root:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="kw">pub </span>user_data_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -196,26 +196,26 @@
 <a href=#196 id=196 data-nosnippet>196</a>
 <a href=#197 id=197 data-nosnippet>197</a><span class="doccomment">/// File to open or create structure
 <a href=#198 id=198 data-nosnippet>198</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#199 id=199 data-nosnippet>199</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.FileToOpenOrCreate.html">FileToOpenOrCreate</a> {
+<a href=#199 id=199 data-nosnippet>199</a></span><span class="kw">pub struct </span><a href="#199-201">FileToOpenOrCreate</a> {
 <a href=#200 id=200 data-nosnippet>200</a>	<span class="kw">pub </span>file_uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#201 id=201 data-nosnippet>201</a>}
 <a href=#202 id=202 data-nosnippet>202</a>
 <a href=#203 id=203 data-nosnippet>203</a><span class="doccomment">/// File to diff structure
 <a href=#204 id=204 data-nosnippet>204</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#205 id=205 data-nosnippet>205</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.FileToDiff.html">FileToDiff</a> {
+<a href=#205 id=205 data-nosnippet>205</a></span><span class="kw">pub struct </span><a href="#205-207">FileToDiff</a> {
 <a href=#206 id=206 data-nosnippet>206</a>	<span class="kw">pub </span>file_uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#207 id=207 data-nosnippet>207</a>}
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a><span class="doccomment">/// Files to wait structure
 <a href=#210 id=210 data-nosnippet>210</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#211 id=211 data-nosnippet>211</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.FilesToWait.html">FilesToWait</a> {
+<a href=#211 id=211 data-nosnippet>211</a></span><span class="kw">pub struct </span><a href="#211-214">FilesToWait</a> {
 <a href=#212 id=212 data-nosnippet>212</a>	<span class="kw">pub </span>wait_marker_file_uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#213 id=213 data-nosnippet>213</a>	<span class="kw">pub </span>paths:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#199-201">FileToOpenOrCreate</a>&gt;,
 <a href=#214 id=214 data-nosnippet>214</a>}
 <a href=#215 id=215 data-nosnippet>215</a>
 <a href=#216 id=216 data-nosnippet>216</a><span class="doccomment">/// Profiles structure
 <a href=#217 id=217 data-nosnippet>217</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#218 id=218 data-nosnippet>218</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.Profiles.html">Profiles</a> {
+<a href=#218 id=218 data-nosnippet>218</a></span><span class="kw">pub struct </span><a href="#218-222">Profiles</a> {
 <a href=#219 id=219 data-nosnippet>219</a>	<span class="kw">pub </span>all:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#220 id=220 data-nosnippet>220</a>	<span class="kw">pub </span>home:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#221 id=221 data-nosnippet>221</a>	<span class="kw">pub </span>profile:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
@@ -223,13 +223,13 @@
 <a href=#223 id=223 data-nosnippet>223</a>
 <a href=#224 id=224 data-nosnippet>224</a><span class="doccomment">/// Logger structure
 <a href=#225 id=225 data-nosnippet>225</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#226 id=226 data-nosnippet>226</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.Logger.html">Logger</a> {
+<a href=#226 id=226 data-nosnippet>226</a></span><span class="kw">pub struct </span><a href="#226-228">Logger</a> {
 <a href=#227 id=227 data-nosnippet>227</a>	<span class="kw">pub </span>resource:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#228 id=228 data-nosnippet>228</a>}
 <a href=#229 id=229 data-nosnippet>229</a>
 <a href=#230 id=230 data-nosnippet>230</a><span class="doccomment">/// OS information structure
 <a href=#231 id=231 data-nosnippet>231</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#232 id=232 data-nosnippet>232</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.OsInfo.html">OsInfo</a> {
+<a href=#232 id=232 data-nosnippet>232</a></span><span class="kw">pub struct </span><a href="#232-234">OsInfo</a> {
 <a href=#233 id=233 data-nosnippet>233</a>	<span class="kw">pub </span>release:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#234 id=234 data-nosnippet>234</a>}
 <a href=#235 id=235 data-nosnippet>235</a>
@@ -424,7 +424,7 @@
 <a href=#424 id=424 data-nosnippet>424</a>
 <a href=#425 id=425 data-nosnippet>425</a><span class="doccomment">/// Mountain sandbox configuration structure
 <a href=#426 id=426 data-nosnippet>426</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#427 id=427 data-nosnippet>427</a></span><span class="kw">struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.MountainSandboxConfiguration.html">MountainSandboxConfiguration</a> {
+<a href=#427 id=427 data-nosnippet>427</a></span><span class="kw">struct </span><a href="#427-451">MountainSandboxConfiguration</a> {
 <a href=#428 id=428 data-nosnippet>428</a>	<span class="kw">pub </span>window_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#429 id=429 data-nosnippet>429</a>	<span class="kw">pub </span>machine_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#430 id=430 data-nosnippet>430</a>	<span class="kw">pub </span>session_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -451,7 +451,7 @@
 <a href=#451 id=451 data-nosnippet>451</a>}
 <a href=#452 id=452 data-nosnippet>452</a>
 <a href=#453 id=453 data-nosnippet>453</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#454 id=454 data-nosnippet>454</a></span><span class="kw">struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.Versions.html">Versions</a> {
+<a href=#454 id=454 data-nosnippet>454</a></span><span class="kw">struct </span><a href="#454-459">Versions</a> {
 <a href=#455 id=455 data-nosnippet>455</a>	<span class="kw">pub </span>mountain:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#456 id=456 data-nosnippet>456</a>	<span class="kw">pub </span>electron:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#457 id=457 data-nosnippet>457</a>	<span class="kw">pub </span>chrome:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -459,14 +459,14 @@
 <a href=#459 id=459 data-nosnippet>459</a>}
 <a href=#460 id=460 data-nosnippet>460</a>
 <a href=#461 id=461 data-nosnippet>461</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#462 id=462 data-nosnippet>462</a></span><span class="kw">struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.NLSConfiguration.html">NLSConfiguration</a> {
+<a href=#462 id=462 data-nosnippet>462</a></span><span class="kw">struct </span><a href="#462-466">NLSConfiguration</a> {
 <a href=#463 id=463 data-nosnippet>463</a>	<span class="kw">pub </span>messages:std::collections::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#464 id=464 data-nosnippet>464</a>	<span class="kw">pub </span>language:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#465 id=465 data-nosnippet>465</a>	<span class="kw">pub </span>available_languages:std::collections::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#466 id=466 data-nosnippet>466</a>}
 <a href=#467 id=467 data-nosnippet>467</a>
 <a href=#468 id=468 data-nosnippet>468</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
-<a href=#469 id=469 data-nosnippet>469</a></span><span class="kw">struct </span><a href="../../../Mountain/IPC/WindServiceAdapters/struct.ProductConfiguration.html">ProductConfiguration</a> {
+<a href=#469 id=469 data-nosnippet>469</a></span><span class="kw">struct </span><a href="#469-475">ProductConfiguration</a> {
 <a href=#470 id=470 data-nosnippet>470</a>	<span class="kw">pub </span>name_short:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#471 id=471 data-nosnippet>471</a>	<span class="kw">pub </span>name_long:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#472 id=472 data-nosnippet>472</a>	<span class="kw">pub </span>application_name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
