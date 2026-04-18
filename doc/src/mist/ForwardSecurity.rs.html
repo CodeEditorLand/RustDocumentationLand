@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>//!        Return REFUSED
 <a href=#15 id=15 data-nosnippet>15</a>//! ```
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">use </span>anyhow::{<a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow</a>, <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>};
+<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">use </span>anyhow::{<a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>, <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow</a>};
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>hickory_proto::rr::Name;
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Returns the default DNS forward allowlist.
@@ -33,9 +33,8 @@
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a>	<span class="attr">#[test]
 <a href=#35 id=35 data-nosnippet>35</a>	</span><span class="kw">fn </span>TestAllowlistGeneration() {
-<a href=#36 id=36 data-nosnippet>36</a>		<span class="kw">let </span>Allowlist: Vec&lt;Name&gt; =
-<a href=#37 id=37 data-nosnippet>37</a>			DefaultForwardAllowlist().filter_map(|R| R.ok()).collect();
-<a href=#38 id=38 data-nosnippet>38</a>		<span class="macro">assert!</span>(!Allowlist.is_empty(), <span class="string">"Allowlist should not be empty"</span>);
-<a href=#39 id=39 data-nosnippet>39</a>	}
-<a href=#40 id=40 data-nosnippet>40</a>}
+<a href=#36 id=36 data-nosnippet>36</a>		<span class="kw">let </span>Allowlist:Vec&lt;Name&gt; = DefaultForwardAllowlist().filter_map(|R| R.ok()).collect();
+<a href=#37 id=37 data-nosnippet>37</a>		<span class="macro">assert!</span>(!Allowlist.is_empty(), <span class="string">"Allowlist should not be empty"</span>);
+<a href=#38 id=38 data-nosnippet>38</a>	}
+<a href=#39 id=39 data-nosnippet>39</a>}
 </code></pre></div></section></main></body></html>

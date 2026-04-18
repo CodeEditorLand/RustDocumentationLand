@@ -1,2 +1,2 @@
-window.ALL_CRATES = ["Air","AirLibrary","CommonLibrary","Download","Echo","Grove","Library","Maintain","Mountain","Rest","SideCar","grove","mist"];
-//{"start":21,"fragment_lengths":[5,13,16,11,7,8,10,11,11,7,10,8,7]}
+window.ALL_CRATES = ["Air","AirLibrary","CommonLibrary","Download","Echo","Grove","Library","Maintain","Mist","Mountain","Rest","SideCar","grove","mist","tauri_plugin_localhost"];
+//{"start":21,"fragment_lengths":[5,13,16,11,7,8,10,11,7,11,7,10,8,7,25]}

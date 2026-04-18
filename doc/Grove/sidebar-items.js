@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["VERSION"],"fn":["init"],"mod":["API","Binary","Common","Host","Protocol","Services","Transport","WASM"],"struct":["GroveInfo"]};
+window.SIDEBAR_ITEMS = {"constant":["VERSION"],"fn":["init"],"macro":["dev_log","otel_span"],"mod":["API","Binary","Common","DevLog","Host","Protocol","Services","Transport","WASM"],"struct":["GroveInfo"]};

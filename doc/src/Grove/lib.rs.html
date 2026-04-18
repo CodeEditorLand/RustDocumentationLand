@@ -64,89 +64,66 @@
 <a href=#64 id=64 data-nosnippet>64</a>#![allow(non_snake_case, non_camel_case_types, unexpected_cfgs)]
 <a href=#65 id=65 data-nosnippet>65</a>
 <a href=#66 id=66 data-nosnippet>66</a></span><span class="comment">// Public module declarations
-<a href=#67 id=67 data-nosnippet>67</a></span><span class="kw">pub mod </span><a href="API/mod.rs.html#1-93">API</a>;
-<a href=#68 id=68 data-nosnippet>68</a><span class="kw">pub mod </span><a href="Binary/mod.rs.html#1-72">Binary</a>;
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">pub mod </span><a href="Common/mod.rs.html#1-90">Common</a>;
-<a href=#70 id=70 data-nosnippet>70</a><span class="kw">pub mod </span><a href="Host/mod.rs.html#1-163">Host</a>;
-<a href=#71 id=71 data-nosnippet>71</a><span class="kw">pub mod </span><a href="Protocol/mod.rs.html#1-195">Protocol</a>;
-<a href=#72 id=72 data-nosnippet>72</a><span class="kw">pub mod </span><a href="Services/mod.rs.html#1-47">Services</a>;
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">pub mod </span><a href="Transport/mod.rs.html#1-168">Transport</a>;
-<a href=#74 id=74 data-nosnippet>74</a><span class="kw">pub mod </span><a href="WASM/mod.rs.html#1-115">WASM</a>;
-<a href=#75 id=75 data-nosnippet>75</a>
-<a href=#76 id=76 data-nosnippet>76</a><span class="comment">// Re-exports for convenience
-<a href=#77 id=77 data-nosnippet>77</a></span><span class="kw">pub use </span>API::{<a href="API/mod.rs.html#6">types</a>, <a href="API/mod.rs.html#7">vscode</a>};
-<a href=#78 id=78 data-nosnippet>78</a><span class="kw">pub use </span>Binary::{
-<a href=#79 id=79 data-nosnippet>79</a>	Build::{<a href="Binary/Build/RuntimeBuildMod.rs.html#18">RuntimeBuild</a>, <a href="Binary/Build/ServiceRegisterMod.rs.html#13">ServiceRegister</a>},
-<a href=#80 id=80 data-nosnippet>80</a>	Main::Entry::{<a href="Binary/Main/Entry.rs.html#241-248">BuildResult</a>, <a href="Binary/Main/Entry.rs.html#18">Entry</a>, <a href="Binary/Main/Entry.rs.html#257-266">ExtensionInfo</a>, <a href="Binary/Main/Entry.rs.html#232-237">ValidationResult</a>},
-<a href=#81 id=81 data-nosnippet>81</a>};
-<a href=#82 id=82 data-nosnippet>82</a><span class="kw">pub use </span>Common::{
-<a href=#83 id=83 data-nosnippet>83</a>	error::{<a href="Common/error.rs.html#13-176">GroveError</a>, <a href="Common/error.rs.html#9">GroveResult</a>},
-<a href=#84 id=84 data-nosnippet>84</a>	<a href="Common/traits.rs.html#8-26">traits::ExtensionContext</a>,
-<a href=#85 id=85 data-nosnippet>85</a>};
-<a href=#86 id=86 data-nosnippet>86</a><span class="comment">// Transport module exports are already re-exported in Transport/mod.rs
-<a href=#87 id=87 data-nosnippet>87</a>// Use grove::Transport::{Transport, TransportType, TransportStats, GrpcTransport, IPCTransportImpl,
-<a href=#88 id=88 data-nosnippet>88</a>// WASMTransportImpl}
-<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">pub use </span><a href="WASM/mod.rs.html#43">WASM::Runtime</a>;
-<a href=#90 id=90 data-nosnippet>90</a><span class="comment">// Note: ExtensionHost, ExtensionManager must be accessed via module prefix
-<a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>// Library version
-<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">const </span><a href="../../Grove/constant.VERSION.html">VERSION</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"CARGO_PKG_VERSION"</span>);
-<a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a><span class="doccomment">/// Grove library information
-<a href=#96 id=96 data-nosnippet>96</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#97 id=97 data-nosnippet>97</a></span><span class="kw">pub struct </span><a href="#97-103">GroveInfo</a> {
-<a href=#98 id=98 data-nosnippet>98</a>	<span class="doccomment">/// Version string
-<a href=#99 id=99 data-nosnippet>99</a>	</span><span class="kw">pub </span>version:<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-<a href=#100 id=100 data-nosnippet>100</a>	<span class="doccomment">/// Build timestamp
-<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="attr">#[allow(dead_code)]
-<a href=#102 id=102 data-nosnippet>102</a>	</span>build_timestamp:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#103 id=103 data-nosnippet>103</a>}
-<a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a><span class="kw">impl </span><a href="#97-103">GroveInfo</a> {
-<a href=#106 id=106 data-nosnippet>106</a>	<span class="doccomment">/// Create new GroveInfo with current build information
-<a href=#107 id=107 data-nosnippet>107</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ version:<a href="#93">VERSION</a>, build_timestamp:<a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"VERGEN_BUILD_TIMESTAMP"</span>).<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() } }
-<a href=#108 id=108 data-nosnippet>108</a>
-<a href=#109 id=109 data-nosnippet>109</a>	<span class="doccomment">/// Get the Grove version
-<a href=#110 id=110 data-nosnippet>110</a>	</span><span class="kw">pub fn </span>version(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> { <a class="self" href="#110">self</a>.version }
+<a href=#67 id=67 data-nosnippet>67</a></span><span class="kw">pub mod </span><a href="API/mod.rs.html#1-91">API</a>;
+<a href=#68 id=68 data-nosnippet>68</a><span class="kw">pub mod </span><a href="Binary/mod.rs.html#1-68">Binary</a>;
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">pub mod </span><a href="Common/mod.rs.html#1-88">Common</a>;
+<a href=#70 id=70 data-nosnippet>70</a><span class="kw">pub mod </span><a href="DevLog.rs.html#1-294">DevLog</a>;
+<a href=#71 id=71 data-nosnippet>71</a><span class="kw">pub mod </span><a href="Host/mod.rs.html#1-157">Host</a>;
+<a href=#72 id=72 data-nosnippet>72</a><span class="kw">pub mod </span><a href="Protocol/mod.rs.html#1-195">Protocol</a>;
+<a href=#73 id=73 data-nosnippet>73</a><span class="kw">pub mod </span><a href="Services/mod.rs.html#1-47">Services</a>;
+<a href=#74 id=74 data-nosnippet>74</a><span class="kw">pub mod </span><a href="Transport/mod.rs.html#1-168">Transport</a>;
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">pub mod </span><a href="WASM/mod.rs.html#1-116">WASM</a>;
+<a href=#76 id=76 data-nosnippet>76</a>
+<a href=#77 id=77 data-nosnippet>77</a><span class="comment">// Library version
+<a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">const </span><a href="../../Grove/constant.VERSION.html">VERSION</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"CARGO_PKG_VERSION"</span>);
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a><span class="doccomment">/// Grove library information
+<a href=#81 id=81 data-nosnippet>81</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
+<a href=#82 id=82 data-nosnippet>82</a></span><span class="kw">pub struct </span><a href="#82-88">GroveInfo</a> {
+<a href=#83 id=83 data-nosnippet>83</a>	<span class="doccomment">/// Version string
+<a href=#84 id=84 data-nosnippet>84</a>	</span><span class="kw">pub </span>version:<span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
+<a href=#85 id=85 data-nosnippet>85</a>	<span class="doccomment">/// Build timestamp
+<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="attr">#[allow(dead_code)]
+<a href=#87 id=87 data-nosnippet>87</a>	</span>build_timestamp:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#88 id=88 data-nosnippet>88</a>}
+<a href=#89 id=89 data-nosnippet>89</a>
+<a href=#90 id=90 data-nosnippet>90</a><span class="kw">impl </span><a href="#82-88">GroveInfo</a> {
+<a href=#91 id=91 data-nosnippet>91</a>	<span class="doccomment">/// Create new GroveInfo with current build information
+<a href=#92 id=92 data-nosnippet>92</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ version:<a href="#78">VERSION</a>, build_timestamp:<a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"VERGEN_BUILD_TIMESTAMP"</span>).<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() } }
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>	<span class="doccomment">/// Get the Grove version
+<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub fn </span>version(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> { <a class="self" href="#95">self</a>.version }
+<a href=#96 id=96 data-nosnippet>96</a>}
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#82-88">GroveInfo</a> {
+<a href=#99 id=99 data-nosnippet>99</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#92">new</a>() }
+<a href=#100 id=100 data-nosnippet>100</a>}
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a><span class="doccomment">/// Initialize Grove library
+<a href=#103 id=103 data-nosnippet>103</a>///
+<a href=#104 id=104 data-nosnippet>104</a>/// This sets up logging and other global state.
+<a href=#105 id=105 data-nosnippet>105</a>/// Call once at application startup.
+<a href=#106 id=106 data-nosnippet>106</a></span><span class="kw">pub fn </span><a href="../../Grove/fn.init.html">init</a>() -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
+<a href=#107 id=107 data-nosnippet>107</a>	<span class="kw">use </span><a href="DevLog.rs.html#130-165"><span class="kw">crate</span>::dev_log</a>;
+<a href=#108 id=108 data-nosnippet>108</a>	<a href="DevLog.rs.html#130-165">dev_log!</a>(<span class="string">"grove"</span>, <span class="string">"Grove v{} initialized"</span>, VERSION);
+<a href=#109 id=109 data-nosnippet>109</a>
+<a href=#110 id=110 data-nosnippet>110</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#111 id=111 data-nosnippet>111</a>}
 <a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#97-103">GroveInfo</a> {
-<a href=#114 id=114 data-nosnippet>114</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#107">new</a>() }
-<a href=#115 id=115 data-nosnippet>115</a>}
+<a href=#113 id=113 data-nosnippet>113</a><span class="attr">#[cfg(test)]
+<a href=#114 id=114 data-nosnippet>114</a></span><span class="kw">mod </span>tests {
+<a href=#115 id=115 data-nosnippet>115</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
 <a href=#116 id=116 data-nosnippet>116</a>
-<a href=#117 id=117 data-nosnippet>117</a><span class="doccomment">/// Initialize Grove library
-<a href=#118 id=118 data-nosnippet>118</a>///
-<a href=#119 id=119 data-nosnippet>119</a>/// This sets up logging and other global state.
-<a href=#120 id=120 data-nosnippet>120</a>/// Call once at application startup.
-<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">pub fn </span><a href="../../Grove/fn.init.html">init</a>() -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
-<a href=#122 id=122 data-nosnippet>122</a>	<span class="comment">// Initialize tracing subscriber with environment-based filtering
-<a href=#123 id=123 data-nosnippet>123</a>	</span><span class="kw">let </span>filter = tracing_subscriber::EnvFilter::from_default_env().add_directive(tracing::Level::INFO.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>());
-<a href=#124 id=124 data-nosnippet>124</a>
-<a href=#125 id=125 data-nosnippet>125</a>	tracing_subscriber::fmt()
-<a href=#126 id=126 data-nosnippet>126</a>		.with_env_filter(<a href="#123">filter</a>)
-<a href=#127 id=127 data-nosnippet>127</a>		.with_target(<span class="bool-val">false</span>)
-<a href=#128 id=128 data-nosnippet>128</a>		.try_init()
-<a href=#129 id=129 data-nosnippet>129</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Failed to initialize tracing: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#130 id=130 data-nosnippet>130</a>
-<a href=#131 id=131 data-nosnippet>131</a>	<span class="macro">tracing::info!</span>(<span class="string">"Grove v{} initialized"</span>, VERSION);
-<a href=#132 id=132 data-nosnippet>132</a>
-<a href=#133 id=133 data-nosnippet>133</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#134 id=134 data-nosnippet>134</a>}
-<a href=#135 id=135 data-nosnippet>135</a>
-<a href=#136 id=136 data-nosnippet>136</a><span class="attr">#[cfg(test)]
-<a href=#137 id=137 data-nosnippet>137</a></span><span class="kw">mod </span>tests {
-<a href=#138 id=138 data-nosnippet>138</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
-<a href=#139 id=139 data-nosnippet>139</a>
-<a href=#140 id=140 data-nosnippet>140</a>	<span class="attr">#[test]
-<a href=#141 id=141 data-nosnippet>141</a>	</span><span class="kw">fn </span>test_version() {
-<a href=#142 id=142 data-nosnippet>142</a>		<span class="macro">assert!</span>(!VERSION.is_empty());
-<a href=#143 id=143 data-nosnippet>143</a>		<span class="macro">assert!</span>(VERSION.contains(<span class="string">'.'</span>));
-<a href=#144 id=144 data-nosnippet>144</a>	}
-<a href=#145 id=145 data-nosnippet>145</a>
-<a href=#146 id=146 data-nosnippet>146</a>	<span class="attr">#[test]
-<a href=#147 id=147 data-nosnippet>147</a>	</span><span class="kw">fn </span>test_grove_info() {
-<a href=#148 id=148 data-nosnippet>148</a>		<span class="kw">let </span>info = GroveInfo::new();
-<a href=#149 id=149 data-nosnippet>149</a>		<span class="macro">assert_eq!</span>(info.version(), VERSION);
-<a href=#150 id=150 data-nosnippet>150</a>	}
-<a href=#151 id=151 data-nosnippet>151</a>}
+<a href=#117 id=117 data-nosnippet>117</a>	<span class="attr">#[test]
+<a href=#118 id=118 data-nosnippet>118</a>	</span><span class="kw">fn </span>test_version() {
+<a href=#119 id=119 data-nosnippet>119</a>		<span class="macro">assert!</span>(!VERSION.is_empty());
+<a href=#120 id=120 data-nosnippet>120</a>		<span class="macro">assert!</span>(VERSION.contains(<span class="string">'.'</span>));
+<a href=#121 id=121 data-nosnippet>121</a>	}
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a>	<span class="attr">#[test]
+<a href=#124 id=124 data-nosnippet>124</a>	</span><span class="kw">fn </span>test_grove_info() {
+<a href=#125 id=125 data-nosnippet>125</a>		<span class="kw">let </span>info = GroveInfo::new();
+<a href=#126 id=126 data-nosnippet>126</a>		<span class="macro">assert_eq!</span>(info.version(), VERSION);
+<a href=#127 id=127 data-nosnippet>127</a>	}
+<a href=#128 id=128 data-nosnippet>128</a>}
 </code></pre></div></section></main></body></html>

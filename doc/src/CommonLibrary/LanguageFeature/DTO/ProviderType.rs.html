@@ -10,7 +10,7 @@
 <a href=#10 id=10 data-nosnippet>10</a>/// This is used to register and query for specific provider implementations.
 <a href=#11 id=11 data-nosnippet>11</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>, <a href="https://doc.rust-lang.org/nightly/core/hash/macros/derive.Hash.html">Hash</a>)]
 <a href=#12 id=12 data-nosnippet>12</a>#[repr(u8)]
-<a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">pub enum </span><a href="#13-69">ProviderType</a> {
+<a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">pub enum </span><a href="#13-79">ProviderType</a> {
 <a href=#14 id=14 data-nosnippet>14</a>	Completion = <span class="number">0</span>,
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a>	Hover = <span class="number">1</span>,
@@ -66,9 +66,19 @@
 <a href=#66 id=66 data-nosnippet>66</a>	EvaluatableExpression = <span class="number">26</span>,
 <a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a>	InlineValues = <span class="number">27</span>,
-<a href=#69 id=69 data-nosnippet>69</a>}
-<a href=#70 id=70 data-nosnippet>70</a>
-<a href=#71 id=71 data-nosnippet>71</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">fmt::Display</a> <span class="kw">for </span><a href="#13-69">ProviderType</a> {
-<a href=#72 id=72 data-nosnippet>72</a>	<span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f:<span class="kw-2">&amp;mut </span>fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">Formatter</a>) -&gt; fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Result</a> { <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#72">f</a>, <span class="string">"{:?}"</span>, <span class="self">self</span>) }
-<a href=#73 id=73 data-nosnippet>73</a>}
+<a href=#69 id=69 data-nosnippet>69</a>
+<a href=#70 id=70 data-nosnippet>70</a>	Task = <span class="number">28</span>,
+<a href=#71 id=71 data-nosnippet>71</a>
+<a href=#72 id=72 data-nosnippet>72</a>	Authentication = <span class="number">29</span>,
+<a href=#73 id=73 data-nosnippet>73</a>
+<a href=#74 id=74 data-nosnippet>74</a>	TreeView = <span class="number">30</span>,
+<a href=#75 id=75 data-nosnippet>75</a>
+<a href=#76 id=76 data-nosnippet>76</a>	SourceControl = <span class="number">31</span>,
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a>	DebugAdapter = <span class="number">32</span>,
+<a href=#79 id=79 data-nosnippet>79</a>}
+<a href=#80 id=80 data-nosnippet>80</a>
+<a href=#81 id=81 data-nosnippet>81</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">fmt::Display</a> <span class="kw">for </span><a href="#13-79">ProviderType</a> {
+<a href=#82 id=82 data-nosnippet>82</a>	<span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f:<span class="kw-2">&amp;mut </span>fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">Formatter</a>) -&gt; fmt::<a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Result</a> { <a href="https://doc.rust-lang.org/nightly/core/macro.write.html">write!</a>(<a href="#82">f</a>, <span class="string">"{:?}"</span>, <span class="self">self</span>) }
+<a href=#83 id=83 data-nosnippet>83</a>}
 </code></pre></div></section></main></body></html>
