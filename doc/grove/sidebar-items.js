@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["VERSION"],"fn":["init"],"mod":["API","Binary","Common","Host","Protocol","Services","Transport","WASM"],"struct":["GroveInfo"]};
