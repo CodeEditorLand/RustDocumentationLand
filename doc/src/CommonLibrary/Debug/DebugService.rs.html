@@ -83,5 +83,18 @@
 <a href=#83 id=83 data-nosnippet>83</a>	/// # Returns
 <a href=#84 id=84 data-nosnippet>84</a>	/// A `Result` containing the JSON response from the debug adapter.
 <a href=#85 id=85 data-nosnippet>85</a>	</span><span class="kw">async fn </span>SendCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, SessionID:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Command:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Arguments:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt;;
-<a href=#86 id=86 data-nosnippet>86</a>}
+<a href=#86 id=86 data-nosnippet>86</a>
+<a href=#87 id=87 data-nosnippet>87</a>	<span class="doccomment">/// Terminates an active debugging session.
+<a href=#88 id=88 data-nosnippet>88</a>	///
+<a href=#89 id=89 data-nosnippet>89</a>	/// Removes the session from the active-session registry, fires a DAP
+<a href=#90 id=90 data-nosnippet>90</a>	/// `disconnect` request to the adapter if it is still alive, and emits an
+<a href=#91 id=91 data-nosnippet>91</a>	/// `$onDidTerminateDebugSession` notification so the UI can hide the
+<a href=#92 id=92 data-nosnippet>92</a>	/// debug toolbar.
+<a href=#93 id=93 data-nosnippet>93</a>	///
+<a href=#94 id=94 data-nosnippet>94</a>	/// # Parameters
+<a href=#95 id=95 data-nosnippet>95</a>	/// * `SessionID`: The unique ID of the session to stop. An empty string is
+<a href=#96 id=96 data-nosnippet>96</a>	///   treated as "stop the most recent session"; unknown IDs resolve to a
+<a href=#97 id=97 data-nosnippet>97</a>	///   no-op that still returns `Ok(())` so the extension promise resolves.
+<a href=#98 id=98 data-nosnippet>98</a>	</span><span class="kw">async fn </span>StopDebugging(<span class="kw-2">&amp;</span><span class="self">self</span>, SessionID:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt;;
+<a href=#99 id=99 data-nosnippet>99</a>}
 </code></pre></div></section></main></body></html>

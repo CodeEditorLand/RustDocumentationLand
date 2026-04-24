@@ -74,5 +74,15 @@
 <a href=#74 id=74 data-nosnippet>74</a>	/// # Returns
 <a href=#75 id=75 data-nosnippet>75</a>	/// An `Option&lt;u32&gt;` with the PID if the process is running, or `None`.
 <a href=#76 id=76 data-nosnippet>76</a>	</span><span class="kw">async fn </span>GetTerminalProcessId(<span class="kw-2">&amp;</span><span class="self">self</span>, TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;u32&gt;, CommonError&gt;;
-<a href=#77 id=77 data-nosnippet>77</a>}
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a>	<span class="doccomment">/// Resizes the PTY backing a terminal to the given column/row count. The
+<a href=#79 id=79 data-nosnippet>79</a>	/// shell process receives SIGWINCH (POSIX) or the equivalent on Windows,
+<a href=#80 id=80 data-nosnippet>80</a>	/// so line-editing utilities like readline/shells pick up the new size.
+<a href=#81 id=81 data-nosnippet>81</a>	///
+<a href=#82 id=82 data-nosnippet>82</a>	/// # Parameters
+<a href=#83 id=83 data-nosnippet>83</a>	/// * `TerminalId`: The unique identifier of the terminal to resize.
+<a href=#84 id=84 data-nosnippet>84</a>	/// * `Columns`:   Desired column count (≥ 1).
+<a href=#85 id=85 data-nosnippet>85</a>	/// * `Rows`:      Desired row count (≥ 1).
+<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">async fn </span>ResizeTerminal(<span class="kw-2">&amp;</span><span class="self">self</span>, TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, Columns:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>, Rows:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt;;
+<a href=#87 id=87 data-nosnippet>87</a>}
 </code></pre></div></section></main></body></html>
