@@ -10,7 +10,7 @@
 <a href=#10 id=10 data-nosnippet>10</a>/// file dialog. It flattens the shared `DialogOptionsDTO` and adds properties
 <a href=#11 id=11 data-nosnippet>11</a>/// specific to opening files or folders.
 <a href=#12 id=12 data-nosnippet>12</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
-<a href=#13 id=13 data-nosnippet>13</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#13 id=13 data-nosnippet>13</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">pub struct </span><a href="#14-31">OpenDialogOptionsDTO</a> {
 <a href=#15 id=15 data-nosnippet>15</a>	<span class="doccomment">/// The base options common to all file dialogs.
 <a href=#16 id=16 data-nosnippet>16</a>	</span><span class="attr">#[serde(flatten)]

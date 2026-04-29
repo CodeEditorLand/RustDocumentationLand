@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>/// snapshot of all configuration sources, allowing it to accurately reflect the
 <a href=#15 id=15 data-nosnippet>15</a>/// application's settings state without needing to read files itself.
 <a href=#16 id=16 data-nosnippet>16</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#17 id=17 data-nosnippet>17</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#17 id=17 data-nosnippet>17</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub struct </span><a href="#18-47">ConfigurationInitializationDTO</a> {
 <a href=#19 id=19 data-nosnippet>19</a>	<span class="doccomment">/// The final, merged configuration values after applying all scopes in the
 <a href=#20 id=20 data-nosnippet>20</a>	/// correct order of precedence. This is the "effective" configuration.

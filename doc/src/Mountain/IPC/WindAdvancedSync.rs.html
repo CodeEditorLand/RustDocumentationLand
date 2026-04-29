@@ -283,7 +283,7 @@
 <a href=#283 id=283 data-nosnippet>283</a><span class="kw">use </span>tokio::time::interval;
 <a href=#284 id=284 data-nosnippet>284</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#285 id=285 data-nosnippet>285</a>
-<a href=#286 id=286 data-nosnippet>286</a><span class="kw">use </span>crate::{<a href="AdvancedFeatures.rs.html#229-237">IPC::AdvancedFeatures::PerformanceStats</a>, <a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#589-630">dev_log</a>};
+<a href=#286 id=286 data-nosnippet>286</a><span class="kw">use </span>crate::{<a href="AdvancedFeatures.rs.html#229-237">IPC::AdvancedFeatures::PerformanceStats</a>, <a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#726-767">dev_log</a>};
 <a href=#287 id=287 data-nosnippet>287</a>
 <a href=#288 id=288 data-nosnippet>288</a><span class="comment">// TEMPORARY: MountainIPC module not yet implemented
 <a href=#289 id=289 data-nosnippet>289</a>// This import is needed for full document synchronization with Mountain
@@ -563,7 +563,7 @@
 <a href=#563 id=563 data-nosnippet>563</a>
 <a href=#564 id=564 data-nosnippet>564</a>	<span class="doccomment">/// Register IPC commands
 <a href=#565 id=565 data-nosnippet>565</a>	</span><span class="kw">pub fn </span>register_commands(_app:<span class="kw-2">&amp;mut </span>tauri::App) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/error/trait.Error.html">std::error::Error</a>&gt;&gt; {
-<a href=#566 id=566 data-nosnippet>566</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"Registering Wind Advanced Sync IPC commands"</span>);
+<a href=#566 id=566 data-nosnippet>566</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"Registering Wind Advanced Sync IPC commands"</span>);
 <a href=#567 id=567 data-nosnippet>567</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#568 id=568 data-nosnippet>568</a>	}
 <a href=#569 id=569 data-nosnippet>569</a>}
@@ -946,82 +946,83 @@
 <a href=#946 id=946 data-nosnippet>946</a>	</span><span class="kw">pub async fn </span>get_current_ui_state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; UIStateSynchronization { <span class="self">self</span>.get_ui_state().<span class="kw">await </span>}
 <a href=#947 id=947 data-nosnippet>947</a>
 <a href=#948 id=948 data-nosnippet>948</a>	<span class="doccomment">/// Clone sync for async tasks
-<a href=#949 id=949 data-nosnippet>949</a>	</span><span class="kw">fn </span>clone_sync(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="#405-412">WindAdvancedSync</a> {
-<a href=#950 id=950 data-nosnippet>950</a>		<a href="#405-412">WindAdvancedSync</a> {
-<a href=#951 id=951 data-nosnippet>951</a>			runtime:<a class="self" href="#949">self</a>.runtime.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#952 id=952 data-nosnippet>952</a>			document_sync:<a class="self" href="#949">self</a>.document_sync.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#953 id=953 data-nosnippet>953</a>			ui_state_sync:<a class="self" href="#949">self</a>.ui_state_sync.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#954 id=954 data-nosnippet>954</a>			real_time_updates:<a class="self" href="#949">self</a>.real_time_updates.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#955 id=955 data-nosnippet>955</a>			performance_stats:<a class="self" href="#949">self</a>.performance_stats.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#956 id=956 data-nosnippet>956</a>			<span class="comment">// mountain_ipc: self.mountain_ipc.clone(),
-<a href=#957 id=957 data-nosnippet>957</a>		</span>}
-<a href=#958 id=958 data-nosnippet>958</a>	}
-<a href=#959 id=959 data-nosnippet>959</a>}
-<a href=#960 id=960 data-nosnippet>960</a>
-<a href=#961 id=961 data-nosnippet>961</a><span class="doccomment">/// Tauri command to add document for synchronization
-<a href=#962 id=962 data-nosnippet>962</a></span><span class="attr">#[tauri::command]
-<a href=#963 id=963 data-nosnippet>963</a></span><span class="kw">pub async fn </span><a href="#962">mountain_add_document_for_sync</a>(
-<a href=#964 id=964 data-nosnippet>964</a>	app_handle:tauri::AppHandle,
-<a href=#965 id=965 data-nosnippet>965</a>	document_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#966 id=966 data-nosnippet>966</a>	file_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#967 id=967 data-nosnippet>967</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#968 id=968 data-nosnippet>968</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: add_document_for_sync"</span>);
-<a href=#969 id=969 data-nosnippet>969</a>
-<a href=#970 id=970 data-nosnippet>970</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
-<a href=#971 id=971 data-nosnippet>971</a>		sync.add_document(document_id, file_path).<span class="kw">await
-<a href=#972 id=972 data-nosnippet>972</a>	</span>} <span class="kw">else </span>{
-<a href=#973 id=973 data-nosnippet>973</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
-<a href=#974 id=974 data-nosnippet>974</a>	}
-<a href=#975 id=975 data-nosnippet>975</a>}
-<a href=#976 id=976 data-nosnippet>976</a>
-<a href=#977 id=977 data-nosnippet>977</a><span class="doccomment">/// Tauri command to get sync status
-<a href=#978 id=978 data-nosnippet>978</a></span><span class="attr">#[tauri::command]
-<a href=#979 id=979 data-nosnippet>979</a></span><span class="kw">pub async fn </span><a href="#978">mountain_get_sync_status</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;SyncStatus, String&gt; {
-<a href=#980 id=980 data-nosnippet>980</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_sync_status"</span>);
-<a href=#981 id=981 data-nosnippet>981</a>
-<a href=#982 id=982 data-nosnippet>982</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
-<a href=#983 id=983 data-nosnippet>983</a>		<span class="prelude-val">Ok</span>(sync.get_sync_status().<span class="kw">await</span>)
-<a href=#984 id=984 data-nosnippet>984</a>	} <span class="kw">else </span>{
-<a href=#985 id=985 data-nosnippet>985</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
-<a href=#986 id=986 data-nosnippet>986</a>	}
-<a href=#987 id=987 data-nosnippet>987</a>}
-<a href=#988 id=988 data-nosnippet>988</a>
-<a href=#989 id=989 data-nosnippet>989</a><span class="doccomment">/// Tauri command to subscribe to updates
-<a href=#990 id=990 data-nosnippet>990</a></span><span class="attr">#[tauri::command]
-<a href=#991 id=991 data-nosnippet>991</a></span><span class="kw">pub async fn </span><a href="#990">mountain_subscribe_to_updates</a>(
-<a href=#992 id=992 data-nosnippet>992</a>	app_handle:tauri::AppHandle,
-<a href=#993 id=993 data-nosnippet>993</a>	target:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#994 id=994 data-nosnippet>994</a>	subscriber:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#995 id=995 data-nosnippet>995</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#996 id=996 data-nosnippet>996</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: subscribe_to_updates"</span>);
-<a href=#997 id=997 data-nosnippet>997</a>
-<a href=#998 id=998 data-nosnippet>998</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
-<a href=#999 id=999 data-nosnippet>999</a>		sync.subscribe_to_updates(target, subscriber).<span class="kw">await
-<a href=#1000 id=1000 data-nosnippet>1000</a>	</span>} <span class="kw">else </span>{
-<a href=#1001 id=1001 data-nosnippet>1001</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
-<a href=#1002 id=1002 data-nosnippet>1002</a>	}
-<a href=#1003 id=1003 data-nosnippet>1003</a>}
-<a href=#1004 id=1004 data-nosnippet>1004</a>
-<a href=#1005 id=1005 data-nosnippet>1005</a><span class="doccomment">/// Initialize Wind advanced synchronization
-<a href=#1006 id=1006 data-nosnippet>1006</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/WindAdvancedSync/fn.initialize_wind_advanced_sync.html">initialize_wind_advanced_sync</a>(
-<a href=#1007 id=1007 data-nosnippet>1007</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
-<a href=#1008 id=1008 data-nosnippet>1008</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
-<a href=#1009 id=1009 data-nosnippet>1009</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#1010 id=1010 data-nosnippet>1010</a>	<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing Wind advanced synchronization"</span>);
-<a href=#1011 id=1011 data-nosnippet>1011</a>
-<a href=#1012 id=1012 data-nosnippet>1012</a>	<span class="kw">let </span>sync = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#405-412">WindAdvancedSync</a>::<a href="#416-465">new</a>(<a href="#1008">runtime</a>));
-<a href=#1013 id=1013 data-nosnippet>1013</a>
-<a href=#1014 id=1014 data-nosnippet>1014</a>	<span class="comment">// Store in application state
-<a href=#1015 id=1015 data-nosnippet>1015</a>	</span><a href="#1007">app_handle</a>.manage(<a href="#1012">sync</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#1016 id=1016 data-nosnippet>1016</a>
-<a href=#1017 id=1017 data-nosnippet>1017</a>	<span class="comment">// Start synchronization
-<a href=#1018 id=1018 data-nosnippet>1018</a>	</span><span class="kw">let </span>sync_clone = <a href="#1012">sync</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#1019 id=1019 data-nosnippet>1019</a>	tokio::spawn(<span class="kw">async move </span>{
-<a href=#1020 id=1020 data-nosnippet>1020</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="#1018">sync_clone</a>.<a href="#573-595">start_synchronization</a>().<span class="kw">await </span>{
-<a href=#1021 id=1021 data-nosnippet>1021</a>			<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [WindAdvancedSync] Failed to start synchronization: {}"</span>, e);
-<a href=#1022 id=1022 data-nosnippet>1022</a>		}
-<a href=#1023 id=1023 data-nosnippet>1023</a>	});
-<a href=#1024 id=1024 data-nosnippet>1024</a>
-<a href=#1025 id=1025 data-nosnippet>1025</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#1026 id=1026 data-nosnippet>1026</a>}
+<a href=#949 id=949 data-nosnippet>949</a>	</span><span class="attr">#[allow(dead_code)]
+<a href=#950 id=950 data-nosnippet>950</a>	</span><span class="kw">fn </span>clone_sync(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="#405-412">WindAdvancedSync</a> {
+<a href=#951 id=951 data-nosnippet>951</a>		<a href="#405-412">WindAdvancedSync</a> {
+<a href=#952 id=952 data-nosnippet>952</a>			runtime:<a class="self" href="#950">self</a>.runtime.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#953 id=953 data-nosnippet>953</a>			document_sync:<a class="self" href="#950">self</a>.document_sync.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#954 id=954 data-nosnippet>954</a>			ui_state_sync:<a class="self" href="#950">self</a>.ui_state_sync.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#955 id=955 data-nosnippet>955</a>			real_time_updates:<a class="self" href="#950">self</a>.real_time_updates.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#956 id=956 data-nosnippet>956</a>			performance_stats:<a class="self" href="#950">self</a>.performance_stats.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#957 id=957 data-nosnippet>957</a>			<span class="comment">// mountain_ipc: self.mountain_ipc.clone(),
+<a href=#958 id=958 data-nosnippet>958</a>		</span>}
+<a href=#959 id=959 data-nosnippet>959</a>	}
+<a href=#960 id=960 data-nosnippet>960</a>}
+<a href=#961 id=961 data-nosnippet>961</a>
+<a href=#962 id=962 data-nosnippet>962</a><span class="doccomment">/// Tauri command to add document for synchronization
+<a href=#963 id=963 data-nosnippet>963</a></span><span class="attr">#[tauri::command]
+<a href=#964 id=964 data-nosnippet>964</a></span><span class="kw">pub async fn </span><a href="#963">mountain_add_document_for_sync</a>(
+<a href=#965 id=965 data-nosnippet>965</a>	app_handle:tauri::AppHandle,
+<a href=#966 id=966 data-nosnippet>966</a>	document_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#967 id=967 data-nosnippet>967</a>	file_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#968 id=968 data-nosnippet>968</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#969 id=969 data-nosnippet>969</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: add_document_for_sync"</span>);
+<a href=#970 id=970 data-nosnippet>970</a>
+<a href=#971 id=971 data-nosnippet>971</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
+<a href=#972 id=972 data-nosnippet>972</a>		sync.add_document(document_id, file_path).<span class="kw">await
+<a href=#973 id=973 data-nosnippet>973</a>	</span>} <span class="kw">else </span>{
+<a href=#974 id=974 data-nosnippet>974</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
+<a href=#975 id=975 data-nosnippet>975</a>	}
+<a href=#976 id=976 data-nosnippet>976</a>}
+<a href=#977 id=977 data-nosnippet>977</a>
+<a href=#978 id=978 data-nosnippet>978</a><span class="doccomment">/// Tauri command to get sync status
+<a href=#979 id=979 data-nosnippet>979</a></span><span class="attr">#[tauri::command]
+<a href=#980 id=980 data-nosnippet>980</a></span><span class="kw">pub async fn </span><a href="#979">mountain_get_sync_status</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;SyncStatus, String&gt; {
+<a href=#981 id=981 data-nosnippet>981</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_sync_status"</span>);
+<a href=#982 id=982 data-nosnippet>982</a>
+<a href=#983 id=983 data-nosnippet>983</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
+<a href=#984 id=984 data-nosnippet>984</a>		<span class="prelude-val">Ok</span>(sync.get_sync_status().<span class="kw">await</span>)
+<a href=#985 id=985 data-nosnippet>985</a>	} <span class="kw">else </span>{
+<a href=#986 id=986 data-nosnippet>986</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
+<a href=#987 id=987 data-nosnippet>987</a>	}
+<a href=#988 id=988 data-nosnippet>988</a>}
+<a href=#989 id=989 data-nosnippet>989</a>
+<a href=#990 id=990 data-nosnippet>990</a><span class="doccomment">/// Tauri command to subscribe to updates
+<a href=#991 id=991 data-nosnippet>991</a></span><span class="attr">#[tauri::command]
+<a href=#992 id=992 data-nosnippet>992</a></span><span class="kw">pub async fn </span><a href="#991">mountain_subscribe_to_updates</a>(
+<a href=#993 id=993 data-nosnippet>993</a>	app_handle:tauri::AppHandle,
+<a href=#994 id=994 data-nosnippet>994</a>	target:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#995 id=995 data-nosnippet>995</a>	subscriber:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#996 id=996 data-nosnippet>996</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#997 id=997 data-nosnippet>997</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: subscribe_to_updates"</span>);
+<a href=#998 id=998 data-nosnippet>998</a>
+<a href=#999 id=999 data-nosnippet>999</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
+<a href=#1000 id=1000 data-nosnippet>1000</a>		sync.subscribe_to_updates(target, subscriber).<span class="kw">await
+<a href=#1001 id=1001 data-nosnippet>1001</a>	</span>} <span class="kw">else </span>{
+<a href=#1002 id=1002 data-nosnippet>1002</a>		<span class="prelude-val">Err</span>(<span class="string">"WindAdvancedSync not found in application state"</span>.to_string())
+<a href=#1003 id=1003 data-nosnippet>1003</a>	}
+<a href=#1004 id=1004 data-nosnippet>1004</a>}
+<a href=#1005 id=1005 data-nosnippet>1005</a>
+<a href=#1006 id=1006 data-nosnippet>1006</a><span class="doccomment">/// Initialize Wind advanced synchronization
+<a href=#1007 id=1007 data-nosnippet>1007</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/WindAdvancedSync/fn.initialize_wind_advanced_sync.html">initialize_wind_advanced_sync</a>(
+<a href=#1008 id=1008 data-nosnippet>1008</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
+<a href=#1009 id=1009 data-nosnippet>1009</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
+<a href=#1010 id=1010 data-nosnippet>1010</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#1011 id=1011 data-nosnippet>1011</a>	<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing Wind advanced synchronization"</span>);
+<a href=#1012 id=1012 data-nosnippet>1012</a>
+<a href=#1013 id=1013 data-nosnippet>1013</a>	<span class="kw">let </span>sync = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#405-412">WindAdvancedSync</a>::<a href="#416-465">new</a>(<a href="#1009">runtime</a>));
+<a href=#1014 id=1014 data-nosnippet>1014</a>
+<a href=#1015 id=1015 data-nosnippet>1015</a>	<span class="comment">// Store in application state
+<a href=#1016 id=1016 data-nosnippet>1016</a>	</span><a href="#1008">app_handle</a>.manage(<a href="#1013">sync</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#1017 id=1017 data-nosnippet>1017</a>
+<a href=#1018 id=1018 data-nosnippet>1018</a>	<span class="comment">// Start synchronization
+<a href=#1019 id=1019 data-nosnippet>1019</a>	</span><span class="kw">let </span>sync_clone = <a href="#1013">sync</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#1020 id=1020 data-nosnippet>1020</a>	tokio::spawn(<span class="kw">async move </span>{
+<a href=#1021 id=1021 data-nosnippet>1021</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="#1019">sync_clone</a>.<a href="#573-595">start_synchronization</a>().<span class="kw">await </span>{
+<a href=#1022 id=1022 data-nosnippet>1022</a>			<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [WindAdvancedSync] Failed to start synchronization: {}"</span>, e);
+<a href=#1023 id=1023 data-nosnippet>1023</a>		}
+<a href=#1024 id=1024 data-nosnippet>1024</a>	});
+<a href=#1025 id=1025 data-nosnippet>1025</a>
+<a href=#1026 id=1026 data-nosnippet>1026</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#1027 id=1027 data-nosnippet>1027</a>}
 </code></pre></div></section></main></body></html>

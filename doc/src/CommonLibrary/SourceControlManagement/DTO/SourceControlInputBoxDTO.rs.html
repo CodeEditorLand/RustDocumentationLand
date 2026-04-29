@@ -8,7 +8,7 @@
 <a href=#8 id=8 data-nosnippet>8</a><span class="doccomment">/// A serializable struct representing the state of the commit message input box
 <a href=#9 id=9 data-nosnippet>9</a>/// associated with a source control provider.
 <a href=#10 id=10 data-nosnippet>10</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#11 id=11 data-nosnippet>11</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#11 id=11 data-nosnippet>11</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">pub struct </span><a href="#12-23">SourceControlInputBoxDTO</a> {
 <a href=#13 id=13 data-nosnippet>13</a>	<span class="doccomment">/// The current text content of the input box.
 <a href=#14 id=14 data-nosnippet>14</a>	</span><span class="kw">pub </span>Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,

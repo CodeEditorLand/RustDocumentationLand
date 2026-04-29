@@ -12,7 +12,7 @@
 <a href=#12 id=12 data-nosnippet>12</a>/// optionally be marked as "trusted" to allow for command links and other
 <a href=#13 id=13 data-nosnippet>13</a>/// active content. This is analogous to `vscode.MarkdownString`.
 <a href=#14 id=14 data-nosnippet>14</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#15 id=15 data-nosnippet>15</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#15 id=15 data-nosnippet>15</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">pub struct </span><a href="#16-44">IMarkdownStringDTO</a> {
 <a href=#17 id=17 data-nosnippet>17</a>	<span class="doccomment">/// The markdown string content.
 <a href=#18 id=18 data-nosnippet>18</a>	</span><span class="kw">pub </span>Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -29,17 +29,17 @@
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a>	<span class="doccomment">/// A flag to indicate that this markdown string might contain HTML tags
 <a href=#31 id=31 data-nosnippet>31</a>	/// that need to be rendered.
-<a href=#32 id=32 data-nosnippet>32</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
+<a href=#32 id=32 data-nosnippet>32</a>	</span><span class="attr">#[serde(rename = <span class="string">"supportHtml"</span>, skip_serializing_if = <span class="string">"Option::is_none"</span>)]
 <a href=#33 id=33 data-nosnippet>33</a>	</span><span class="kw">pub </span>SupportHTML:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;,
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="doccomment">/// An optional base URI to resolve relative paths against, especially for
 <a href=#36 id=36 data-nosnippet>36</a>	/// images. Serialized `UriComponents`.
-<a href=#37 id=37 data-nosnippet>37</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
+<a href=#37 id=37 data-nosnippet>37</a>	</span><span class="attr">#[serde(rename = <span class="string">"baseUri"</span>, skip_serializing_if = <span class="string">"Option::is_none"</span>)]
 <a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>BaseURI:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a>	<span class="doccomment">/// A map of URIs that are allowed to be accessed, for sanitization
 <a href=#41 id=41 data-nosnippet>41</a>	/// purposes.
-<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
+<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="attr">#[serde(rename = <span class="string">"uris"</span>, skip_serializing_if = <span class="string">"Option::is_none"</span>)]
 <a href=#43 id=43 data-nosnippet>43</a>	</span><span class="kw">pub </span>URIs:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;&gt;,
 <a href=#44 id=44 data-nosnippet>44</a>}
 </code></pre></div></section></main></body></html>

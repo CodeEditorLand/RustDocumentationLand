@@ -30,7 +30,7 @@
 <a href=#30 id=30 data-nosnippet>30</a>		Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<span class="kw-2">mut </span>Map) =&gt; {
 <a href=#31 id=31 data-nosnippet>31</a>			<a href="#30">Map</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.entry">entry</a>(<span class="string">"$mid"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/enum.Entry.html#method.or_insert">or_insert</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>(MID_URI));
 <a href=#32 id=32 data-nosnippet>32</a>			Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#30">Map</a>)
-<a href=#33 id=33 data-nosnippet>33</a>		}
+<a href=#33 id=33 data-nosnippet>33</a>		},
 <a href=#34 id=34 data-nosnippet>34</a>		Other =&gt; <a href="#34">Other</a>,
 <a href=#35 id=35 data-nosnippet>35</a>	}
 <a href=#36 id=36 data-nosnippet>36</a>}
@@ -100,11 +100,9 @@
 <a href=#100 id=100 data-nosnippet>100</a>/// with `$mid: 1` and the five URI fields.
 <a href=#101 id=101 data-nosnippet>101</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/UriComponents/fn.Normalize.html">Normalize</a>(Raw:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a> {
 <a href=#102 id=102 data-nosnippet>102</a>	<span class="kw">match </span><a href="#101">Raw</a> {
-<a href=#103 id=103 data-nosnippet>103</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(Map)) <span class="kw">if </span><a href="#103">Map</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.contains_key">contains_key</a>(<span class="string">"scheme"</span>) =&gt; {
-<a href=#104 id=104 data-nosnippet>104</a>			<a href="#28-36">StampMidUri</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#103">Map</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()))
-<a href=#105 id=105 data-nosnippet>105</a>		}
-<a href=#106 id=106 data-nosnippet>106</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.String">String</a>(Url)) =&gt; <a href="#58-95">FromUrl</a>(<a href="#106">Url</a>),
-<a href=#107 id=107 data-nosnippet>107</a>		<span class="kw">_ </span>=&gt; <a href="#42-50">FromFilePath</a>(<span class="string">"/extensions/unknown"</span>),
-<a href=#108 id=108 data-nosnippet>108</a>	}
-<a href=#109 id=109 data-nosnippet>109</a>}
+<a href=#103 id=103 data-nosnippet>103</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(Map)) <span class="kw">if </span><a href="#103">Map</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.contains_key">contains_key</a>(<span class="string">"scheme"</span>) =&gt; <a href="#28-36">StampMidUri</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#103">Map</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())),
+<a href=#104 id=104 data-nosnippet>104</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.String">String</a>(Url)) =&gt; <a href="#58-95">FromUrl</a>(<a href="#104">Url</a>),
+<a href=#105 id=105 data-nosnippet>105</a>		<span class="kw">_ </span>=&gt; <a href="#42-50">FromFilePath</a>(<span class="string">"/extensions/unknown"</span>),
+<a href=#106 id=106 data-nosnippet>106</a>	}
+<a href=#107 id=107 data-nosnippet>107</a>}
 </code></pre></div></section></main></body></html>

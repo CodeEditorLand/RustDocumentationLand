@@ -17,7 +17,7 @@
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// A serializable struct representing the context in which a completion was
 <a href=#18 id=18 data-nosnippet>18</a>/// requested, analogous to `vscode.CompletionContext`.
 <a href=#19 id=19 data-nosnippet>19</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#20 id=20 data-nosnippet>20</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#20 id=20 data-nosnippet>20</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">pub struct </span><a href="#21-28">CompletionContextDTO</a> {
 <a href=#22 id=22 data-nosnippet>22</a>	<span class="doccomment">/// The kind of trigger that initiated the completion request.
 <a href=#23 id=23 data-nosnippet>23</a>	</span><span class="kw">pub </span>TriggerKind:<a href="#9-15">CompletionTriggerKindDTO</a>,

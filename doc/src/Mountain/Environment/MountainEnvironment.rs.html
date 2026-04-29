@@ -213,8 +213,8 @@
 <a href=#213 id=213 data-nosnippet>213</a><span class="kw">use </span>tauri::{AppHandle, Wry};
 <a href=#214 id=214 data-nosnippet>214</a>
 <a href=#215 id=215 data-nosnippet>215</a><span class="kw">use </span>crate::{
-<a href=#216 id=216 data-nosnippet>216</a>	ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#49-202">DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>},
-<a href=#217 id=217 data-nosnippet>217</a>	<a href="../IPC/DevLog.rs.html#589-630">dev_log</a>,
+<a href=#216 id=216 data-nosnippet>216</a>	ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#49-207">DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>},
+<a href=#217 id=217 data-nosnippet>217</a>	<a href="../IPC/DevLog.rs.html#726-767">dev_log</a>,
 <a href=#218 id=218 data-nosnippet>218</a>};
 <a href=#219 id=219 data-nosnippet>219</a><span class="comment">// Import the macro for generating trait implementations
 <a href=#220 id=220 data-nosnippet>220</a>// Note: Macros annotated with #[macro_export] are available at crate root
@@ -238,7 +238,7 @@
 <a href=#238 id=238 data-nosnippet>238</a>	<span class="doccomment">/// Creates a new `MountainEnvironment` instance.
 <a href=#239 id=239 data-nosnippet>239</a>	</span><span class="attr">#[allow(unused_mut)]
 <a href=#240 id=240 data-nosnippet>240</a>	</span><span class="kw">pub fn </span>Create(ApplicationHandle:AppHandle&lt;Wry&gt;, ApplicationState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#241 id=241 data-nosnippet>241</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[MountainEnvironment] New instance created."</span>);
+<a href=#241 id=241 data-nosnippet>241</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[MountainEnvironment] New instance created."</span>);
 <a href=#242 id=242 data-nosnippet>242</a>
 <a href=#243 id=243 data-nosnippet>243</a>		<span class="attr">#[cfg(feature = <span class="string">"AirIntegration"</span>)]
 <a href=#244 id=244 data-nosnippet>244</a>		</span>{
@@ -260,7 +260,7 @@
 <a href=#260 id=260 data-nosnippet>260</a>		ApplicationState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;,
 <a href=#261 id=261 data-nosnippet>261</a>		AirClient:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../AirLibrary/Vine/Generated/air/air_service_client/struct.AirServiceClient.html">AirServiceClient</a>&lt;tonic::transport::Channel&gt;&gt;,
 <a href=#262 id=262 data-nosnippet>262</a>	) -&gt; <span class="self">Self </span>{
-<a href=#263 id=263 data-nosnippet>263</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#263 id=263 data-nosnippet>263</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#264 id=264 data-nosnippet>264</a>			<span class="string">"lifecycle"</span>,
 <a href=#265 id=265 data-nosnippet>265</a>			<span class="string">"[MountainEnvironment] New instance created with Air client: {}"</span>,
 <a href=#266 id=266 data-nosnippet>266</a>			AirClient.is_some()
@@ -273,7 +273,7 @@
 <a href=#273 id=273 data-nosnippet>273</a>	/// This allows dynamically switching between Air and local services.
 <a href=#274 id=274 data-nosnippet>274</a>	</span><span class="attr">#[cfg(feature = <span class="string">"AirIntegration"</span>)]
 <a href=#275 id=275 data-nosnippet>275</a>	</span><span class="kw">pub fn </span>SetAirClient(<span class="kw-2">&amp;mut </span><span class="self">self</span>, AirClient:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../AirLibrary/Vine/Generated/air/air_service_client/struct.AirServiceClient.html">AirServiceClient</a>&lt;tonic::transport::Channel&gt;&gt;) {
-<a href=#276 id=276 data-nosnippet>276</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[MountainEnvironment] Air client updated: {}"</span>, AirClient.is_some());
+<a href=#276 id=276 data-nosnippet>276</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[MountainEnvironment] Air client updated: {}"</span>, AirClient.is_some());
 <a href=#277 id=277 data-nosnippet>277</a>
 <a href=#278 id=278 data-nosnippet>278</a>		<a class="self" href="#275">self</a>.AirClient = <a href="#275">AirClient</a>;
 <a href=#279 id=279 data-nosnippet>279</a>	}
@@ -389,7 +389,7 @@
 <a href=#389 id=389 data-nosnippet>389</a><span class="attr">#[async_trait]
 <a href=#390 id=390 data-nosnippet>390</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/ExtensionManagement/ExtensionManagementService/trait.ExtensionManagementService.html">ExtensionManagementService</a> <span class="kw">for </span><a href="#225-235">MountainEnvironment</a> {
 <a href=#391 id=391 data-nosnippet>391</a>	<span class="kw">async fn </span>ScanForExtensions(<span class="kw-2">&amp;</span><a class="self" href="#391">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#392 id=392 data-nosnippet>392</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ExtensionManagementService] Scanning for extensions..."</span>);
+<a href=#392 id=392 data-nosnippet>392</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ExtensionManagementService] Scanning for extensions..."</span>);
 <a href=#393 id=393 data-nosnippet>393</a>
 <a href=#394 id=394 data-nosnippet>394</a>		<span class="comment">// Get the extension scan paths from ApplicationState
 <a href=#395 id=395 data-nosnippet>395</a>		</span><span class="kw">let </span>ScanPaths:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt; = {
@@ -452,7 +452,7 @@
 <a href=#452 id=452 data-nosnippet>452</a>			}
 <a href=#453 id=453 data-nosnippet>453</a>		}
 <a href=#454 id=454 data-nosnippet>454</a>
-<a href=#455 id=455 data-nosnippet>455</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#455 id=455 data-nosnippet>455</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#456 id=456 data-nosnippet>456</a>			<span class="string">"lifecycle"</span>,
 <a href=#457 id=457 data-nosnippet>457</a>			<span class="string">"[ExtensionManagementService] Found {} extensions"</span>,
 <a href=#458 id=458 data-nosnippet>458</a>			ScannedExtensionsGuard.len()
@@ -478,7 +478,7 @@
 <a href=#478 id=478 data-nosnippet>478</a>
 <a href=#479 id=479 data-nosnippet>479</a>		<span class="kw">let </span>SerializedCount = <a href="#474">Extensions</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter">filter</a>(|v| !<a href="#479">v</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.is_null">is_null</a>()).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.count">count</a>();
 <a href=#480 id=480 data-nosnippet>480</a>
-<a href=#481 id=481 data-nosnippet>481</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#481 id=481 data-nosnippet>481</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#482 id=482 data-nosnippet>482</a>			<span class="string">"lifecycle"</span>,
 <a href=#483 id=483 data-nosnippet>483</a>			<span class="string">"[MountainEnvironment] GetExtensions: ScannedExtensions map={} entries, serialized={} non-null"</span>,
 <a href=#484 id=484 data-nosnippet>484</a>			GuardLen,

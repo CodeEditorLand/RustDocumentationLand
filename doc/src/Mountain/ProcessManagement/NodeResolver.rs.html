@@ -3,7 +3,7 @@
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="doccomment">//! Resolves the Node.js binary used to spawn Cocoon.
 <a href=#4 id=4 data-nosnippet>4</a>//!
 <a href=#5 id=5 data-nosnippet>5</a>//! Ladder (first hit wins, cached in `OnceLock`):
-<a href=#6 id=6 data-nosnippet>6</a>//! `LAND_NODE_BINARY` override → shipped (`Resources/Node/bin/node`) →
+<a href=#6 id=6 data-nosnippet>6</a>//! `Pick` override → shipped (`Resources/Node/bin/node`) →
 <a href=#7 id=7 data-nosnippet>7</a>//! fnm → volta → asdf → nvm → homebrew → PATH `node`.
 <a href=#8 id=8 data-nosnippet>8</a>//!
 <a href=#9 id=9 data-nosnippet>9</a>//! Each step logs its outcome so the resolved source is visible in the log.
@@ -15,7 +15,7 @@
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>tauri::{AppHandle, Manager, Runtime, path::BaseDirectory};
 <a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Result of a Node binary resolution attempt. Carries both the path and
 <a href=#21 id=21 data-nosnippet>21</a>/// the source so logs can distinguish shipped Node from system Node.
@@ -28,7 +28,7 @@
 <a href=#28 id=28 data-nosnippet>28</a><span class="doccomment">/// Where the Node binary came from. Ordered by preference.
 <a href=#29 id=29 data-nosnippet>29</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>)]
 <a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">pub enum </span><a href="#30-49">NodeSource</a> {
-<a href=#31 id=31 data-nosnippet>31</a>	<span class="doccomment">/// `LAND_NODE_BINARY` environment variable.
+<a href=#31 id=31 data-nosnippet>31</a>	<span class="doccomment">/// `Pick` environment variable.
 <a href=#32 id=32 data-nosnippet>32</a>	</span>Override,
 <a href=#33 id=33 data-nosnippet>33</a>	<span class="doccomment">/// Shipped with Mountain - `Resources/Node/bin/node` or dev-tree
 <a href=#34 id=34 data-nosnippet>34</a>	/// equivalent.
@@ -79,7 +79,7 @@
 <a href=#79 id=79 data-nosnippet>79</a>	<span class="kw">let </span>Version = <a href="#112-119">QueryNodeVersion</a>(<span class="kw-2">&amp;</span><a href="#77">Resolved</a>.Path);
 <a href=#80 id=80 data-nosnippet>80</a>	<span class="kw">match </span><span class="kw-2">&amp;</span><a href="#79">Version</a> {
 <a href=#81 id=81 data-nosnippet>81</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Reported) =&gt; {
-<a href=#82 id=82 data-nosnippet>82</a>			<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#82 id=82 data-nosnippet>82</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#83 id=83 data-nosnippet>83</a>				<span class="string">"cocoon"</span>,
 <a href=#84 id=84 data-nosnippet>84</a>				<span class="string">"[NodeResolver] Using: {} (source={}, version={})"</span>,
 <a href=#85 id=85 data-nosnippet>85</a>				Resolved.Path.display(),
@@ -89,7 +89,7 @@
 <a href=#89 id=89 data-nosnippet>89</a>			<a href="#125-144">CheckMinMajor</a>(<a href="#81">Reported</a>);
 <a href=#90 id=90 data-nosnippet>90</a>		},
 <a href=#91 id=91 data-nosnippet>91</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#92 id=92 data-nosnippet>92</a>			<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#92 id=92 data-nosnippet>92</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#93 id=93 data-nosnippet>93</a>				<span class="string">"cocoon"</span>,
 <a href=#94 id=94 data-nosnippet>94</a>				<span class="string">"[NodeResolver] Using: {} (source={}, version=unknown)"</span>,
 <a href=#95 id=95 data-nosnippet>95</a>				Resolved.Path.display(),
@@ -119,7 +119,7 @@
 <a href=#119 id=119 data-nosnippet>119</a>}
 <a href=#120 id=120 data-nosnippet>120</a>
 <a href=#121 id=121 data-nosnippet>121</a><span class="doccomment">/// Emit a warning log line when the resolved Node's major version is below
-<a href=#122 id=122 data-nosnippet>122</a>/// `LAND_NODE_MIN_MAJOR`. Does NOT fail the spawn - Cocoon's bundled code
+<a href=#122 id=122 data-nosnippet>122</a>/// `Require`. Does NOT fail the spawn - Cocoon's bundled code
 <a href=#123 id=123 data-nosnippet>123</a>/// mostly degrades gracefully on older engines, and operators should be
 <a href=#124 id=124 data-nosnippet>124</a>/// free to experiment on unreleased Node without a hard gate.
 <a href=#125 id=125 data-nosnippet>125</a></span><span class="kw">fn </span><a href="../../../Mountain/ProcessManagement/NodeResolver/fn.CheckMinMajor.html">CheckMinMajor</a>(VersionString:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
@@ -130,13 +130,13 @@
 <a href=#130 id=130 data-nosnippet>130</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">return</span>,
 <a href=#131 id=131 data-nosnippet>131</a>	};
 <a href=#132 id=132 data-nosnippet>132</a>
-<a href=#133 id=133 data-nosnippet>133</a>	<span class="kw">let </span>Required:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"LAND_NODE_MIN_MAJOR"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Raw| <a href="#133">Raw</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.parse">parse</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">20</span>);
+<a href=#133 id=133 data-nosnippet>133</a>	<span class="kw">let </span>Required:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Require"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Raw| <a href="#133">Raw</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.parse">parse</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">20</span>);
 <a href=#134 id=134 data-nosnippet>134</a>
 <a href=#135 id=135 data-nosnippet>135</a>	<span class="kw">if </span><a href="#128">Major</a> &lt; <a href="#133">Required</a> {
-<a href=#136 id=136 data-nosnippet>136</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#136 id=136 data-nosnippet>136</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#137 id=137 data-nosnippet>137</a>			<span class="string">"cocoon"</span>,
-<a href=#138 id=138 data-nosnippet>138</a>			<span class="string">"warn: [NodeResolver] Node {} is below LAND_NODE_MIN_MAJOR={}; extension host may fail to boot. Override \
-<a href=#139 id=139 data-nosnippet>139</a>			 via LAND_NODE_BINARY or upgrade Node."</span>,
+<a href=#138 id=138 data-nosnippet>138</a>			<span class="string">"warn: [NodeResolver] Node {} is below Require={}; extension host may fail to boot. Override \
+<a href=#139 id=139 data-nosnippet>139</a>			 via Pick or upgrade Node."</span>,
 <a href=#140 id=140 data-nosnippet>140</a>			VersionString,
 <a href=#141 id=141 data-nosnippet>141</a>			Required
 <a href=#142 id=142 data-nosnippet>142</a>		);
@@ -166,7 +166,7 @@
 <a href=#166 id=166 data-nosnippet>166</a>		<span class="kw">return </span><a href="#165">Found</a>;
 <a href=#167 id=167 data-nosnippet>167</a>	}
 <a href=#168 id=168 data-nosnippet>168</a>
-<a href=#169 id=169 data-nosnippet>169</a>	<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#169 id=169 data-nosnippet>169</a>	<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#170 id=170 data-nosnippet>170</a>		<span class="string">"cocoon"</span>,
 <a href=#171 id=171 data-nosnippet>171</a>		<span class="string">"[NodeResolver] No specific install found; falling back to `node` on PATH"
 <a href=#172 id=172 data-nosnippet>172</a>	</span>);
@@ -175,14 +175,14 @@
 <a href=#175 id=175 data-nosnippet>175</a>}
 <a href=#176 id=176 data-nosnippet>176</a>
 <a href=#177 id=177 data-nosnippet>177</a><span class="kw">fn </span><a href="../../../Mountain/ProcessManagement/NodeResolver/fn.TryOverride.html">TryOverride</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="#23-26">ResolvedNode</a>&gt; {
-<a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">let </span>Raw = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"LAND_NODE_BINARY"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()<span class="question-mark">?</span>;
+<a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">let </span>Raw = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Pick"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()<span class="question-mark">?</span>;
 <a href=#179 id=179 data-nosnippet>179</a>	<span class="kw">let </span>Expanded = <a href="#319-326">ExpandHome</a>(<span class="kw-2">&amp;</span><a href="#178">Raw</a>);
 <a href=#180 id=180 data-nosnippet>180</a>	<span class="kw">if </span><a href="#179">Expanded</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
 <a href=#181 id=181 data-nosnippet>181</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#23-26">ResolvedNode</a> { Path:<a href="#179">Expanded</a>, Source:NodeSource::<a href="#32">Override</a> })
 <a href=#182 id=182 data-nosnippet>182</a>	} <span class="kw">else </span>{
-<a href=#183 id=183 data-nosnippet>183</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#183 id=183 data-nosnippet>183</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#184 id=184 data-nosnippet>184</a>			<span class="string">"cocoon"</span>,
-<a href=#185 id=185 data-nosnippet>185</a>			<span class="string">"warn: [NodeResolver] LAND_NODE_BINARY={} does not exist; ignoring"</span>,
+<a href=#185 id=185 data-nosnippet>185</a>			<span class="string">"warn: [NodeResolver] Pick={} does not exist; ignoring"</span>,
 <a href=#186 id=186 data-nosnippet>186</a>			Raw
 <a href=#187 id=187 data-nosnippet>187</a>		);
 <a href=#188 id=188 data-nosnippet>188</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
@@ -279,7 +279,7 @@
 <a href=#279 id=279 data-nosnippet>279</a>	<span class="comment">// Fallback: walk `$NVM_DIR/versions/node` / `~/.nvm/versions/node` and
 <a href=#280 id=280 data-nosnippet>280</a>	// pick the lexicographically largest version (rough proxy for "latest
 <a href=#281 id=281 data-nosnippet>281</a>	// installed"). Users who want a specific version should export
-<a href=#282 id=282 data-nosnippet>282</a>	// `LAND_NODE_BINARY` instead.
+<a href=#282 id=282 data-nosnippet>282</a>	// `Pick` instead.
 <a href=#283 id=283 data-nosnippet>283</a>	</span><span class="kw">let </span>NvmDir = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"NVM_DIR"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.or_else">or_else</a>(|| {
 <a href=#284 id=284 data-nosnippet>284</a>		std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"HOME"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|H| <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<a href="#284">H</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".nvm"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_string_lossy">to_string_lossy</a>().<a href="https://doc.rust-lang.org/nightly/alloc/borrow/enum.Cow.html#method.into_owned">into_owned</a>())
 <a href=#285 id=285 data-nosnippet>285</a>	})<span class="question-mark">?</span>;

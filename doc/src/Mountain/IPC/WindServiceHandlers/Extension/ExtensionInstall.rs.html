@@ -7,10 +7,10 @@
 <a href=#7 id=7 data-nosnippet>7</a>//!   2. Reject non-`.vsix` files.
 <a href=#8 id=8 data-nosnippet>8</a>//!   3. Unpack into the user-scope extension directory via
 <a href=#9 id=9 data-nosnippet>9</a>//!      `VsixInstaller::InstallVsix`.
-<a href=#10 id=10 data-nosnippet>10</a>//!   4. Register with `ScannedExtensions` so `GetExtensions()` reflects
-<a href=#11 id=11 data-nosnippet>11</a>//!      the install on the next read.
-<a href=#12 id=12 data-nosnippet>12</a>//!   5. Fire-and-forget `$deltaExtensions` + `$activateByEvent` to Cocoon
-<a href=#13 id=13 data-nosnippet>13</a>//!      so the extension activates without a workbench reload.
+<a href=#10 id=10 data-nosnippet>10</a>//!   4. Register with `ScannedExtensions` so `GetExtensions()` reflects the
+<a href=#11 id=11 data-nosnippet>11</a>//!      install on the next read.
+<a href=#12 id=12 data-nosnippet>12</a>//!   5. Fire-and-forget `$deltaExtensions` + `$activateByEvent` to Cocoon so
+<a href=#13 id=13 data-nosnippet>13</a>//!      the extension activates without a workbench reload.
 <a href=#14 id=14 data-nosnippet>14</a>//!   6. Emit `sky://extensions/installed` so Wind refreshes the sidebar.
 <a href=#15 id=15 data-nosnippet>15</a>//!   7. Return an `ILocalExtension` envelope shaped for VS Code's
 <a href=#16 id=16 data-nosnippet>16</a>//!      ExtensionEnablementService sidebar merge path.
@@ -25,13 +25,13 @@
 <a href=#25 id=25 data-nosnippet>25</a>	IPC::{
 <a href=#26 id=26 data-nosnippet>26</a>		<a href="../../UriComponents.rs.html#42-50">UriComponents::FromFilePath</a> <span class="kw">as </span>UriFromFilePath,
 <a href=#27 id=27 data-nosnippet>27</a>		WindServiceHandlers::Extension::{
-<a href=#28 id=28 data-nosnippet>28</a>			<a href="NotifyCocoonDeltaExtensions.rs.html#28-86">NotifyCocoonDeltaExtensions::NotifyCocoonDeltaExtensions</a>,
+<a href=#28 id=28 data-nosnippet>28</a>			<a href="NotifyCocoonDeltaExtensions.rs.html#28-81">NotifyCocoonDeltaExtensions::NotifyCocoonDeltaExtensions</a>,
 <a href=#29 id=29 data-nosnippet>29</a>			<a href="UserExtensionDirectory.rs.html#14-29">UserExtensionDirectory::UserExtensionDirectory</a>,
 <a href=#30 id=30 data-nosnippet>30</a>			<a href="VsixPathFromArgs.rs.html#12-37">VsixPathFromArgs::VsixPathFromArgs</a>,
 <a href=#31 id=31 data-nosnippet>31</a>		},
 <a href=#32 id=32 data-nosnippet>32</a>	},
 <a href=#33 id=33 data-nosnippet>33</a>	<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#34 id=34 data-nosnippet>34</a>	<a href="../../DevLog.rs.html#589-630">dev_log</a>,
+<a href=#34 id=34 data-nosnippet>34</a>	<a href="../../DevLog.rs.html#726-767">dev_log</a>,
 <a href=#35 id=35 data-nosnippet>35</a>};
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extension/ExtensionInstall/fn.ExtensionInstall.html">ExtensionInstall</a>(

@@ -24,7 +24,7 @@
 <a href=#24 id=24 data-nosnippet>24</a>		<a href="../../Vine/Generated/vine.rs.html#577-582">TerminalOpenedNotification</a>,
 <a href=#25 id=25 data-nosnippet>25</a>		<a href="../../Vine/Generated/vine.rs.html#591-596">TerminalProcessIdNotification</a>,
 <a href=#26 id=26 data-nosnippet>26</a>	},
-<a href=#27 id=27 data-nosnippet>27</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>,
+<a href=#27 id=27 data-nosnippet>27</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
 <a href=#28 id=28 data-nosnippet>28</a>};
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.OpenTerminal.html">OpenTerminal</a>(Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>, req:<a href="../../Vine/Generated/vine.rs.html#551-560">OpenTerminalRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
@@ -104,86 +104,97 @@
 <a href=#104 id=104 data-nosnippet>104</a>		req.terminal_id
 <a href=#105 id=105 data-nosnippet>105</a>	);
 <a href=#106 id=106 data-nosnippet>106</a>
-<a href=#107 id=107 data-nosnippet>107</a>	<span class="comment">// Forward terminal opened event to Sky for UI update
-<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">let _ </span>= Service
-<a href=#109 id=109 data-nosnippet>109</a>		.environment
-<a href=#110 id=110 data-nosnippet>110</a>		.ApplicationHandle
-<a href=#111 id=111 data-nosnippet>111</a>		.emit(<span class="string">"sky://terminal/opened"</span>, <span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"name"</span>: req.name }));
-<a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#114 id=114 data-nosnippet>114</a>}
-<a href=#115 id=115 data-nosnippet>115</a>
-<a href=#116 id=116 data-nosnippet>116</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalClosed.html">AcceptTerminalClosed</a>(
-<a href=#117 id=117 data-nosnippet>117</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
-<a href=#118 id=118 data-nosnippet>118</a>	req:<a href="../../Vine/Generated/vine.rs.html#585-588">TerminalClosedNotification</a>,
-<a href=#119 id=119 data-nosnippet>119</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
-<a href=#120 id=120 data-nosnippet>120</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] Terminal closed: {}"</span>, req.terminal_id);
+<a href=#107 id=107 data-nosnippet>107</a>	<span class="comment">// Forward terminal opened event to Sky for UI update.
+<a href=#108 id=108 data-nosnippet>108</a>	// Sky listens on `sky://terminal/create` (`SkyBridge.ts:1736`) for
+<a href=#109 id=109 data-nosnippet>109</a>	// `({ id, name, pid })`. Earlier emissions used `sky://terminal/opened`
+<a href=#110 id=110 data-nosnippet>110</a>	// - a name no listener was registered against, so terminal panes
+<a href=#111 id=111 data-nosnippet>111</a>	// silently failed to render in the workbench. Aligned to the
+<a href=#112 id=112 data-nosnippet>112</a>	// consumer's channel name and added the `pid` field the destructure
+<a href=#113 id=113 data-nosnippet>113</a>	// expects (best-effort: 0 when not yet known).
+<a href=#114 id=114 data-nosnippet>114</a>	</span><span class="kw">let _ </span>= Service
+<a href=#115 id=115 data-nosnippet>115</a>		.environment
+<a href=#116 id=116 data-nosnippet>116</a>		.ApplicationHandle
+<a href=#117 id=117 data-nosnippet>117</a>		.emit(
+<a href=#118 id=118 data-nosnippet>118</a>			<span class="string">"sky://terminal/create"</span>,
+<a href=#119 id=119 data-nosnippet>119</a>			<span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"name"</span>: req.name, <span class="string">"pid"</span>: <span class="number">0 </span>}),
+<a href=#120 id=120 data-nosnippet>120</a>		);
 <a href=#121 id=121 data-nosnippet>121</a>
-<a href=#122 id=122 data-nosnippet>122</a>	<span class="kw">let _ </span>= Service
-<a href=#123 id=123 data-nosnippet>123</a>		.environment
-<a href=#124 id=124 data-nosnippet>124</a>		.ApplicationHandle
-<a href=#125 id=125 data-nosnippet>125</a>		.emit(<span class="string">"sky://terminal/closed"</span>, <span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id }));
-<a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#128 id=128 data-nosnippet>128</a>}
-<a href=#129 id=129 data-nosnippet>129</a>
-<a href=#130 id=130 data-nosnippet>130</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalProcessId.html">AcceptTerminalProcessId</a>(
-<a href=#131 id=131 data-nosnippet>131</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
-<a href=#132 id=132 data-nosnippet>132</a>	req:<a href="../../Vine/Generated/vine.rs.html#591-596">TerminalProcessIdNotification</a>,
-<a href=#133 id=133 data-nosnippet>133</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
-<a href=#134 id=134 data-nosnippet>134</a>	<span class="macro">dev_log!</span>(
-<a href=#135 id=135 data-nosnippet>135</a>		<span class="string">"cocoon"</span>,
-<a href=#136 id=136 data-nosnippet>136</a>		<span class="string">"[CocoonService] Terminal PID: {} for terminal {}"</span>,
-<a href=#137 id=137 data-nosnippet>137</a>		req.process_id,
-<a href=#138 id=138 data-nosnippet>138</a>		req.terminal_id
-<a href=#139 id=139 data-nosnippet>139</a>	);
+<a href=#122 id=122 data-nosnippet>122</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#123 id=123 data-nosnippet>123</a>}
+<a href=#124 id=124 data-nosnippet>124</a>
+<a href=#125 id=125 data-nosnippet>125</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalClosed.html">AcceptTerminalClosed</a>(
+<a href=#126 id=126 data-nosnippet>126</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
+<a href=#127 id=127 data-nosnippet>127</a>	req:<a href="../../Vine/Generated/vine.rs.html#585-588">TerminalClosedNotification</a>,
+<a href=#128 id=128 data-nosnippet>128</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
+<a href=#129 id=129 data-nosnippet>129</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] Terminal closed: {}"</span>, req.terminal_id);
+<a href=#130 id=130 data-nosnippet>130</a>
+<a href=#131 id=131 data-nosnippet>131</a>	<span class="comment">// Sky listens on `sky://terminal/exit` (`SkyBridge.ts:1752`).
+<a href=#132 id=132 data-nosnippet>132</a>	// `sky://terminal/closed` had no consumer.
+<a href=#133 id=133 data-nosnippet>133</a>	</span><span class="kw">let _ </span>= Service
+<a href=#134 id=134 data-nosnippet>134</a>		.environment
+<a href=#135 id=135 data-nosnippet>135</a>		.ApplicationHandle
+<a href=#136 id=136 data-nosnippet>136</a>		.emit(<span class="string">"sky://terminal/exit"</span>, <span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id }));
+<a href=#137 id=137 data-nosnippet>137</a>
+<a href=#138 id=138 data-nosnippet>138</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#139 id=139 data-nosnippet>139</a>}
 <a href=#140 id=140 data-nosnippet>140</a>
-<a href=#141 id=141 data-nosnippet>141</a>	<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
-<a href=#142 id=142 data-nosnippet>142</a>		<span class="string">"sky://terminal/processId"</span>,
-<a href=#143 id=143 data-nosnippet>143</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"pid"</span>: req.process_id }),
-<a href=#144 id=144 data-nosnippet>144</a>	);
-<a href=#145 id=145 data-nosnippet>145</a>
-<a href=#146 id=146 data-nosnippet>146</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#147 id=147 data-nosnippet>147</a>}
-<a href=#148 id=148 data-nosnippet>148</a>
-<a href=#149 id=149 data-nosnippet>149</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalProcessData.html">AcceptTerminalProcessData</a>(
-<a href=#150 id=150 data-nosnippet>150</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
-<a href=#151 id=151 data-nosnippet>151</a>	req:<a href="../../Vine/Generated/vine.rs.html#599-604">TerminalDataNotification</a>,
-<a href=#152 id=152 data-nosnippet>152</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
-<a href=#153 id=153 data-nosnippet>153</a>	<span class="macro">dev_log!</span>(
-<a href=#154 id=154 data-nosnippet>154</a>		<span class="string">"cocoon"</span>,
-<a href=#155 id=155 data-nosnippet>155</a>		<span class="string">"[CocoonService] Terminal data for {}: {} bytes"</span>,
-<a href=#156 id=156 data-nosnippet>156</a>		req.terminal_id,
-<a href=#157 id=157 data-nosnippet>157</a>		req.data.len()
-<a href=#158 id=158 data-nosnippet>158</a>	);
+<a href=#141 id=141 data-nosnippet>141</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalProcessId.html">AcceptTerminalProcessId</a>(
+<a href=#142 id=142 data-nosnippet>142</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
+<a href=#143 id=143 data-nosnippet>143</a>	req:<a href="../../Vine/Generated/vine.rs.html#591-596">TerminalProcessIdNotification</a>,
+<a href=#144 id=144 data-nosnippet>144</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
+<a href=#145 id=145 data-nosnippet>145</a>	<span class="macro">dev_log!</span>(
+<a href=#146 id=146 data-nosnippet>146</a>		<span class="string">"cocoon"</span>,
+<a href=#147 id=147 data-nosnippet>147</a>		<span class="string">"[CocoonService] Terminal PID: {} for terminal {}"</span>,
+<a href=#148 id=148 data-nosnippet>148</a>		req.process_id,
+<a href=#149 id=149 data-nosnippet>149</a>		req.terminal_id
+<a href=#150 id=150 data-nosnippet>150</a>	);
+<a href=#151 id=151 data-nosnippet>151</a>
+<a href=#152 id=152 data-nosnippet>152</a>	<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
+<a href=#153 id=153 data-nosnippet>153</a>		<span class="string">"sky://terminal/processId"</span>,
+<a href=#154 id=154 data-nosnippet>154</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"pid"</span>: req.process_id }),
+<a href=#155 id=155 data-nosnippet>155</a>	);
+<a href=#156 id=156 data-nosnippet>156</a>
+<a href=#157 id=157 data-nosnippet>157</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#158 id=158 data-nosnippet>158</a>}
 <a href=#159 id=159 data-nosnippet>159</a>
-<a href=#160 id=160 data-nosnippet>160</a>	<span class="kw">let </span>DataString = String::from_utf8_lossy(<span class="kw-2">&amp;</span>req.data).to_string();
-<a href=#161 id=161 data-nosnippet>161</a>	<span class="kw">let _ </span>= Service
-<a href=#162 id=162 data-nosnippet>162</a>		.environment
-<a href=#163 id=163 data-nosnippet>163</a>		.ApplicationHandle
-<a href=#164 id=164 data-nosnippet>164</a>		.emit(<span class="string">"sky://terminal/data"</span>, <span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"data"</span>: DataString }));
-<a href=#165 id=165 data-nosnippet>165</a>
-<a href=#166 id=166 data-nosnippet>166</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#167 id=167 data-nosnippet>167</a>}
-<a href=#168 id=168 data-nosnippet>168</a>
-<a href=#169 id=169 data-nosnippet>169</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.ResizeTerminal.html">ResizeTerminal</a>(Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>, req:<a href="../../Vine/Generated/vine.rs.html#1555-1562">ResizeTerminalRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
-<a href=#170 id=170 data-nosnippet>170</a>	<span class="macro">dev_log!</span>(
-<a href=#171 id=171 data-nosnippet>171</a>		<span class="string">"cocoon"</span>,
-<a href=#172 id=172 data-nosnippet>172</a>		<span class="string">"[CocoonService] resize_terminal: id={} cols={} rows={}"</span>,
-<a href=#173 id=173 data-nosnippet>173</a>		req.terminal_id,
-<a href=#174 id=174 data-nosnippet>174</a>		req.cols,
-<a href=#175 id=175 data-nosnippet>175</a>		req.rows
-<a href=#176 id=176 data-nosnippet>176</a>	);
-<a href=#177 id=177 data-nosnippet>177</a>
-<a href=#178 id=178 data-nosnippet>178</a>	<span class="comment">// Notify Sky/Wind of the new dimensions for UI resize
-<a href=#179 id=179 data-nosnippet>179</a>	</span><span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
-<a href=#180 id=180 data-nosnippet>180</a>		<span class="string">"sky://terminal/resize"</span>,
-<a href=#181 id=181 data-nosnippet>181</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"cols"</span>: req.cols, <span class="string">"rows"</span>: req.rows }),
-<a href=#182 id=182 data-nosnippet>182</a>	);
-<a href=#183 id=183 data-nosnippet>183</a>
-<a href=#184 id=184 data-nosnippet>184</a>	<span class="comment">// TODO(P1): Call portable_pty::MasterPty::resize once PtyMaster handle
-<a href=#185 id=185 data-nosnippet>185</a>	// is stored in TerminalStateDTO (requires wrapping MasterPty in Arc&lt;Mutex&gt;)
-<a href=#186 id=186 data-nosnippet>186</a>
-<a href=#187 id=187 data-nosnippet>187</a>	</span><span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#188 id=188 data-nosnippet>188</a>}
+<a href=#160 id=160 data-nosnippet>160</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.AcceptTerminalProcessData.html">AcceptTerminalProcessData</a>(
+<a href=#161 id=161 data-nosnippet>161</a>	Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>,
+<a href=#162 id=162 data-nosnippet>162</a>	req:<a href="../../Vine/Generated/vine.rs.html#599-604">TerminalDataNotification</a>,
+<a href=#163 id=163 data-nosnippet>163</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
+<a href=#164 id=164 data-nosnippet>164</a>	<span class="macro">dev_log!</span>(
+<a href=#165 id=165 data-nosnippet>165</a>		<span class="string">"cocoon"</span>,
+<a href=#166 id=166 data-nosnippet>166</a>		<span class="string">"[CocoonService] Terminal data for {}: {} bytes"</span>,
+<a href=#167 id=167 data-nosnippet>167</a>		req.terminal_id,
+<a href=#168 id=168 data-nosnippet>168</a>		req.data.len()
+<a href=#169 id=169 data-nosnippet>169</a>	);
+<a href=#170 id=170 data-nosnippet>170</a>
+<a href=#171 id=171 data-nosnippet>171</a>	<span class="kw">let </span>DataString = String::from_utf8_lossy(<span class="kw-2">&amp;</span>req.data).to_string();
+<a href=#172 id=172 data-nosnippet>172</a>	<span class="kw">let _ </span>= Service
+<a href=#173 id=173 data-nosnippet>173</a>		.environment
+<a href=#174 id=174 data-nosnippet>174</a>		.ApplicationHandle
+<a href=#175 id=175 data-nosnippet>175</a>		.emit(<span class="string">"sky://terminal/data"</span>, <span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"data"</span>: DataString }));
+<a href=#176 id=176 data-nosnippet>176</a>
+<a href=#177 id=177 data-nosnippet>177</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#178 id=178 data-nosnippet>178</a>}
+<a href=#179 id=179 data-nosnippet>179</a>
+<a href=#180 id=180 data-nosnippet>180</a><span class="kw">pub async fn </span><a href="../../../../Mountain/RPC/CocoonService/Terminal/fn.ResizeTerminal.html">ResizeTerminal</a>(Service:<span class="kw-2">&amp;</span><a href="mod.rs.html#270-277">CocoonServiceImpl</a>, req:<a href="../../Vine/Generated/vine.rs.html#1555-1562">ResizeTerminalRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
+<a href=#181 id=181 data-nosnippet>181</a>	<span class="macro">dev_log!</span>(
+<a href=#182 id=182 data-nosnippet>182</a>		<span class="string">"cocoon"</span>,
+<a href=#183 id=183 data-nosnippet>183</a>		<span class="string">"[CocoonService] resize_terminal: id={} cols={} rows={}"</span>,
+<a href=#184 id=184 data-nosnippet>184</a>		req.terminal_id,
+<a href=#185 id=185 data-nosnippet>185</a>		req.cols,
+<a href=#186 id=186 data-nosnippet>186</a>		req.rows
+<a href=#187 id=187 data-nosnippet>187</a>	);
+<a href=#188 id=188 data-nosnippet>188</a>
+<a href=#189 id=189 data-nosnippet>189</a>	<span class="comment">// Notify Sky/Wind of the new dimensions for UI resize
+<a href=#190 id=190 data-nosnippet>190</a>	</span><span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
+<a href=#191 id=191 data-nosnippet>191</a>		<span class="string">"sky://terminal/resize"</span>,
+<a href=#192 id=192 data-nosnippet>192</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: req.terminal_id, <span class="string">"cols"</span>: req.cols, <span class="string">"rows"</span>: req.rows }),
+<a href=#193 id=193 data-nosnippet>193</a>	);
+<a href=#194 id=194 data-nosnippet>194</a>
+<a href=#195 id=195 data-nosnippet>195</a>	<span class="comment">// TODO(P1): Call portable_pty::MasterPty::resize once PtyMaster handle
+<a href=#196 id=196 data-nosnippet>196</a>	// is stored in TerminalStateDTO (requires wrapping MasterPty in Arc&lt;Mutex&gt;)
+<a href=#197 id=197 data-nosnippet>197</a>
+<a href=#198 id=198 data-nosnippet>198</a>	</span><span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#199 id=199 data-nosnippet>199</a>}
 </code></pre></div></section></main></body></html>

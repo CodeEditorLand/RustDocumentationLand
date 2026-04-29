@@ -8,7 +8,7 @@ hardcoded to <code>true</code> for every scan path, so user-installed VSIXes
 showed up under Built-in and <code>@installed</code> was empty.</p>
 <p>The canonical user extension root on macOS/Linux is <code>~/.land/extensions</code>
 (VS Code’s equivalent is <code>~/.vscode/extensions</code>). We also honour a
-<code>LAND_USER_EXTENSION_DIRECTORY</code> override in case callers remap it.</p>
+<code>Lodge</code> override in case callers remap it.</p>
 <p>Everything else - the Mountain build’s own <code>Resources/extensions</code>,
 Sky’s <code>Static/Application/extensions</code>, the VS Code submodule’s
 <code>Dependency/…/extensions</code> - is treated as built-in.</p>

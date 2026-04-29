@@ -75,7 +75,7 @@
 <a href=#75 id=75 data-nosnippet>75</a></span><span class="attr">#[path = <span class="string">"FileSystemProvider/ReadOperations.rs"</span>]
 <a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">mod </span><a href="FileSystemProvider/ReadOperations.rs.html#1-148">ReadOperations</a>;
 <a href=#77 id=77 data-nosnippet>77</a><span class="attr">#[path = <span class="string">"FileSystemProvider/WriteOperations.rs"</span>]
-<a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">mod </span><a href="FileSystemProvider/WriteOperations.rs.html#1-212">WriteOperations</a>;
+<a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">mod </span><a href="FileSystemProvider/WriteOperations.rs.html#1-275">WriteOperations</a>;
 <a href=#79 id=79 data-nosnippet>79</a>
 <a href=#80 id=80 data-nosnippet>80</a><span class="attr">#[async_trait]
 <a href=#81 id=81 data-nosnippet>81</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/FileSystem/FileSystemReader/trait.FileSystemReader.html">FileSystemReader</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
@@ -119,12 +119,12 @@
 <a href=#119 id=119 data-nosnippet>119</a>
 <a href=#120 id=120 data-nosnippet>120</a>	<span class="doccomment">/// Delegates to WriteOperations module
 <a href=#121 id=121 data-nosnippet>121</a>	</span><span class="kw">async fn </span>Copy(<span class="kw-2">&amp;</span><a class="self" href="#121">self</a>, source:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, target:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#121">overwrite</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#122 id=122 data-nosnippet>122</a>		WriteOperations::<a href="FileSystemProvider/WriteOperations.rs.html#158-205">copy_impl</a>(<a class="self" href="#121">self</a>, <a href="#121">source</a>, <a href="#121">target</a>, <a href="#121">overwrite</a>).<span class="kw">await
+<a href=#122 id=122 data-nosnippet>122</a>		WriteOperations::<a href="FileSystemProvider/WriteOperations.rs.html#158-217">copy_impl</a>(<a class="self" href="#121">self</a>, <a href="#121">source</a>, <a href="#121">target</a>, <a href="#121">overwrite</a>).<span class="kw">await
 <a href=#123 id=123 data-nosnippet>123</a>	</span>}
 <a href=#124 id=124 data-nosnippet>124</a>
 <a href=#125 id=125 data-nosnippet>125</a>	<span class="doccomment">/// Delegates to WriteOperations module
 <a href=#126 id=126 data-nosnippet>126</a>	</span><span class="kw">async fn </span>CreateFile(<span class="kw-2">&amp;</span><a class="self" href="#126">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#127 id=127 data-nosnippet>127</a>		WriteOperations::<a href="FileSystemProvider/WriteOperations.rs.html#208-212">create_file_impl</a>(<a class="self" href="#126">self</a>, <a href="#126">path</a>).<span class="kw">await
+<a href=#127 id=127 data-nosnippet>127</a>		WriteOperations::<a href="FileSystemProvider/WriteOperations.rs.html#271-275">create_file_impl</a>(<a class="self" href="#126">self</a>, <a href="#126">path</a>).<span class="kw">await
 <a href=#128 id=128 data-nosnippet>128</a>	</span>}
 <a href=#129 id=129 data-nosnippet>129</a>}
 </code></pre></div></section></main></body></html>

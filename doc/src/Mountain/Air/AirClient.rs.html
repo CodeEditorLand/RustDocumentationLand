@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a></span><span class="kw">use </span><a href="../../../AirLibrary/Vine/Generated/air/air_service_client/struct.AirServiceClient.html">AirLibrary::Vine::Generated::air::air_service_client::AirServiceClient</a>;
 <a href=#87 id=87 data-nosnippet>87</a><span class="kw">use </span>tonic::{Request, transport::Channel};
 <a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#89 id=89 data-nosnippet>89</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a><span class="doccomment">/// Default gRPC server address for the Air daemon.
 <a href=#92 id=92 data-nosnippet>92</a>///
@@ -1322,13 +1322,14 @@
 <a href=#1322 id=1322 data-nosnippet>1322</a>// ============================================================================
 <a href=#1323 id=1323 data-nosnippet>1323</a>
 <a href=#1324 id=1324 data-nosnippet>1324</a></span><span class="doccomment">/// Helper trait for converting types to tonic::Request
-<a href=#1325 id=1325 data-nosnippet>1325</a></span><span class="kw">trait </span><a href="../../../Mountain/Air/AirClient/trait.IntoRequestExt.html">IntoRequestExt</a> {
-<a href=#1326 id=1326 data-nosnippet>1326</a>	<span class="kw">fn </span>into_request(<span class="self">self</span>) -&gt; tonic::Request&lt;<span class="self">Self</span>&gt;
-<a href=#1327 id=1327 data-nosnippet>1327</a>	<span class="kw">where
-<a href=#1328 id=1328 data-nosnippet>1328</a>		</span><span class="self">Self</span>: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a>, {
-<a href=#1329 id=1329 data-nosnippet>1329</a>		tonic::Request::new(<a class="self" href="#1326">self</a>)
-<a href=#1330 id=1330 data-nosnippet>1330</a>	}
-<a href=#1331 id=1331 data-nosnippet>1331</a>}
-<a href=#1332 id=1332 data-nosnippet>1332</a>
-<a href=#1333 id=1333 data-nosnippet>1333</a><span class="kw">impl</span>&lt;T&gt; <a href="#1325-1331">IntoRequestExt</a> <span class="kw">for </span>T {}
+<a href=#1325 id=1325 data-nosnippet>1325</a></span><span class="attr">#[allow(dead_code)]
+<a href=#1326 id=1326 data-nosnippet>1326</a></span><span class="kw">trait </span><a href="../../../Mountain/Air/AirClient/trait.IntoRequestExt.html">IntoRequestExt</a> {
+<a href=#1327 id=1327 data-nosnippet>1327</a>	<span class="kw">fn </span>into_request(<span class="self">self</span>) -&gt; tonic::Request&lt;<span class="self">Self</span>&gt;
+<a href=#1328 id=1328 data-nosnippet>1328</a>	<span class="kw">where
+<a href=#1329 id=1329 data-nosnippet>1329</a>		</span><span class="self">Self</span>: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a>, {
+<a href=#1330 id=1330 data-nosnippet>1330</a>		tonic::Request::new(<a class="self" href="#1327">self</a>)
+<a href=#1331 id=1331 data-nosnippet>1331</a>	}
+<a href=#1332 id=1332 data-nosnippet>1332</a>}
+<a href=#1333 id=1333 data-nosnippet>1333</a>
+<a href=#1334 id=1334 data-nosnippet>1334</a><span class="kw">impl</span>&lt;T&gt; <a href="#1326-1332">IntoRequestExt</a> <span class="kw">for </span>T {}
 </code></pre></div></section></main></body></html>

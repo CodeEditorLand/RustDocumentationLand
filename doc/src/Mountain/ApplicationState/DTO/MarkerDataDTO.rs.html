@@ -31,7 +31,7 @@
 <a href=#31 id=31 data-nosnippet>31</a>/// warning. This structure is compatible with VS Code's `IMarkerData`
 <a href=#32 id=32 data-nosnippet>32</a>/// interface and is used by the Diagnostic service.
 <a href=#33 id=33 data-nosnippet>33</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
-<a href=#34 id=34 data-nosnippet>34</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#34 id=34 data-nosnippet>34</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#35 id=35 data-nosnippet>35</a></span><span class="kw">pub struct </span><a href="#35-74">MarkerDataDTO</a> {
 <a href=#36 id=36 data-nosnippet>36</a>	<span class="doccomment">/// Severity level of the marker
 <a href=#37 id=37 data-nosnippet>37</a>	</span><span class="kw">pub </span>Severity:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,

@@ -7,7 +7,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>tauri::Emitter;
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="doccomment">/// Updates the tree view message displayed in the UI.
 <a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/TreeViewProvider/UIState/fn.set_tree_view_message.html">set_tree_view_message</a>(
@@ -39,7 +39,7 @@
 <a href=#39 id=39 data-nosnippet>39</a>	env.ApplicationHandle
 <a href=#40 id=40 data-nosnippet>40</a>		.emit(
 <a href=#41 id=41 data-nosnippet>41</a>			SkyEvent::TreeViewSetMessage.AsStr(),
-<a href=#42 id=42 data-nosnippet>42</a>			<span class="macro">json!</span>({ <span class="string">"ViewIdentifier"</span>: view_identifier, <span class="string">"Message"</span>: message }),
+<a href=#42 id=42 data-nosnippet>42</a>			<span class="macro">json!</span>({ <span class="string">"viewId"</span>: view_identifier, <span class="string">"message"</span>: message }),
 <a href=#43 id=43 data-nosnippet>43</a>		)
 <a href=#44 id=44 data-nosnippet>44</a>		.map_err(|Error| {
 <a href=#45 id=45 data-nosnippet>45</a>			CommonError::UserInterfaceInteraction { Reason:<span class="macro">format!</span>(<span class="string">"Failed to emit tree view message: {}"</span>, Error) }
@@ -80,9 +80,9 @@
 <a href=#80 id=80 data-nosnippet>80</a>		.emit(
 <a href=#81 id=81 data-nosnippet>81</a>			SkyEvent::TreeViewSetTitle.AsStr(),
 <a href=#82 id=82 data-nosnippet>82</a>			<span class="macro">json!</span>({
-<a href=#83 id=83 data-nosnippet>83</a>				<span class="string">"ViewIdentifier"</span>: view_identifier,
-<a href=#84 id=84 data-nosnippet>84</a>				<span class="string">"Title"</span>: title,
-<a href=#85 id=85 data-nosnippet>85</a>				<span class="string">"Description"</span>: description,
+<a href=#83 id=83 data-nosnippet>83</a>				<span class="string">"viewId"</span>: view_identifier,
+<a href=#84 id=84 data-nosnippet>84</a>				<span class="string">"title"</span>: title,
+<a href=#85 id=85 data-nosnippet>85</a>				<span class="string">"description"</span>: description,
 <a href=#86 id=86 data-nosnippet>86</a>			}),
 <a href=#87 id=87 data-nosnippet>87</a>		)
 <a href=#88 id=88 data-nosnippet>88</a>		.map_err(|Error| {
@@ -128,7 +128,7 @@
 <a href=#128 id=128 data-nosnippet>128</a>	</span>env.ApplicationHandle
 <a href=#129 id=129 data-nosnippet>129</a>		.emit(
 <a href=#130 id=130 data-nosnippet>130</a>			SkyEvent::TreeViewSetBadge.AsStr(),
-<a href=#131 id=131 data-nosnippet>131</a>			<span class="macro">json!</span>({ <span class="string">"ViewIdentifier"</span>: view_identifier, <span class="string">"Badge"</span>: badge }),
+<a href=#131 id=131 data-nosnippet>131</a>			<span class="macro">json!</span>({ <span class="string">"viewId"</span>: view_identifier, <span class="string">"badge"</span>: badge }),
 <a href=#132 id=132 data-nosnippet>132</a>		)
 <a href=#133 id=133 data-nosnippet>133</a>		.map_err(|Error| {
 <a href=#134 id=134 data-nosnippet>134</a>			CommonError::UserInterfaceInteraction { Reason:<span class="macro">format!</span>(<span class="string">"Failed to emit tree view badge: {}"</span>, Error) }

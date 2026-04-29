@@ -74,7 +74,7 @@
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>		<a href="#75">Parameters</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#76 id=76 data-nosnippet>76</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#77 id=77 data-nosnippet>77</a>		Client::<a href="../Vine/Client.rs.html#448-491">SendNotification</a>(<a href="#71">SideCarIdentifier</a>, <a href="#73">Method</a>, <a href="#75">Parameters</a>)
+<a href=#77 id=77 data-nosnippet>77</a>		Client::<a href="../Vine/Client.rs.html#449-492">SendNotification</a>(<a href="#71">SideCarIdentifier</a>, <a href="#73">Method</a>, <a href="#75">Parameters</a>)
 <a href=#78 id=78 data-nosnippet>78</a>			.<span class="kw">await
 <a href=#79 id=79 data-nosnippet>79</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::<a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html#variant.IPCError">IPCError</a> { Description:<a href="#79">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
 <a href=#80 id=80 data-nosnippet>80</a>	}
@@ -91,7 +91,7 @@
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a>		<a href="#92">TimeoutMilliseconds</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
 <a href=#93 id=93 data-nosnippet>93</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
-<a href=#94 id=94 data-nosnippet>94</a>		Client::<a href="../Vine/Client.rs.html#344-429">SendRequest</a>(<span class="kw-2">&amp;</span><a href="#86">SideCarIdentifier</a>, <a href="#88">Method</a>, <a href="#90">Parameters</a>, <a href="#92">TimeoutMilliseconds</a>)
+<a href=#94 id=94 data-nosnippet>94</a>		Client::<a href="../Vine/Client.rs.html#345-430">SendRequest</a>(<span class="kw-2">&amp;</span><a href="#86">SideCarIdentifier</a>, <a href="#88">Method</a>, <a href="#90">Parameters</a>, <a href="#92">TimeoutMilliseconds</a>)
 <a href=#95 id=95 data-nosnippet>95</a>			.<span class="kw">await
 <a href=#96 id=96 data-nosnippet>96</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::<a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html#variant.IPCError">IPCError</a> { Description:<a href="#96">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
 <a href=#97 id=97 data-nosnippet>97</a>	}
