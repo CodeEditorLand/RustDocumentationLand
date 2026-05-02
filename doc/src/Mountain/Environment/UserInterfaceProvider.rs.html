@@ -116,14 +116,14 @@
 <a href=#116 id=116 data-nosnippet>116</a>	<a href="../../../CommonLibrary/IPC/SkyEvent/enum.SkyEvent.html">IPC::SkyEvent::SkyEvent</a>,
 <a href=#117 id=117 data-nosnippet>117</a>	UserInterface::{
 <a href=#118 id=118 data-nosnippet>118</a>		DTO::{
-<a href=#119 id=119 data-nosnippet>119</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/InputBoxOptionsDTO/struct.InputBoxOptionsDTO.html">InputBoxOptionsDTO::InputBoxOptionsDTO</a>,
-<a href=#120 id=120 data-nosnippet>120</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/MessageSeverity/enum.MessageSeverity.html">MessageSeverity::MessageSeverity</a>,
-<a href=#121 id=121 data-nosnippet>121</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/OpenDialogOptionsDTO/struct.OpenDialogOptionsDTO.html">OpenDialogOptionsDTO::OpenDialogOptionsDTO</a>,
-<a href=#122 id=122 data-nosnippet>122</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/QuickPickItemDTO/struct.QuickPickItemDTO.html">QuickPickItemDTO::QuickPickItemDTO</a>,
-<a href=#123 id=123 data-nosnippet>123</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/QuickPickOptionsDTO/struct.QuickPickOptionsDTO.html">QuickPickOptionsDTO::QuickPickOptionsDTO</a>,
-<a href=#124 id=124 data-nosnippet>124</a>			<a href="../../../Mountain/Environment/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">SaveDialogOptionsDTO::SaveDialogOptionsDTO</a>,
+<a href=#119 id=119 data-nosnippet>119</a>			<a href="../../../CommonLibrary/UserInterface/DTO/InputBoxOptionsDTO/struct.InputBoxOptionsDTO.html">InputBoxOptionsDTO::InputBoxOptionsDTO</a>,
+<a href=#120 id=120 data-nosnippet>120</a>			<a href="../../../CommonLibrary/UserInterface/DTO/MessageSeverity/enum.MessageSeverity.html">MessageSeverity::MessageSeverity</a>,
+<a href=#121 id=121 data-nosnippet>121</a>			<a href="../../../CommonLibrary/UserInterface/DTO/OpenDialogOptionsDTO/struct.OpenDialogOptionsDTO.html">OpenDialogOptionsDTO::OpenDialogOptionsDTO</a>,
+<a href=#122 id=122 data-nosnippet>122</a>			<a href="../../../CommonLibrary/UserInterface/DTO/QuickPickItemDTO/struct.QuickPickItemDTO.html">QuickPickItemDTO::QuickPickItemDTO</a>,
+<a href=#123 id=123 data-nosnippet>123</a>			<a href="../../../CommonLibrary/UserInterface/DTO/QuickPickOptionsDTO/struct.QuickPickOptionsDTO.html">QuickPickOptionsDTO::QuickPickOptionsDTO</a>,
+<a href=#124 id=124 data-nosnippet>124</a>			<a href="../../../CommonLibrary/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">SaveDialogOptionsDTO::SaveDialogOptionsDTO</a>,
 <a href=#125 id=125 data-nosnippet>125</a>		},
-<a href=#126 id=126 data-nosnippet>126</a>		<a href="../../../Mountain/Environment/UserInterface/UserInterfaceProvider/trait.UserInterfaceProvider.html">UserInterfaceProvider::UserInterfaceProvider</a>,
+<a href=#126 id=126 data-nosnippet>126</a>		<a href="../../../CommonLibrary/UserInterface/UserInterfaceProvider/trait.UserInterfaceProvider.html">UserInterfaceProvider::UserInterfaceProvider</a>,
 <a href=#127 id=127 data-nosnippet>127</a>	},
 <a href=#128 id=128 data-nosnippet>128</a>};
 <a href=#129 id=129 data-nosnippet>129</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
@@ -134,7 +134,7 @@
 <a href=#134 id=134 data-nosnippet>134</a><span class="kw">use </span>tokio::time::{<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>, timeout};
 <a href=#135 id=135 data-nosnippet>135</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#136 id=136 data-nosnippet>136</a>
-<a href=#137 id=137 data-nosnippet>137</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#225-235">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#116">Utility</a>};
+<a href=#137 id=137 data-nosnippet>137</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
 <a href=#138 id=138 data-nosnippet>138</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#139 id=139 data-nosnippet>139</a>
 <a href=#140 id=140 data-nosnippet>140</a><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -145,13 +145,13 @@
 <a href=#145 id=145 data-nosnippet>145</a>}
 <a href=#146 id=146 data-nosnippet>146</a>
 <a href=#147 id=147 data-nosnippet>147</a><span class="attr">#[async_trait]
-<a href=#148 id=148 data-nosnippet>148</a></span><span class="kw">impl </span><a href="../../../Mountain/Environment/UserInterface/UserInterfaceProvider/trait.UserInterfaceProvider.html">UserInterfaceProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
+<a href=#148 id=148 data-nosnippet>148</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/UserInterface/UserInterfaceProvider/trait.UserInterfaceProvider.html">UserInterfaceProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#149 id=149 data-nosnippet>149</a>	<span class="doccomment">/// Shows a message to the user with a given severity and optional action
 <a href=#150 id=150 data-nosnippet>150</a>	/// buttons.
 <a href=#151 id=151 data-nosnippet>151</a>	</span><span class="kw">async fn </span>ShowMessage(
 <a href=#152 id=152 data-nosnippet>152</a>		<span class="kw-2">&amp;</span><a class="self" href="#152">self</a>,
 <a href=#153 id=153 data-nosnippet>153</a>
-<a href=#154 id=154 data-nosnippet>154</a>		<a href="#154">Severity</a>:<a href="../../../Mountain/Environment/UserInterface/DTO/MessageSeverity/enum.MessageSeverity.html">MessageSeverity</a>,
+<a href=#154 id=154 data-nosnippet>154</a>		<a href="#154">Severity</a>:<a href="../../../CommonLibrary/UserInterface/DTO/MessageSeverity/enum.MessageSeverity.html">MessageSeverity</a>,
 <a href=#155 id=155 data-nosnippet>155</a>
 <a href=#156 id=156 data-nosnippet>156</a>		<a href="#156">Message</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#157 id=157 data-nosnippet>157</a>
@@ -171,7 +171,7 @@
 <a href=#171 id=171 data-nosnippet>171</a>
 <a href=#172 id=172 data-nosnippet>172</a>	<span class="doccomment">/// Shows a dialog for opening files or folders using the
 <a href=#173 id=173 data-nosnippet>173</a>	/// tauri-plugin-dialog.
-<a href=#174 id=174 data-nosnippet>174</a>	</span><span class="kw">async fn </span>ShowOpenDialog(<span class="kw-2">&amp;</span><a class="self" href="#174">self</a>, <a href="#174">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../Mountain/Environment/UserInterface/DTO/OpenDialogOptionsDTO/struct.OpenDialogOptionsDTO.html">OpenDialogOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
+<a href=#174 id=174 data-nosnippet>174</a>	</span><span class="kw">async fn </span>ShowOpenDialog(<span class="kw-2">&amp;</span><a class="self" href="#174">self</a>, <a href="#174">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../CommonLibrary/UserInterface/DTO/OpenDialogOptionsDTO/struct.OpenDialogOptionsDTO.html">OpenDialogOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#175 id=175 data-nosnippet>175</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing open dialog."</span>);
 <a href=#176 id=176 data-nosnippet>176</a>
 <a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#174">self</a>.ApplicationHandle.dialog().file();
@@ -226,7 +226,7 @@
 <a href=#226 id=226 data-nosnippet>226</a>	}
 <a href=#227 id=227 data-nosnippet>227</a>
 <a href=#228 id=228 data-nosnippet>228</a>	<span class="doccomment">/// Shows a dialog for saving a file using the tauri-plugin-dialog.
-<a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>ShowSaveDialog(<span class="kw-2">&amp;</span><a class="self" href="#229">self</a>, <a href="#229">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../Mountain/Environment/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">SaveDialogOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
+<a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>ShowSaveDialog(<span class="kw-2">&amp;</span><a class="self" href="#229">self</a>, <a href="#229">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../CommonLibrary/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">SaveDialogOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#230 id=230 data-nosnippet>230</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing save dialog."</span>);
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#229">self</a>.ApplicationHandle.dialog().file();
@@ -270,9 +270,9 @@
 <a href=#270 id=270 data-nosnippet>270</a>	</span><span class="kw">async fn </span>ShowQuickPick(
 <a href=#271 id=271 data-nosnippet>271</a>		<span class="kw-2">&amp;</span><a class="self" href="#271">self</a>,
 <a href=#272 id=272 data-nosnippet>272</a>
-<a href=#273 id=273 data-nosnippet>273</a>		<a href="#273">Items</a>:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../../../Mountain/Environment/UserInterface/DTO/QuickPickItemDTO/struct.QuickPickItemDTO.html">QuickPickItemDTO</a>&gt;,
+<a href=#273 id=273 data-nosnippet>273</a>		<a href="#273">Items</a>:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../../../CommonLibrary/UserInterface/DTO/QuickPickItemDTO/struct.QuickPickItemDTO.html">QuickPickItemDTO</a>&gt;,
 <a href=#274 id=274 data-nosnippet>274</a>
-<a href=#275 id=275 data-nosnippet>275</a>		<a href="#275">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../Mountain/Environment/UserInterface/DTO/QuickPickOptionsDTO/struct.QuickPickOptionsDTO.html">QuickPickOptionsDTO</a>&gt;,
+<a href=#275 id=275 data-nosnippet>275</a>		<a href="#275">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../CommonLibrary/UserInterface/DTO/QuickPickOptionsDTO/struct.QuickPickOptionsDTO.html">QuickPickOptionsDTO</a>&gt;,
 <a href=#276 id=276 data-nosnippet>276</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#277 id=277 data-nosnippet>277</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#278 id=278 data-nosnippet>278</a>			<span class="string">"window"</span>,
@@ -297,7 +297,7 @@
 <a href=#297 id=297 data-nosnippet>297</a>	}
 <a href=#298 id=298 data-nosnippet>298</a>
 <a href=#299 id=299 data-nosnippet>299</a>	<span class="doccomment">/// Shows an input box to solicit a string input from the user.
-<a href=#300 id=300 data-nosnippet>300</a>	</span><span class="kw">async fn </span>ShowInputBox(<span class="kw-2">&amp;</span><a class="self" href="#300">self</a>, <a href="#300">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../Mountain/Environment/UserInterface/DTO/InputBoxOptionsDTO/struct.InputBoxOptionsDTO.html">InputBoxOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
+<a href=#300 id=300 data-nosnippet>300</a>	</span><span class="kw">async fn </span>ShowInputBox(<span class="kw-2">&amp;</span><a class="self" href="#300">self</a>, <a href="#300">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../CommonLibrary/UserInterface/DTO/InputBoxOptionsDTO/struct.InputBoxOptionsDTO.html">InputBoxOptionsDTO</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#301 id=301 data-nosnippet>301</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing input box."</span>);
 <a href=#302 id=302 data-nosnippet>302</a>
 <a href=#303 id=303 data-nosnippet>303</a>		<span class="comment">// Use the Sky-listener-aligned channel (`sky://input-box/show`).
@@ -323,7 +323,7 @@
 <a href=#323 id=323 data-nosnippet>323</a>/// same RequestIdentifier/oneshot pattern instead of emitting fire-and-
 <a href=#324 id=324 data-nosnippet>324</a>/// forget events that resolve to synthetic success.
 <a href=#325 id=325 data-nosnippet>325</a></span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span><a href="../../../Mountain/Environment/UserInterfaceProvider/fn.SendUserInterfaceRequest.html">SendUserInterfaceRequest</a>&lt;TPayload:<a href="https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html">Serialize</a> + <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html">Clone</a>&gt;(
-<a href=#326 id=326 data-nosnippet>326</a>	Environment:<span class="kw-2">&amp;</span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#326 id=326 data-nosnippet>326</a>	Environment:<span class="kw-2">&amp;</span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#327 id=327 data-nosnippet>327</a>
 <a href=#328 id=328 data-nosnippet>328</a>	EventName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
 <a href=#329 id=329 data-nosnippet>329</a>
@@ -339,7 +339,7 @@
 <a href=#339 id=339 data-nosnippet>339</a>			.UI
 <a href=#340 id=340 data-nosnippet>340</a>			.PendingUserInterfaceRequest
 <a href=#341 id=341 data-nosnippet>341</a>			.lock()
-<a href=#342 id=342 data-nosnippet>342</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#342 id=342 data-nosnippet>342</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#343 id=343 data-nosnippet>343</a>
 <a href=#344 id=344 data-nosnippet>344</a>		PendingRequestsGuard.insert(RequestIdentifier.clone(), Sender);
 <a href=#345 id=345 data-nosnippet>345</a>	}
@@ -376,7 +376,7 @@
 <a href=#376 id=376 data-nosnippet>376</a>				.UI
 <a href=#377 id=377 data-nosnippet>377</a>				.PendingUserInterfaceRequest
 <a href=#378 id=378 data-nosnippet>378</a>				.lock()
-<a href=#379 id=379 data-nosnippet>379</a>				.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#379 id=379 data-nosnippet>379</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#380 id=380 data-nosnippet>380</a>
 <a href=#381 id=381 data-nosnippet>381</a>			Guard.remove(<span class="kw-2">&amp;</span>RequestIdentifier);
 <a href=#382 id=382 data-nosnippet>382</a>

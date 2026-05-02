@@ -7,12 +7,12 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>tauri::Emitter;
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::<span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../MountainEnvironment.rs.html#228-238"><span class="kw">super</span>::<span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="doccomment">/// Message management operations implementation for MountainEnvironment
 <a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/StatusBarProvider/MessageManagement/fn.set_status_bar_message_impl.html">set_status_bar_message_impl</a>(
-<a href=#15 id=15 data-nosnippet>15</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#15 id=15 data-nosnippet>15</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#16 id=16 data-nosnippet>16</a>	message_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#17 id=17 data-nosnippet>17</a>	text:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#18 id=18 data-nosnippet>18</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a><span class="doccomment">/// Disposes of a temporary status bar message.
 <a href=#35 id=35 data-nosnippet>35</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/StatusBarProvider/MessageManagement/fn.dispose_status_bar_message_impl.html">dispose_status_bar_message_impl</a>(
-<a href=#36 id=36 data-nosnippet>36</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#36 id=36 data-nosnippet>36</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#37 id=37 data-nosnippet>37</a>	message_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#38 id=38 data-nosnippet>38</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#39 id=39 data-nosnippet>39</a>	<span class="macro">dev_log!</span>(

@@ -42,9 +42,10 @@ because notifications are fire-and-forget.</li>
 <code>debug.consoleAppend</code> notifications. Fans on <code>sky://debug/&lt;suffix&gt;</code>
 so the Sky-side debug view picks up breakpoint changes and console
 output from the extension’s <code>vscode.debug.*</code> surface.</dd><dt><a class="mod" href="DecorationTypeLifecycle/index.html" title="mod Mountain::Vine::Server::Notification::DecorationTypeLifecycle">Decoration<wbr>Type<wbr>Lifecycle</a></dt><dd>Cocoon → Mountain <code>window.createTextEditorDecorationType</code> /
-<code>window.disposeTextEditorDecorationType</code> notifications. Forwards the
-payload on <code>sky://decoration/&lt;suffix&gt;</code>; Sky’s editor renderer owns
-the Monaco-side decoration lifecycle so Mountain is a pure relay.</dd><dt><a class="mod" href="DisposeStatusBarItem/index.html" title="mod Mountain::Vine::Server::Notification::DisposeStatusBarItem">Dispose<wbr>Status<wbr>BarItem</a></dt><dd>Cocoon → Mountain <code>disposeStatusBarItem</code> notification.
+<code>window.disposeTextEditorDecorationType</code> notifications. Forwards
+the payload on <code>sky://decoration/&lt;suffix&gt;</code>; Sky’s editor renderer
+owns the Monaco-side decoration lifecycle so Mountain is a pure
+relay.</dd><dt><a class="mod" href="DisposeStatusBarItem/index.html" title="mod Mountain::Vine::Server::Notification::DisposeStatusBarItem">Dispose<wbr>Status<wbr>BarItem</a></dt><dd>Cocoon → Mountain <code>disposeStatusBarItem</code> notification.
 Emitted once by <code>Cocoon/.../Services/Window/StatusBar.ts:139</code> when an
 extension calls <code>StatusBarItem.dispose()</code> (or the whole subscription
 set tears down). Forwards onto the canonical
@@ -116,8 +117,14 @@ Fires once per <code>vscode.window.withProgress(...)</code> call when the task
 settles. Forwarded onto <code>sky://notification/progress-end</code> so Sky’s
 progress indicator tears down.</dd><dt><a class="mod" href="ProgressReport/index.html" title="mod Mountain::Vine::Server::Notification::ProgressReport">Progress<wbr>Report</a></dt><dd>Cocoon → Mountain <code>progress.report</code> notification.
 Fires on every <code>Progress.report({ message, increment })</code> callback
-within a <code>vscode.window.withProgress(...)</code> run. Forwarded onto
-<code>sky://notification/progress-update</code>.</dd><dt><a class="mod" href="ProgressStart/index.html" title="mod Mountain::Vine::Server::Notification::ProgressStart">Progress<wbr>Start</a></dt><dd>Cocoon → Mountain <code>progress.start</code> notification.
+within a <code>vscode.window.withProgress(...)</code> run. The git extension
+alone fires 6000+ of these per session during repository scans;
+emitting one Tauri event per call saturates the WKWebView IPC
+channel that also delivers keystrokes. Each event is coalesced
+into a 16ms (one frame) window per Progress handle, accumulating
+<code>increment</code> deltas and keeping the most recent non-empty
+<code>message</code>. Sky sees one update per frame per progress operation
+instead of dozens, with the same final cumulative state.</dd><dt><a class="mod" href="ProgressStart/index.html" title="mod Mountain::Vine::Server::Notification::ProgressStart">Progress<wbr>Start</a></dt><dd>Cocoon → Mountain <code>progress.start</code> notification.
 Fires at the top of every <code>vscode.window.withProgress(...)</code> call.
 Normalises onto <code>sky://notification/progress-begin</code> so Sky’s progress
 indicator renders identically whether an extension or a Mountain

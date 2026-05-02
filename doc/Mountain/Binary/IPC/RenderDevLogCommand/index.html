@@ -14,8 +14,8 @@ command lets any TS caller mirror a tagged line into the file sink so
 sides filtered identically.</p>
 <h3 id="contract"><a class="doc-anchor" href="#contract">§</a>Contract</h3>
 <ul>
-<li><code>Tag</code> is matched against <code>Trace</code> exactly as Rust tags are; disabled
-tags produce no output (cheap no-op on the Mountain side).</li>
+<li><code>Tag</code> is matched against <code>Trace</code> exactly as Rust tags are; disabled tags
+produce no output (cheap no-op on the Mountain side).</li>
 <li><code>Message</code> is the fully-formatted log string - the caller has already done
 any interpolation.</li>
 <li>The command is fire-and-forget from the renderer’s perspective (returns

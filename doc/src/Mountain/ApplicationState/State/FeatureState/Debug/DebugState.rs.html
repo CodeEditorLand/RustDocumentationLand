@@ -206,28 +206,21 @@
 <a href=#206 id=206 data-nosnippet>206</a>	<span class="doccomment">/// Resolves an active session by id. Returns a `Clone` so the caller
 <a href=#207 id=207 data-nosnippet>207</a>	/// can drop the lock before doing IO with the entry's `StdinSender`.
 <a href=#208 id=208 data-nosnippet>208</a>	</span><span class="kw">pub fn </span>GetDebugSession(<span class="kw-2">&amp;</span><span class="self">self</span>, SessionId:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="#63-82">DebugSessionEntry</a>&gt; {
-<a href=#209 id=209 data-nosnippet>209</a>		<a class="self" href="#208">self</a>.DebugSessions
-<a href=#210 id=210 data-nosnippet>210</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#211 id=211 data-nosnippet>211</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
-<a href=#212 id=212 data-nosnippet>212</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Guard| <a href="#212">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#208">SessionId</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
-<a href=#213 id=213 data-nosnippet>213</a>	}
-<a href=#214 id=214 data-nosnippet>214</a>
-<a href=#215 id=215 data-nosnippet>215</a>	<span class="doccomment">/// Removes a session from the registry. Dropping the returned entry's
-<a href=#216 id=216 data-nosnippet>216</a>	/// `StdinSender` triggers the adapter-spawn drain tasks to wind down
-<a href=#217 id=217 data-nosnippet>217</a>	/// (their `recv()` returns `None`) which closes the adapter stdin and
-<a href=#218 id=218 data-nosnippet>218</a>	/// the adapter shuts itself down.
-<a href=#219 id=219 data-nosnippet>219</a>	</span><span class="kw">pub fn </span>UnregisterDebugSession(<span class="kw-2">&amp;</span><span class="self">self</span>, SessionId:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="#63-82">DebugSessionEntry</a>&gt; {
-<a href=#220 id=220 data-nosnippet>220</a>		<a class="self" href="#219">self</a>.DebugSessions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|<span class="kw-2">mut </span>Guard| <a href="#220">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#219">SessionId</a>))
-<a href=#221 id=221 data-nosnippet>221</a>	}
-<a href=#222 id=222 data-nosnippet>222</a>
-<a href=#223 id=223 data-nosnippet>223</a>	<span class="doccomment">/// Snapshot of all active sessions. Used by diagnostic dev_log surfaces
-<a href=#224 id=224 data-nosnippet>224</a>	/// and the reverse-RPC dispatch when no session-id is supplied.
-<a href=#225 id=225 data-nosnippet>225</a>	</span><span class="kw">pub fn </span>GetAllDebugSessions(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#63-82">DebugSessionEntry</a>&gt; {
-<a href=#226 id=226 data-nosnippet>226</a>		<a class="self" href="#225">self</a>.DebugSessions
-<a href=#227 id=227 data-nosnippet>227</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#228 id=228 data-nosnippet>228</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
-<a href=#229 id=229 data-nosnippet>229</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|Guard| <a href="#229">Guard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
-<a href=#230 id=230 data-nosnippet>230</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>()
-<a href=#231 id=231 data-nosnippet>231</a>	}
-<a href=#232 id=232 data-nosnippet>232</a>}
+<a href=#209 id=209 data-nosnippet>209</a>		<a class="self" href="#208">self</a>.DebugSessions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Guard| <a href="#209">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#208">SessionId</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
+<a href=#210 id=210 data-nosnippet>210</a>	}
+<a href=#211 id=211 data-nosnippet>211</a>
+<a href=#212 id=212 data-nosnippet>212</a>	<span class="doccomment">/// Removes a session from the registry. Dropping the returned entry's
+<a href=#213 id=213 data-nosnippet>213</a>	/// `StdinSender` triggers the adapter-spawn drain tasks to wind down
+<a href=#214 id=214 data-nosnippet>214</a>	/// (their `recv()` returns `None`) which closes the adapter stdin and
+<a href=#215 id=215 data-nosnippet>215</a>	/// the adapter shuts itself down.
+<a href=#216 id=216 data-nosnippet>216</a>	</span><span class="kw">pub fn </span>UnregisterDebugSession(<span class="kw-2">&amp;</span><span class="self">self</span>, SessionId:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="#63-82">DebugSessionEntry</a>&gt; {
+<a href=#217 id=217 data-nosnippet>217</a>		<a class="self" href="#216">self</a>.DebugSessions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|<span class="kw-2">mut </span>Guard| <a href="#217">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#216">SessionId</a>))
+<a href=#218 id=218 data-nosnippet>218</a>	}
+<a href=#219 id=219 data-nosnippet>219</a>
+<a href=#220 id=220 data-nosnippet>220</a>	<span class="doccomment">/// Snapshot of all active sessions. Used by diagnostic dev_log surfaces
+<a href=#221 id=221 data-nosnippet>221</a>	/// and the reverse-RPC dispatch when no session-id is supplied.
+<a href=#222 id=222 data-nosnippet>222</a>	</span><span class="kw">pub fn </span>GetAllDebugSessions(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#63-82">DebugSessionEntry</a>&gt; {
+<a href=#223 id=223 data-nosnippet>223</a>		<a class="self" href="#222">self</a>.DebugSessions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|Guard| <a href="#223">Guard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>()
+<a href=#224 id=224 data-nosnippet>224</a>	}
+<a href=#225 id=225 data-nosnippet>225</a>}
 </code></pre></div></section></main></body></html>

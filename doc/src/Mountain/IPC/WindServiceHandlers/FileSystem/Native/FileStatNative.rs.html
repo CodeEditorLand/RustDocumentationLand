@@ -16,8 +16,8 @@
 <a href=#16 id=16 data-nosnippet>16</a>	<a href="../../../DevLog.rs.html#726-767">dev_log</a>,
 <a href=#17 id=17 data-nosnippet>17</a>};
 <a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a><span class="kw">pub async fn </span><a href="../../../../../../Mountain/IPC/WindServiceHandlers/FileSystem/Native/FileStatNative/fn.handle_file_stat_native.html">handle_file_stat_native</a>(args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">let </span>Path = extract_path_from_arg(args.get(<span class="number">0</span>).ok_or(<span class="string">"Missing file path"</span>)<span class="question-mark">?</span>)<span class="question-mark">?</span>;
+<a href=#19 id=19 data-nosnippet>19</a><span class="kw">pub async fn </span><a href="../../../../../../Mountain/IPC/WindServiceHandlers/FileSystem/Native/FileStatNative/fn.FileStatNative.html">FileStatNative</a>(Arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">let </span>Path = extract_path_from_arg(Arguments.get(<span class="number">0</span>).ok_or(<span class="string">"Missing file path"</span>)<span class="question-mark">?</span>)<span class="question-mark">?</span>;
 <a href=#21 id=21 data-nosnippet>21</a>
 <a href=#22 id=22 data-nosnippet>22</a>	<span class="comment">// Per-path stat emits at very high volume during workbench boot
 <a href=#23 id=23 data-nosnippet>23</a>	// (package.json / launch.json / settings.json probes from every

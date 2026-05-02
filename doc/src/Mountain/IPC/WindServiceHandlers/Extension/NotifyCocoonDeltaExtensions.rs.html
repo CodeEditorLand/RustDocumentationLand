@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a>			<span class="string">"toRemove"</span>: ToRemove,
 <a href=#33 id=33 data-nosnippet>33</a>		});
 <a href=#34 id=34 data-nosnippet>34</a>
-<a href=#35 id=35 data-nosnippet>35</a>		<span class="kw">match </span>Vine::Client::<a href="../../../Vine/Client.rs.html#345-430">SendRequest</a>(
+<a href=#35 id=35 data-nosnippet>35</a>		<span class="kw">match </span>Vine::Client::SendRequest::<a href="../../../Vine/Client/SendRequest.rs.html#33-140">Fn</a>(
 <a href=#36 id=36 data-nosnippet>36</a>			<span class="kw-2">&amp;</span><a href="#21">COCOON_SIDE_CAR_IDENTIFIER</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#37 id=37 data-nosnippet>37</a>			<span class="string">"$deltaExtensions"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#38 id=38 data-nosnippet>38</a>			<a href="#30">Parameters</a>,
@@ -56,7 +56,7 @@
 <a href=#56 id=56 data-nosnippet>56</a>		// Ready). Firing `"*"` would over-activate lazy extensions.
 <a href=#57 id=57 data-nosnippet>57</a>		</span><span class="kw">for </span>Event <span class="kw">in </span>[<span class="string">"onStartupFinished"</span>] {
 <a href=#58 id=58 data-nosnippet>58</a>			<span class="kw">let </span>ActivationParameters = <span class="macro">json!</span>({ <span class="string">"activationEvent"</span>: Event });
-<a href=#59 id=59 data-nosnippet>59</a>			<span class="kw">match </span>Vine::Client::SendRequest(
+<a href=#59 id=59 data-nosnippet>59</a>			<span class="kw">match </span>Vine::Client::SendRequest::Fn(
 <a href=#60 id=60 data-nosnippet>60</a>				<span class="kw-2">&amp;</span>COCOON_SIDE_CAR_IDENTIFIER.to_string(),
 <a href=#61 id=61 data-nosnippet>61</a>				<span class="string">"$activateByEvent"</span>.to_string(),
 <a href=#62 id=62 data-nosnippet>62</a>				ActivationParameters,

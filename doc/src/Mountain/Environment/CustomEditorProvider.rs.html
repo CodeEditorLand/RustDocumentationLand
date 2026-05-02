@@ -19,8 +19,8 @@
 <a href=#19 id=19 data-nosnippet>19</a>//! - Uses [`CommonError`](CommonLibrary::Error::CommonError) for all operations
 <a href=#20 id=20 data-nosnippet>20</a>//! - ViewType validation: rejects empty view types with InvalidArgument error
 <a href=#21 id=21 data-nosnippet>21</a>//! - OnSaveCustomDocument now reverse-RPCs to the owning sidecar via
-<a href=#22 id=22 data-nosnippet>22</a>//!   `$onSaveCustomDocument`; returns the sidecar's error verbatim on
-<a href=#23 id=23 data-nosnippet>23</a>//!   failure so the workbench's save promise rejects with a real reason.
+<a href=#22 id=22 data-nosnippet>22</a>//!   `$onSaveCustomDocument`; returns the sidecar's error verbatim on failure
+<a href=#23 id=23 data-nosnippet>23</a>//!   so the workbench's save promise rejects with a real reason.
 <a href=#24 id=24 data-nosnippet>24</a>//!
 <a href=#25 id=25 data-nosnippet>25</a>//! PERFORMANCE:
 <a href=#26 id=26 data-nosnippet>26</a>//! - Provider registration lookup should be O(1) via hash map in
@@ -66,11 +66,11 @@
 <a href=#66 id=66 data-nosnippet>66</a><span class="kw">use </span>tauri::Emitter;
 <a href=#67 id=67 data-nosnippet>67</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#228-238"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#70 id=70 data-nosnippet>70</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a><span class="attr">#[async_trait]
-<a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/CustomEditor/CustomEditorProvider/trait.CustomEditorProvider.html">CustomEditorProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
+<a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/CustomEditor/CustomEditorProvider/trait.CustomEditorProvider.html">CustomEditorProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#74 id=74 data-nosnippet>74</a>	<span class="kw">async fn </span>RegisterCustomEditorProvider(<span class="kw-2">&amp;</span><a class="self" href="#74">self</a>, <a href="#74">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#74">_Options</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#75 id=75 data-nosnippet>75</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#76 id=76 data-nosnippet>76</a>			<span class="string">"extensions"</span>,

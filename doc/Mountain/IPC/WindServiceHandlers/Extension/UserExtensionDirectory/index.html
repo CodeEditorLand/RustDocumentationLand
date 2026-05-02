@@ -3,8 +3,8 @@ scan path in <code>Binary/Extension/ScanPathConfigure.rs</code> so VSIX-installe
 extensions are discovered on the next Mountain boot without a sync step.</p>
 <p>Resolution order (honours Atom V1 <code>Lodge</code>):</p>
 <ol>
-<li><code>$Lodge</code> - explicit per-operator override. Leading
-<code>~/</code> expands against <code>$HOME</code>.</li>
+<li><code>$Lodge</code> - explicit per-operator override. Leading <code>~/</code> expands against
+<code>$HOME</code>.</li>
 <li><code>$HOME/.land/extensions</code> - VS Code-style user-scope default.</li>
 <li><code>./extensions</code> - fallback when <code>$HOME</code> is unavailable.</li>
 </ol>

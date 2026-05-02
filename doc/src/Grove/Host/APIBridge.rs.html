@@ -255,7 +255,7 @@
 <a href=#255 id=255 data-nosnippet>255</a>	}
 <a href=#256 id=256 data-nosnippet>256</a>
 <a href=#257 id=257 data-nosnippet>257</a>	<span class="doccomment">/// Handle an API call from an extension
-<a href=#258 id=258 data-nosnippet>258</a>	</span><span class="kw">pub async fn </span>handle_call(<span class="kw-2">&amp;</span><span class="self">self</span>, request:<a href="#15-24">APICallRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;APICallResponse&gt; {
+<a href=#258 id=258 data-nosnippet>258</a>	</span><span class="kw">pub async fn </span>Call(<span class="kw-2">&amp;</span><span class="self">self</span>, request:<a href="#15-24">APICallRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;APICallResponse&gt; {
 <a href=#259 id=259 data-nosnippet>259</a>		<span class="kw">let </span>start = std::time::Instant::now();
 <a href=#260 id=260 data-nosnippet>260</a>
 <a href=#261 id=261 data-nosnippet>261</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Handling API call: {} from extension {}"</span>, request.api_method, request.extension_id);

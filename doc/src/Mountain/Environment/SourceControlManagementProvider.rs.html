@@ -246,11 +246,11 @@
 <a href=#246 id=246 data-nosnippet>246</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#247 id=247 data-nosnippet>247</a><span class="kw">use </span>tauri::Emitter;
 <a href=#248 id=248 data-nosnippet>248</a>
-<a href=#249 id=249 data-nosnippet>249</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#225-235">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#116">Utility</a>};
+<a href=#249 id=249 data-nosnippet>249</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
 <a href=#250 id=250 data-nosnippet>250</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#251 id=251 data-nosnippet>251</a>
 <a href=#252 id=252 data-nosnippet>252</a><span class="attr">#[async_trait]
-<a href=#253 id=253 data-nosnippet>253</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/SourceControlManagement/SourceControlManagementProvider/trait.SourceControlManagementProvider.html">SourceControlManagementProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
+<a href=#253 id=253 data-nosnippet>253</a></span><span class="kw">impl </span><a href="../../../CommonLibrary/SourceControlManagement/SourceControlManagementProvider/trait.SourceControlManagementProvider.html">SourceControlManagementProvider</a> <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#254 id=254 data-nosnippet>254</a>	<span class="kw">async fn </span>CreateSourceControl(<span class="kw-2">&amp;</span><a class="self" href="#254">self</a>, <a href="#254">ProviderDataValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, <a href="../../../CommonLibrary/Error/CommonError/enum.CommonError.html">CommonError</a>&gt; {
 <a href=#255 id=255 data-nosnippet>255</a>		<span class="kw">let </span>ProviderData:<a href="../../../CommonLibrary/SourceControlManagement/DTO/SourceControlCreateDTO/struct.SourceControlCreateDTO.html">SourceControlCreateDTO</a> = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#254">ProviderDataValue</a>)<span class="question-mark">?</span>;
 <a href=#256 id=256 data-nosnippet>256</a>
@@ -288,7 +288,7 @@
 <a href=#288 id=288 data-nosnippet>288</a>			.Markers
 <a href=#289 id=289 data-nosnippet>289</a>			.SourceControlManagementProviders
 <a href=#290 id=290 data-nosnippet>290</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#291 id=291 data-nosnippet>291</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
+<a href=#291 id=291 data-nosnippet>291</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
 <a href=#292 id=292 data-nosnippet>292</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#266">Handle</a>, <a href="#276">ProviderState</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
 <a href=#293 id=293 data-nosnippet>293</a>
 <a href=#294 id=294 data-nosnippet>294</a>		<a class="self" href="#254">self</a>.ApplicationState
@@ -296,7 +296,7 @@
 <a href=#296 id=296 data-nosnippet>296</a>			.Markers
 <a href=#297 id=297 data-nosnippet>297</a>			.SourceControlManagementGroups
 <a href=#298 id=298 data-nosnippet>298</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#299 id=299 data-nosnippet>299</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
+<a href=#299 id=299 data-nosnippet>299</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
 <a href=#300 id=300 data-nosnippet>300</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#266">Handle</a>, Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>());
 <a href=#301 id=301 data-nosnippet>301</a>
 <a href=#302 id=302 data-nosnippet>302</a>		<a class="self" href="#254">self</a>.ApplicationHandle
@@ -320,7 +320,7 @@
 <a href=#320 id=320 data-nosnippet>320</a>			.Markers
 <a href=#321 id=321 data-nosnippet>321</a>			.SourceControlManagementProviders
 <a href=#322 id=322 data-nosnippet>322</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#323 id=323 data-nosnippet>323</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
+<a href=#323 id=323 data-nosnippet>323</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
 <a href=#324 id=324 data-nosnippet>324</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#311">ProviderHandle</a>);
 <a href=#325 id=325 data-nosnippet>325</a>
 <a href=#326 id=326 data-nosnippet>326</a>		<a class="self" href="#311">self</a>.ApplicationState
@@ -328,7 +328,7 @@
 <a href=#328 id=328 data-nosnippet>328</a>			.Markers
 <a href=#329 id=329 data-nosnippet>329</a>			.SourceControlManagementGroups
 <a href=#330 id=330 data-nosnippet>330</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#331 id=331 data-nosnippet>331</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
+<a href=#331 id=331 data-nosnippet>331</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
 <a href=#332 id=332 data-nosnippet>332</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#311">ProviderHandle</a>);
 <a href=#333 id=333 data-nosnippet>333</a>
 <a href=#334 id=334 data-nosnippet>334</a>		<a class="self" href="#311">self</a>.ApplicationHandle
@@ -353,7 +353,7 @@
 <a href=#353 id=353 data-nosnippet>353</a>			.Markers
 <a href=#354 id=354 data-nosnippet>354</a>			.SourceControlManagementProviders
 <a href=#355 id=355 data-nosnippet>355</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#356 id=356 data-nosnippet>356</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
+<a href=#356 id=356 data-nosnippet>356</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#357 id=357 data-nosnippet>357</a>
 <a href=#358 id=358 data-nosnippet>358</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Provider) = <a href="#350">ProvidersGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get_mut">get_mut</a>(<span class="kw-2">&amp;</span><a href="#341">ProviderHandle</a>) {
 <a href=#359 id=359 data-nosnippet>359</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(count) = <a href="#342">UpdateData</a>.Count {
@@ -398,7 +398,7 @@
 <a href=#398 id=398 data-nosnippet>398</a>			.Markers
 <a href=#399 id=399 data-nosnippet>399</a>			.SourceControlManagementGroups
 <a href=#400 id=400 data-nosnippet>400</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#401 id=401 data-nosnippet>401</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
+<a href=#401 id=401 data-nosnippet>401</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#402 id=402 data-nosnippet>402</a>
 <a href=#403 id=403 data-nosnippet>403</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(ProviderGroups) = <a href="#395">GroupsGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get_mut">get_mut</a>(<span class="kw-2">&amp;</span><a href="#385">ProviderHandle</a>) {
 <a href=#404 id=404 data-nosnippet>404</a>			<span class="kw">let </span>Group = <a href="#403">ProviderGroups</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#386">GroupData</a>.GroupID.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(|| {
@@ -448,7 +448,7 @@
 <a href=#448 id=448 data-nosnippet>448</a>			.Markers
 <a href=#449 id=449 data-nosnippet>449</a>			.SourceControlManagementProviders
 <a href=#450 id=450 data-nosnippet>450</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#451 id=451 data-nosnippet>451</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
+<a href=#451 id=451 data-nosnippet>451</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::ErrorMapping::<a href="Utility/ErrorMapping.rs.html#14-20">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#452 id=452 data-nosnippet>452</a>
 <a href=#453 id=453 data-nosnippet>453</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Provider) = <a href="#445">ProvidersGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get_mut">get_mut</a>(<span class="kw-2">&amp;</span><a href="#436">ProviderHandle</a>) {
 <a href=#454 id=454 data-nosnippet>454</a>			<a href="#453">Provider</a>.InputBox = <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#437">InputBoxData</a>);
