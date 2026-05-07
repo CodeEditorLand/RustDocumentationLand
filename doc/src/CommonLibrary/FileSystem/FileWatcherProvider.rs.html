@@ -52,10 +52,10 @@
 <a href=#52 id=52 data-nosnippet>52</a>	/// * `Root`:        Absolute path of the directory to watch.
 <a href=#53 id=53 data-nosnippet>53</a>	/// * `IsRecursive`: When `true`, observe children recursively.
 <a href=#54 id=54 data-nosnippet>54</a>	/// * `Pattern`:     Optional glob pattern (e.g. `**/*.ts`). When present,
-<a href=#55 id=55 data-nosnippet>55</a>	///                  events whose path does not match the compiled pattern
-<a href=#56 id=56 data-nosnippet>56</a>	///                  are dropped before crossing the IPC boundary - this
-<a href=#57 id=57 data-nosnippet>57</a>	///                  is critical for performance under TypeScript-style
-<a href=#58 id=58 data-nosnippet>58</a>	///                  extensions that register 10+ watchers per activation.
+<a href=#55 id=55 data-nosnippet>55</a>	///   events whose path does not match the compiled pattern are dropped
+<a href=#56 id=56 data-nosnippet>56</a>	///   before crossing the IPC boundary - this is critical for performance
+<a href=#57 id=57 data-nosnippet>57</a>	///   under TypeScript-style extensions that register 10+ watchers per
+<a href=#58 id=58 data-nosnippet>58</a>	///   activation.
 <a href=#59 id=59 data-nosnippet>59</a>	</span><span class="kw">async fn </span>RegisterWatcher(
 <a href=#60 id=60 data-nosnippet>60</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
 <a href=#61 id=61 data-nosnippet>61</a>		Handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,

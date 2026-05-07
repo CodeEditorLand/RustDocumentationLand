@@ -109,9 +109,15 @@
 <a href=#109 id=109 data-nosnippet>109</a>// Provides transport-agnostic communication abstractions (gRPC, IPC, WASM)
 <a href=#110 id=110 data-nosnippet>110</a></span><span class="kw">pub mod </span><a href="Transport/mod.rs.html#1-68">Transport</a>;
 <a href=#111 id=111 data-nosnippet>111</a>
-<a href=#112 id=112 data-nosnippet>112</a><span class="comment">// --- Global DTO Module ---
-<a href=#113 id=113 data-nosnippet>113</a>//
-<a href=#114 id=114 data-nosnippet>114</a>// A top-level module that re-exports all Data Transfer Objects (DTOs) from the
-<a href=#115 id=115 data-nosnippet>115</a>// various service modules for convenient access across the application.
-<a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub mod </span><a href="DTO/mod.rs.html#1-7">DTO</a>;
+<a href=#112 id=112 data-nosnippet>112</a><span class="comment">// --- Telemetry ---
+<a href=#113 id=113 data-nosnippet>113</a>// Shared dual-pipe (PostHog + OTLP) emit module. Used by every Rust
+<a href=#114 id=114 data-nosnippet>114</a>// sidecar (Air, Echo, Rest, Grove, Mist, SideCar). Mountain keeps its
+<a href=#115 id=115 data-nosnippet>115</a>// own compile-time-baked plugin under `Binary/Build/PostHogPlugin/*`.
+<a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub mod </span><a href="Telemetry/mod.rs.html#1-41">Telemetry</a>;
+<a href=#117 id=117 data-nosnippet>117</a>
+<a href=#118 id=118 data-nosnippet>118</a><span class="comment">// --- Global DTO Module ---
+<a href=#119 id=119 data-nosnippet>119</a>//
+<a href=#120 id=120 data-nosnippet>120</a>// A top-level module that re-exports all Data Transfer Objects (DTOs) from the
+<a href=#121 id=121 data-nosnippet>121</a>// various service modules for convenient access across the application.
+<a href=#122 id=122 data-nosnippet>122</a></span><span class="kw">pub mod </span><a href="DTO/mod.rs.html#1-7">DTO</a>;
 </code></pre></div></section></main></body></html>

@@ -70,11 +70,22 @@
 <a href=#70 id=70 data-nosnippet>70</a>	<span class="doccomment">/// Builds and starts the `Scheduler` with the specified configuration.
 <a href=#71 id=71 data-nosnippet>71</a>	///
 <a href=#72 id=72 data-nosnippet>72</a>	/// This method consumes the builder and returns a new, running `Scheduler`.
-<a href=#73 id=73 data-nosnippet>73</a>	</span><span class="kw">pub fn </span>Build(<span class="self">self</span>) -&gt; <a href="Scheduler.rs.html#26-35">Scheduler</a> { <a href="Scheduler.rs.html#26-35">Scheduler</a>::<a href="Scheduler.rs.html#42-65">Create</a>(<a class="self" href="#73">self</a>.Count, <a class="self" href="#73">self</a>.Configuration) }
-<a href=#74 id=74 data-nosnippet>74</a>}
-<a href=#75 id=75 data-nosnippet>75</a>
-<a href=#76 id=76 data-nosnippet>76</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#26-33">SchedulerBuilder</a> {
-<a href=#77 id=77 data-nosnippet>77</a>	<span class="doccomment">/// Provides a default `SchedulerBuilder` instance.
-<a href=#78 id=78 data-nosnippet>78</a>	</span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#41-45">Create</a>() }
-<a href=#79 id=79 data-nosnippet>79</a>}
+<a href=#73 id=73 data-nosnippet>73</a>	</span><span class="kw">pub fn </span>Build(<span class="self">self</span>) -&gt; <a href="Scheduler.rs.html#26-35">Scheduler</a> {
+<a href=#74 id=74 data-nosnippet>74</a>		<span class="comment">// Telemetry: emit one `land:echo:scheduler:start` per built
+<a href=#75 id=75 data-nosnippet>75</a>		// scheduler so the Boot dashboard can track worker-pool size
+<a href=#76 id=76 data-nosnippet>76</a>		// across processes that link Echo (today: Mountain). No-op in
+<a href=#77 id=77 data-nosnippet>77</a>		// release / when `Capture=false`.
+<a href=#78 id=78 data-nosnippet>78</a>		</span><span class="kw">let </span>WorkerCount = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}"</span>, <span class="self">self</span>.Count);
+<a href=#79 id=79 data-nosnippet>79</a>		CommonLibrary::Telemetry::CaptureEvent::Fn(
+<a href=#80 id=80 data-nosnippet>80</a>			<span class="string">"land:echo:scheduler:start"</span>,
+<a href=#81 id=81 data-nosnippet>81</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[(<span class="string">"worker_count"</span>, WorkerCount.as_str())]),
+<a href=#82 id=82 data-nosnippet>82</a>		);
+<a href=#83 id=83 data-nosnippet>83</a>		<a href="Scheduler.rs.html#26-35">Scheduler</a>::<a href="Scheduler.rs.html#42-65">Create</a>(<a class="self" href="#73">self</a>.Count, <a class="self" href="#73">self</a>.Configuration)
+<a href=#84 id=84 data-nosnippet>84</a>	}
+<a href=#85 id=85 data-nosnippet>85</a>}
+<a href=#86 id=86 data-nosnippet>86</a>
+<a href=#87 id=87 data-nosnippet>87</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#26-33">SchedulerBuilder</a> {
+<a href=#88 id=88 data-nosnippet>88</a>	<span class="doccomment">/// Provides a default `SchedulerBuilder` instance.
+<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#41-45">Create</a>() }
+<a href=#90 id=90 data-nosnippet>90</a>}
 </code></pre></div></section></main></body></html>

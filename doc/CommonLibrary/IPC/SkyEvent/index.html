@@ -12,7 +12,8 @@ protocol as the <code>Channel</code> registry.</p>
 <h3 id="adding-a-new-event"><a class="doc-anchor" href="#adding-a-new-event">§</a>Adding a new event</h3>
 <ol>
 <li>Add the variant here AND in <code>Element/Wind/Source/IPC/SkyEvent.ts</code>.</li>
-<li>Emit from Mountain: <code>ApplicationHandle.emit(SkyEvent::TerminalData.AsStr(), Payload)</code>.</li>
+<li>Emit from Mountain:
+<code>ApplicationHandle.emit(SkyEvent::TerminalData.AsStr(), Payload)</code>.</li>
 <li>Subscribe from Wind: <code>IPCService.events(SkyEvent.TerminalData)</code>.</li>
 </ol>
 <h3 id="why-a-declarative-macro"><a class="doc-anchor" href="#why-a-declarative-macro">§</a>Why a declarative macro?</h3>

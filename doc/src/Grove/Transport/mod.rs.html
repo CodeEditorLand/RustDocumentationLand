@@ -28,10 +28,10 @@
 <a href=#28 id=28 data-nosnippet>28</a>//! - [`IPCTransport`] - Inter-process communication
 <a href=#29 id=29 data-nosnippet>29</a>//! - [`WASMTransport`] - Direct WASM module communication
 <a href=#30 id=30 data-nosnippet>30</a>
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub mod </span><a href="gRPCTransport.rs.html#1-199">gRPCTransport</a>;
-<a href=#32 id=32 data-nosnippet>32</a><span class="kw">pub mod </span><a href="IPCTransport.rs.html#1-261">IPCTransport</a>;
+<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub mod </span><a href="gRPCTransport.rs.html#1-201">gRPCTransport</a>;
+<a href=#32 id=32 data-nosnippet>32</a><span class="kw">pub mod </span><a href="IPCTransport.rs.html#1-263">IPCTransport</a>;
 <a href=#33 id=33 data-nosnippet>33</a><span class="kw">pub mod </span><a href="Strategy.rs.html#1-378">Strategy</a>;
-<a href=#34 id=34 data-nosnippet>34</a><span class="kw">pub mod </span><a href="WASMTransport.rs.html#1-382">WASMTransport</a>;
+<a href=#34 id=34 data-nosnippet>34</a><span class="kw">pub mod </span><a href="WASMTransport.rs.html#1-392">WASMTransport</a>;
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">std::time::Duration</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
@@ -114,12 +114,12 @@
 <a href=#114 id=114 data-nosnippet>114</a>
 <a href=#115 id=115 data-nosnippet>115</a><span class="doccomment">/// Creates a gRPC transport connecting to the given address.
 <a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub fn </span><a href="../../../Grove/Transport/fn.CreategRPCTransport.html">CreategRPCTransport</a>(Address:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;Strategy::<a href="Strategy.rs.html#83-90">Transport</a>&gt; {
-<a href=#117 id=117 data-nosnippet>117</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Strategy::Transport::<a href="Strategy.rs.html#85">gRPC</a>(gRPCTransport::<a href="gRPCTransport.rs.html#21-32">gRPCTransport</a>::<a href="gRPCTransport.rs.html#36-44">New</a>(<a href="#116">Address</a>)<span class="question-mark">?</span>))
+<a href=#117 id=117 data-nosnippet>117</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Strategy::Transport::<a href="Strategy.rs.html#85">gRPC</a>(gRPCTransport::<a href="gRPCTransport.rs.html#23-34">gRPCTransport</a>::<a href="gRPCTransport.rs.html#38-46">New</a>(<a href="#116">Address</a>)<span class="question-mark">?</span>))
 <a href=#118 id=118 data-nosnippet>118</a>}
 <a href=#119 id=119 data-nosnippet>119</a>
 <a href=#120 id=120 data-nosnippet>120</a><span class="doccomment">/// Creates an IPC transport using the default socket/pipe path.
 <a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">pub fn </span><a href="../../../Grove/Transport/fn.CreateIPCTransport.html">CreateIPCTransport</a>() -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;Strategy::<a href="Strategy.rs.html#83-90">Transport</a>&gt; {
-<a href=#122 id=122 data-nosnippet>122</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Strategy::Transport::<a href="Strategy.rs.html#87">IPC</a>(IPCTransport::<a href="IPCTransport.rs.html#23-36">IPCTransport</a>::<a href="IPCTransport.rs.html#40-68">New</a>()<span class="question-mark">?</span>))
+<a href=#122 id=122 data-nosnippet>122</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Strategy::Transport::<a href="Strategy.rs.html#87">IPC</a>(IPCTransport::<a href="IPCTransport.rs.html#25-38">IPCTransport</a>::<a href="IPCTransport.rs.html#42-70">New</a>()<span class="question-mark">?</span>))
 <a href=#123 id=123 data-nosnippet>123</a>}
 <a href=#124 id=124 data-nosnippet>124</a>
 <a href=#125 id=125 data-nosnippet>125</a><span class="doccomment">/// Creates a WASM transport with the given configuration.

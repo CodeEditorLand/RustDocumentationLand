@@ -37,10 +37,10 @@ the extension host can route events to the right subscriber.</p>
 <li><code>Root</code>:        Absolute path of the directory to watch.</li>
 <li><code>IsRecursive</code>: When <code>true</code>, observe children recursively.</li>
 <li><code>Pattern</code>:     Optional glob pattern (e.g. <code>**/*.ts</code>). When present,
-events whose path does not match the compiled pattern
-are dropped before crossing the IPC boundary - this
-is critical for performance under TypeScript-style
-extensions that register 10+ watchers per activation.</li>
+events whose path does not match the compiled pattern are dropped
+before crossing the IPC boundary - this is critical for performance
+under TypeScript-style extensions that register 10+ watchers per
+activation.</li>
 </ul>
 </div></details><details class="toggle method-toggle" open><summary><section id="tymethod.UnregisterWatcher" class="method"><a class="src rightside" href="../../../src/CommonLibrary/FileSystem/FileWatcherProvider.rs.html#70">Source</a><h4 class="code-header">fn <a href="#tymethod.UnregisterWatcher" class="fn">UnregisterWatcher</a>&lt;'life0, 'async_trait&gt;(
     &amp;'life0 self,

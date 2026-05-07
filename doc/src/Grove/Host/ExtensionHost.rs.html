@@ -8,12 +8,12 @@
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>anyhow::{<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html">Context</a>, <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>};
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tokio::sync::RwLock;
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span><a href="../DevLog.rs.html#130-165"><span class="kw">crate</span>::dev_log</a>;
-<a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>crate::{
-<a href=#14 id=14 data-nosnippet>14</a>	Host::{<a href="mod.rs.html#34">Activation</a>, <a href="ExtensionManager.rs.html#20-30">ExtensionManager::ExtensionManagerImpl</a>, <a href="mod.rs.html#42-55">HostConfig</a>},
-<a href=#15 id=15 data-nosnippet>15</a>	<a href="../Transport/Strategy.rs.html#83-90">Transport::Strategy::Transport</a>,
-<a href=#16 id=16 data-nosnippet>16</a>	WASM::Runtime::{<a href="../WASM/Runtime.rs.html#22-37">WASMConfig</a>, <a href="../WASM/Runtime.rs.html#106-111">WASMRuntime</a>},
+<a href=#11 id=11 data-nosnippet>11</a>
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{
+<a href=#13 id=13 data-nosnippet>13</a>	Host::{<a href="mod.rs.html#34">Activation</a>, <a href="ExtensionManager.rs.html#19-29">ExtensionManager::ExtensionManagerImpl</a>, <a href="mod.rs.html#42-55">HostConfig</a>},
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../Transport/Strategy.rs.html#83-90">Transport::Strategy::Transport</a>,
+<a href=#15 id=15 data-nosnippet>15</a>	WASM::Runtime::{<a href="../WASM/Runtime.rs.html#24-39">WASMConfig</a>, <a href="../WASM/Runtime.rs.html#108-113">WASMRuntime</a>},
+<a href=#16 id=16 data-nosnippet>16</a>	<a href="../DevLog.rs.html#130-165">dev_log</a>,
 <a href=#17 id=17 data-nosnippet>17</a>};
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Main extension host controller
@@ -24,11 +24,11 @@
 <a href=#24 id=24 data-nosnippet>24</a>	<span class="doccomment">/// Transport for communication
 <a href=#25 id=25 data-nosnippet>25</a>	</span>transport:<a href="../Transport/Strategy.rs.html#83-90">Transport</a>,
 <a href=#26 id=26 data-nosnippet>26</a>	<span class="doccomment">/// Extension manager
-<a href=#27 id=27 data-nosnippet>27</a>	</span>extension_manager:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="ExtensionManager.rs.html#20-30">ExtensionManagerImpl</a>&gt;,
+<a href=#27 id=27 data-nosnippet>27</a>	</span>extension_manager:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="ExtensionManager.rs.html#19-29">ExtensionManagerImpl</a>&gt;,
 <a href=#28 id=28 data-nosnippet>28</a>	<span class="doccomment">/// Activation engine
-<a href=#29 id=29 data-nosnippet>29</a>	</span>activation_engine:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Activation::<a href="Activation.rs.html#82-92">ActivationEngine</a>&gt;,
+<a href=#29 id=29 data-nosnippet>29</a>	</span>activation_engine:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Activation::<a href="Activation.rs.html#84-94">ActivationEngine</a>&gt;,
 <a href=#30 id=30 data-nosnippet>30</a>	<span class="doccomment">/// WASM runtime
-<a href=#31 id=31 data-nosnippet>31</a>	</span>wasm_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../WASM/Runtime.rs.html#106-111">WASMRuntime</a>&gt;,
+<a href=#31 id=31 data-nosnippet>31</a>	</span>wasm_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../WASM/Runtime.rs.html#108-113">WASMRuntime</a>&gt;,
 <a href=#32 id=32 data-nosnippet>32</a>	<span class="doccomment">/// Active extensions
 <a href=#33 id=33 data-nosnippet>33</a>	</span>active_extensions:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;RwLock&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;&gt;,
 <a href=#34 id=34 data-nosnippet>34</a>	<span class="doccomment">/// Host state
@@ -87,10 +87,10 @@
 <a href=#87 id=87 data-nosnippet>87</a>	/// # Ok(())
 <a href=#88 id=88 data-nosnippet>88</a>	/// # }
 <a href=#89 id=89 data-nosnippet>89</a>	/// ```
-<a href=#90 id=90 data-nosnippet>90</a>		</span><span class="kw">pub async fn </span>new(transport:<a href="../Transport/Strategy.rs.html#83-90">Transport</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; { <span class="self">Self</span>::with_config(transport, HostConfig::default()).<span class="kw">await </span>}
+<a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">pub async fn </span>new(transport:<a href="../Transport/Strategy.rs.html#83-90">Transport</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; { <span class="self">Self</span>::with_config(transport, HostConfig::default()).<span class="kw">await </span>}
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a>	<span class="doccomment">/// Create a new extension host with custom configuration
-<a href=#93 id=93 data-nosnippet>93</a>		</span><span class="kw">pub async fn </span>with_config(transport:<a href="../Transport/Strategy.rs.html#83-90">Transport</a>, config:<a href="mod.rs.html#42-55">HostConfig</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
+<a href=#93 id=93 data-nosnippet>93</a>	</span><span class="kw">pub async fn </span>with_config(transport:<a href="../Transport/Strategy.rs.html#83-90">Transport</a>, config:<a href="mod.rs.html#42-55">HostConfig</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>&gt; {
 <a href=#94 id=94 data-nosnippet>94</a>		<span class="macro">dev_log!</span>(<span class="string">"grove"</span>, <span class="string">"Creating extension host with config: {:?}"</span>, config);
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a>		<span class="comment">// Connect transport
@@ -123,7 +123,7 @@
 <a href=#123 id=123 data-nosnippet>123</a>	}
 <a href=#124 id=124 data-nosnippet>124</a>
 <a href=#125 id=125 data-nosnippet>125</a>	<span class="doccomment">/// Load an extension from a path
-<a href=#126 id=126 data-nosnippet>126</a>		</span><span class="kw">pub async fn </span>load_extension(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
+<a href=#126 id=126 data-nosnippet>126</a>	</span><span class="kw">pub async fn </span>load_extension(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;String&gt; {
 <a href=#127 id=127 data-nosnippet>127</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Loading extension from: {:?}"</span>, path);
 <a href=#128 id=128 data-nosnippet>128</a>
 <a href=#129 id=129 data-nosnippet>129</a>		<span class="kw">let </span>extension_id = <span class="self">self
@@ -140,7 +140,7 @@
 <a href=#140 id=140 data-nosnippet>140</a>	}
 <a href=#141 id=141 data-nosnippet>141</a>
 <a href=#142 id=142 data-nosnippet>142</a>	<span class="doccomment">/// Unload an extension
-<a href=#143 id=143 data-nosnippet>143</a>		</span><span class="kw">pub async fn </span>unload_extension(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#143 id=143 data-nosnippet>143</a>	</span><span class="kw">pub async fn </span>unload_extension(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#144 id=144 data-nosnippet>144</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Unloading extension: {}"</span>, extension_id);
 <a href=#145 id=145 data-nosnippet>145</a>
 <a href=#146 id=146 data-nosnippet>146</a>		<span class="self">self</span>.extension_manager
@@ -154,7 +154,7 @@
 <a href=#154 id=154 data-nosnippet>154</a>	}
 <a href=#155 id=155 data-nosnippet>155</a>
 <a href=#156 id=156 data-nosnippet>156</a>	<span class="doccomment">/// Activate an extension
-<a href=#157 id=157 data-nosnippet>157</a>		</span><span class="kw">pub async fn </span>activate(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#157 id=157 data-nosnippet>157</a>	</span><span class="kw">pub async fn </span>activate(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#158 id=158 data-nosnippet>158</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Activating extension: {}"</span>, extension_id);
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>		<span class="kw">let </span>start = std::time::Instant::now();
@@ -185,7 +185,7 @@
 <a href=#185 id=185 data-nosnippet>185</a>	}
 <a href=#186 id=186 data-nosnippet>186</a>
 <a href=#187 id=187 data-nosnippet>187</a>	<span class="doccomment">/// Deactivate an extension
-<a href=#188 id=188 data-nosnippet>188</a>		</span><span class="kw">pub async fn </span>deactivate(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#188 id=188 data-nosnippet>188</a>	</span><span class="kw">pub async fn </span>deactivate(<span class="kw-2">&amp;</span><span class="self">self</span>, extension_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#189 id=189 data-nosnippet>189</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Deactivating extension: {}"</span>, extension_id);
 <a href=#190 id=190 data-nosnippet>190</a>
 <a href=#191 id=191 data-nosnippet>191</a>		<span class="self">self</span>.activation_engine
@@ -203,7 +203,7 @@
 <a href=#203 id=203 data-nosnippet>203</a>	}
 <a href=#204 id=204 data-nosnippet>204</a>
 <a href=#205 id=205 data-nosnippet>205</a>	<span class="doccomment">/// Activate all loaded extensions
-<a href=#206 id=206 data-nosnippet>206</a>		</span><span class="kw">pub async fn </span>activate_all(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;String&gt;&gt; {
+<a href=#206 id=206 data-nosnippet>206</a>	</span><span class="kw">pub async fn </span>activate_all(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;String&gt;&gt; {
 <a href=#207 id=207 data-nosnippet>207</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Activating all extensions"</span>);
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a>		<span class="kw">let </span>extensions = <span class="self">self</span>.extension_manager.list_extensions().<span class="kw">await</span>;
@@ -220,118 +220,123 @@
 <a href=#220 id=220 data-nosnippet>220</a>			}
 <a href=#221 id=221 data-nosnippet>221</a>		}
 <a href=#222 id=222 data-nosnippet>222</a>
-<a href=#223 id=223 data-nosnippet>223</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"warn: activated {} extensions, {} failed"</span>, activated.len(), failed.len());
-<a href=#224 id=224 data-nosnippet>224</a>
-<a href=#225 id=225 data-nosnippet>225</a>		<span class="prelude-val">Ok</span>(activated)
-<a href=#226 id=226 data-nosnippet>226</a>	}
-<a href=#227 id=227 data-nosnippet>227</a>
-<a href=#228 id=228 data-nosnippet>228</a>	<span class="doccomment">/// Deactivate all active extensions
-<a href=#229 id=229 data-nosnippet>229</a>		</span><span class="kw">pub async fn </span>deactivate_all(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-<a href=#230 id=230 data-nosnippet>230</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Deactivating all extensions"</span>);
-<a href=#231 id=231 data-nosnippet>231</a>
-<a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">let </span>active = <span class="self">self</span>.active_extensions.read().<span class="kw">await</span>.clone();
-<a href=#233 id=233 data-nosnippet>233</a>
-<a href=#234 id=234 data-nosnippet>234</a>		<span class="kw">for </span>extension_id <span class="kw">in </span>active {
-<a href=#235 id=235 data-nosnippet>235</a>			<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.deactivate(<span class="kw-2">&amp;</span>extension_id).<span class="kw">await </span>{
-<a href=#236 id=236 data-nosnippet>236</a>				<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"error: failed to deactivate {}: {}"</span>, extension_id, e);
-<a href=#237 id=237 data-nosnippet>237</a>			}
-<a href=#238 id=238 data-nosnippet>238</a>		}
-<a href=#239 id=239 data-nosnippet>239</a>
-<a href=#240 id=240 data-nosnippet>240</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::Ready;
-<a href=#241 id=241 data-nosnippet>241</a>
-<a href=#242 id=242 data-nosnippet>242</a>		<span class="prelude-val">Ok</span>(())
-<a href=#243 id=243 data-nosnippet>243</a>	}
+<a href=#223 id=223 data-nosnippet>223</a>		<span class="macro">dev_log!</span>(
+<a href=#224 id=224 data-nosnippet>224</a>			<span class="string">"extensions"</span>,
+<a href=#225 id=225 data-nosnippet>225</a>			<span class="string">"warn: activated {} extensions, {} failed"</span>,
+<a href=#226 id=226 data-nosnippet>226</a>			activated.len(),
+<a href=#227 id=227 data-nosnippet>227</a>			failed.len()
+<a href=#228 id=228 data-nosnippet>228</a>		);
+<a href=#229 id=229 data-nosnippet>229</a>
+<a href=#230 id=230 data-nosnippet>230</a>		<span class="prelude-val">Ok</span>(activated)
+<a href=#231 id=231 data-nosnippet>231</a>	}
+<a href=#232 id=232 data-nosnippet>232</a>
+<a href=#233 id=233 data-nosnippet>233</a>	<span class="doccomment">/// Deactivate all active extensions
+<a href=#234 id=234 data-nosnippet>234</a>	</span><span class="kw">pub async fn </span>deactivate_all(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#235 id=235 data-nosnippet>235</a>		<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"Deactivating all extensions"</span>);
+<a href=#236 id=236 data-nosnippet>236</a>
+<a href=#237 id=237 data-nosnippet>237</a>		<span class="kw">let </span>active = <span class="self">self</span>.active_extensions.read().<span class="kw">await</span>.clone();
+<a href=#238 id=238 data-nosnippet>238</a>
+<a href=#239 id=239 data-nosnippet>239</a>		<span class="kw">for </span>extension_id <span class="kw">in </span>active {
+<a href=#240 id=240 data-nosnippet>240</a>			<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.deactivate(<span class="kw-2">&amp;</span>extension_id).<span class="kw">await </span>{
+<a href=#241 id=241 data-nosnippet>241</a>				<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"error: failed to deactivate {}: {}"</span>, extension_id, e);
+<a href=#242 id=242 data-nosnippet>242</a>			}
+<a href=#243 id=243 data-nosnippet>243</a>		}
 <a href=#244 id=244 data-nosnippet>244</a>
-<a href=#245 id=245 data-nosnippet>245</a>	<span class="doccomment">/// Get host statistics
-<a href=#246 id=246 data-nosnippet>246</a>	</span><span class="kw">pub async fn </span>stats(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HostStats {
-<a href=#247 id=247 data-nosnippet>247</a>		<span class="kw">let </span>active_extensions = <span class="self">self</span>.active_extensions.read().<span class="kw">await</span>.len();
-<a href=#248 id=248 data-nosnippet>248</a>		<span class="kw">let </span>loaded_extensions = <span class="self">self</span>.extension_manager.list_extensions().<span class="kw">await</span>.len();
-<a href=#249 id=249 data-nosnippet>249</a>		<span class="kw">let </span>extension_stats = <span class="self">self</span>.extension_manager.stats().<span class="kw">await</span>;
-<a href=#250 id=250 data-nosnippet>250</a>
-<a href=#251 id=251 data-nosnippet>251</a>		HostStats {
-<a href=#252 id=252 data-nosnippet>252</a>			loaded_extensions,
-<a href=#253 id=253 data-nosnippet>253</a>			active_extensions,
-<a href=#254 id=254 data-nosnippet>254</a>			total_activations:extension_stats.total_activated <span class="kw">as </span>u64,
-<a href=#255 id=255 data-nosnippet>255</a>			total_activation_time_ms:extension_stats.total_activation_time_ms,
-<a href=#256 id=256 data-nosnippet>256</a>			api_calls:<span class="number">0</span>, <span class="comment">// Track through API bridge
-<a href=#257 id=257 data-nosnippet>257</a>			</span>errors:extension_stats.errors,
-<a href=#258 id=258 data-nosnippet>258</a>			uptime_seconds:<span class="number">0</span>, <span class="comment">// Track from host start time
-<a href=#259 id=259 data-nosnippet>259</a>		</span>}
-<a href=#260 id=260 data-nosnippet>260</a>	}
-<a href=#261 id=261 data-nosnippet>261</a>
-<a href=#262 id=262 data-nosnippet>262</a>	<span class="doccomment">/// Get host state
-<a href=#263 id=263 data-nosnippet>263</a>	</span><span class="kw">pub async fn </span>state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HostState { <span class="self">self</span>.state.read().<span class="kw">await</span>.clone() }
-<a href=#264 id=264 data-nosnippet>264</a>
-<a href=#265 id=265 data-nosnippet>265</a>	<span class="doccomment">/// Get the transport
-<a href=#266 id=266 data-nosnippet>266</a>	</span><span class="kw">pub fn </span>transport(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="../Transport/Strategy.rs.html#83-90">Transport</a> { <span class="kw-2">&amp;</span><a class="self" href="#266">self</a>.transport }
-<a href=#267 id=267 data-nosnippet>267</a>
-<a href=#268 id=268 data-nosnippet>268</a>	<span class="doccomment">/// Get the extension manager
-<a href=#269 id=269 data-nosnippet>269</a>	</span><span class="kw">pub fn </span>extension_manager(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="ExtensionManager.rs.html#20-30">ExtensionManagerImpl</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#269">self</a>.extension_manager }
-<a href=#270 id=270 data-nosnippet>270</a>
-<a href=#271 id=271 data-nosnippet>271</a>	<span class="doccomment">/// Get the activation engine
-<a href=#272 id=272 data-nosnippet>272</a>	</span><span class="kw">pub fn </span>activation_engine(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Activation::<a href="Activation.rs.html#82-92">ActivationEngine</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#272">self</a>.activation_engine }
-<a href=#273 id=273 data-nosnippet>273</a>
-<a href=#274 id=274 data-nosnippet>274</a>	<span class="doccomment">/// Get the WASM runtime
-<a href=#275 id=275 data-nosnippet>275</a>	</span><span class="kw">pub fn </span>wasm_runtime(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../WASM/Runtime.rs.html#106-111">WASMRuntime</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#275">self</a>.wasm_runtime }
-<a href=#276 id=276 data-nosnippet>276</a>
-<a href=#277 id=277 data-nosnippet>277</a>	<span class="doccomment">/// Shutdown the host and clean up resources
-<a href=#278 id=278 data-nosnippet>278</a>		</span><span class="kw">pub async fn </span>shutdown(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-<a href=#279 id=279 data-nosnippet>279</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Shutting down extension host"</span>);
-<a href=#280 id=280 data-nosnippet>280</a>
-<a href=#281 id=281 data-nosnippet>281</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::ShuttingDown;
-<a href=#282 id=282 data-nosnippet>282</a>
-<a href=#283 id=283 data-nosnippet>283</a>		<span class="comment">// Deactivate all extensions
-<a href=#284 id=284 data-nosnippet>284</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.deactivate_all().<span class="kw">await </span>{
-<a href=#285 id=285 data-nosnippet>285</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"error: error deactivating extensions during shutdown: {}"</span>, e);
-<a href=#286 id=286 data-nosnippet>286</a>		}
+<a href=#245 id=245 data-nosnippet>245</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::Ready;
+<a href=#246 id=246 data-nosnippet>246</a>
+<a href=#247 id=247 data-nosnippet>247</a>		<span class="prelude-val">Ok</span>(())
+<a href=#248 id=248 data-nosnippet>248</a>	}
+<a href=#249 id=249 data-nosnippet>249</a>
+<a href=#250 id=250 data-nosnippet>250</a>	<span class="doccomment">/// Get host statistics
+<a href=#251 id=251 data-nosnippet>251</a>	</span><span class="kw">pub async fn </span>stats(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HostStats {
+<a href=#252 id=252 data-nosnippet>252</a>		<span class="kw">let </span>active_extensions = <span class="self">self</span>.active_extensions.read().<span class="kw">await</span>.len();
+<a href=#253 id=253 data-nosnippet>253</a>		<span class="kw">let </span>loaded_extensions = <span class="self">self</span>.extension_manager.list_extensions().<span class="kw">await</span>.len();
+<a href=#254 id=254 data-nosnippet>254</a>		<span class="kw">let </span>extension_stats = <span class="self">self</span>.extension_manager.stats().<span class="kw">await</span>;
+<a href=#255 id=255 data-nosnippet>255</a>
+<a href=#256 id=256 data-nosnippet>256</a>		HostStats {
+<a href=#257 id=257 data-nosnippet>257</a>			loaded_extensions,
+<a href=#258 id=258 data-nosnippet>258</a>			active_extensions,
+<a href=#259 id=259 data-nosnippet>259</a>			total_activations:extension_stats.total_activated <span class="kw">as </span>u64,
+<a href=#260 id=260 data-nosnippet>260</a>			total_activation_time_ms:extension_stats.total_activation_time_ms,
+<a href=#261 id=261 data-nosnippet>261</a>			api_calls:<span class="number">0</span>, <span class="comment">// Track through API bridge
+<a href=#262 id=262 data-nosnippet>262</a>			</span>errors:extension_stats.errors,
+<a href=#263 id=263 data-nosnippet>263</a>			uptime_seconds:<span class="number">0</span>, <span class="comment">// Track from host start time
+<a href=#264 id=264 data-nosnippet>264</a>		</span>}
+<a href=#265 id=265 data-nosnippet>265</a>	}
+<a href=#266 id=266 data-nosnippet>266</a>
+<a href=#267 id=267 data-nosnippet>267</a>	<span class="doccomment">/// Get host state
+<a href=#268 id=268 data-nosnippet>268</a>	</span><span class="kw">pub async fn </span>state(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HostState { <span class="self">self</span>.state.read().<span class="kw">await</span>.clone() }
+<a href=#269 id=269 data-nosnippet>269</a>
+<a href=#270 id=270 data-nosnippet>270</a>	<span class="doccomment">/// Get the transport
+<a href=#271 id=271 data-nosnippet>271</a>	</span><span class="kw">pub fn </span>transport(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="../Transport/Strategy.rs.html#83-90">Transport</a> { <span class="kw-2">&amp;</span><a class="self" href="#271">self</a>.transport }
+<a href=#272 id=272 data-nosnippet>272</a>
+<a href=#273 id=273 data-nosnippet>273</a>	<span class="doccomment">/// Get the extension manager
+<a href=#274 id=274 data-nosnippet>274</a>	</span><span class="kw">pub fn </span>extension_manager(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="ExtensionManager.rs.html#19-29">ExtensionManagerImpl</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#274">self</a>.extension_manager }
+<a href=#275 id=275 data-nosnippet>275</a>
+<a href=#276 id=276 data-nosnippet>276</a>	<span class="doccomment">/// Get the activation engine
+<a href=#277 id=277 data-nosnippet>277</a>	</span><span class="kw">pub fn </span>activation_engine(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Activation::<a href="Activation.rs.html#84-94">ActivationEngine</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#277">self</a>.activation_engine }
+<a href=#278 id=278 data-nosnippet>278</a>
+<a href=#279 id=279 data-nosnippet>279</a>	<span class="doccomment">/// Get the WASM runtime
+<a href=#280 id=280 data-nosnippet>280</a>	</span><span class="kw">pub fn </span>wasm_runtime(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../WASM/Runtime.rs.html#108-113">WASMRuntime</a>&gt; { <span class="kw-2">&amp;</span><a class="self" href="#280">self</a>.wasm_runtime }
+<a href=#281 id=281 data-nosnippet>281</a>
+<a href=#282 id=282 data-nosnippet>282</a>	<span class="doccomment">/// Shutdown the host and clean up resources
+<a href=#283 id=283 data-nosnippet>283</a>	</span><span class="kw">pub async fn </span>shutdown(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#284 id=284 data-nosnippet>284</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Shutting down extension host"</span>);
+<a href=#285 id=285 data-nosnippet>285</a>
+<a href=#286 id=286 data-nosnippet>286</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::ShuttingDown;
 <a href=#287 id=287 data-nosnippet>287</a>
-<a href=#288 id=288 data-nosnippet>288</a>		<span class="comment">// Close transport
-<a href=#289 id=289 data-nosnippet>289</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.transport.close().<span class="kw">await </span>{
-<a href=#290 id=290 data-nosnippet>290</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"error: error closing transport during shutdown: {}"</span>, e);
+<a href=#288 id=288 data-nosnippet>288</a>		<span class="comment">// Deactivate all extensions
+<a href=#289 id=289 data-nosnippet>289</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.deactivate_all().<span class="kw">await </span>{
+<a href=#290 id=290 data-nosnippet>290</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"error: error deactivating extensions during shutdown: {}"</span>, e);
 <a href=#291 id=291 data-nosnippet>291</a>		}
 <a href=#292 id=292 data-nosnippet>292</a>
-<a href=#293 id=293 data-nosnippet>293</a>		<span class="comment">// Shutdown WASM runtime
-<a href=#294 id=294 data-nosnippet>294</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.wasm_runtime.shutdown().<span class="kw">await </span>{
-<a href=#295 id=295 data-nosnippet>295</a>			<span class="macro">dev_log!</span>(<span class="string">"wasm"</span>, <span class="string">"error: error shutting down WASM runtime: {}"</span>, e);
+<a href=#293 id=293 data-nosnippet>293</a>		<span class="comment">// Close transport
+<a href=#294 id=294 data-nosnippet>294</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.transport.close().<span class="kw">await </span>{
+<a href=#295 id=295 data-nosnippet>295</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"error: error closing transport during shutdown: {}"</span>, e);
 <a href=#296 id=296 data-nosnippet>296</a>		}
 <a href=#297 id=297 data-nosnippet>297</a>
-<a href=#298 id=298 data-nosnippet>298</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::Terminated;
-<a href=#299 id=299 data-nosnippet>299</a>
-<a href=#300 id=300 data-nosnippet>300</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Extension host shutdown complete"</span>);
-<a href=#301 id=301 data-nosnippet>301</a>
-<a href=#302 id=302 data-nosnippet>302</a>		<span class="prelude-val">Ok</span>(())
-<a href=#303 id=303 data-nosnippet>303</a>	}
-<a href=#304 id=304 data-nosnippet>304</a>}
-<a href=#305 id=305 data-nosnippet>305</a>
-<a href=#306 id=306 data-nosnippet>306</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#20-36">ExtensionHostImpl</a> {
-<a href=#307 id=307 data-nosnippet>307</a>	<span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
-<a href=#308 id=308 data-nosnippet>308</a>		<a href="../DevLog.rs.html#130-165">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"ExtensionHost dropped"</span>);
-<a href=#309 id=309 data-nosnippet>309</a>	}
-<a href=#310 id=310 data-nosnippet>310</a>}
-<a href=#311 id=311 data-nosnippet>311</a>
-<a href=#312 id=312 data-nosnippet>312</a><span class="attr">#[cfg(test)]
-<a href=#313 id=313 data-nosnippet>313</a></span><span class="kw">mod </span>tests {
-<a href=#314 id=314 data-nosnippet>314</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
-<a href=#315 id=315 data-nosnippet>315</a>
-<a href=#316 id=316 data-nosnippet>316</a>	<span class="attr">#[tokio::test]
-<a href=#317 id=317 data-nosnippet>317</a>	</span><span class="kw">async fn </span>test_host_state() {
-<a href=#318 id=318 data-nosnippet>318</a>		<span class="macro">assert_eq!</span>(HostState::Created, HostState::Created);
-<a href=#319 id=319 data-nosnippet>319</a>		<span class="macro">assert_eq!</span>(HostState::Ready, HostState::Ready);
-<a href=#320 id=320 data-nosnippet>320</a>		<span class="macro">assert_eq!</span>(HostState::Running, HostState::Running);
-<a href=#321 id=321 data-nosnippet>321</a>	}
-<a href=#322 id=322 data-nosnippet>322</a>
-<a href=#323 id=323 data-nosnippet>323</a>	<span class="attr">#[test]
-<a href=#324 id=324 data-nosnippet>324</a>	</span><span class="kw">fn </span>test_host_stats_default() {
-<a href=#325 id=325 data-nosnippet>325</a>		<span class="kw">let </span>stats = HostStats::default();
-<a href=#326 id=326 data-nosnippet>326</a>		<span class="macro">assert_eq!</span>(stats.loaded_extensions, <span class="number">0</span>);
-<a href=#327 id=327 data-nosnippet>327</a>		<span class="macro">assert_eq!</span>(stats.active_extensions, <span class="number">0</span>);
-<a href=#328 id=328 data-nosnippet>328</a>	}
-<a href=#329 id=329 data-nosnippet>329</a>
-<a href=#330 id=330 data-nosnippet>330</a>	<span class="attr">#[test]
-<a href=#331 id=331 data-nosnippet>331</a>	</span><span class="kw">fn </span>test_host_config_default() {
-<a href=#332 id=332 data-nosnippet>332</a>		<span class="kw">let </span>config = HostConfig::default();
-<a href=#333 id=333 data-nosnippet>333</a>		<span class="macro">assert_eq!</span>(config.max_extensions, <span class="number">100</span>);
-<a href=#334 id=334 data-nosnippet>334</a>		<span class="macro">assert_eq!</span>(config.lazy_activation, <span class="bool-val">true</span>);
-<a href=#335 id=335 data-nosnippet>335</a>	}
-<a href=#336 id=336 data-nosnippet>336</a>}
+<a href=#298 id=298 data-nosnippet>298</a>		<span class="comment">// Shutdown WASM runtime
+<a href=#299 id=299 data-nosnippet>299</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.wasm_runtime.shutdown().<span class="kw">await </span>{
+<a href=#300 id=300 data-nosnippet>300</a>			<span class="macro">dev_log!</span>(<span class="string">"wasm"</span>, <span class="string">"error: error shutting down WASM runtime: {}"</span>, e);
+<a href=#301 id=301 data-nosnippet>301</a>		}
+<a href=#302 id=302 data-nosnippet>302</a>
+<a href=#303 id=303 data-nosnippet>303</a>		<span class="kw-2">*</span><span class="self">self</span>.state.write().<span class="kw">await </span>= HostState::Terminated;
+<a href=#304 id=304 data-nosnippet>304</a>
+<a href=#305 id=305 data-nosnippet>305</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Extension host shutdown complete"</span>);
+<a href=#306 id=306 data-nosnippet>306</a>
+<a href=#307 id=307 data-nosnippet>307</a>		<span class="prelude-val">Ok</span>(())
+<a href=#308 id=308 data-nosnippet>308</a>	}
+<a href=#309 id=309 data-nosnippet>309</a>}
+<a href=#310 id=310 data-nosnippet>310</a>
+<a href=#311 id=311 data-nosnippet>311</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#20-36">ExtensionHostImpl</a> {
+<a href=#312 id=312 data-nosnippet>312</a>	<span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+<a href=#313 id=313 data-nosnippet>313</a>		<a href="../DevLog.rs.html#130-165">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"ExtensionHost dropped"</span>);
+<a href=#314 id=314 data-nosnippet>314</a>	}
+<a href=#315 id=315 data-nosnippet>315</a>}
+<a href=#316 id=316 data-nosnippet>316</a>
+<a href=#317 id=317 data-nosnippet>317</a><span class="attr">#[cfg(test)]
+<a href=#318 id=318 data-nosnippet>318</a></span><span class="kw">mod </span>tests {
+<a href=#319 id=319 data-nosnippet>319</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
+<a href=#320 id=320 data-nosnippet>320</a>
+<a href=#321 id=321 data-nosnippet>321</a>	<span class="attr">#[tokio::test]
+<a href=#322 id=322 data-nosnippet>322</a>	</span><span class="kw">async fn </span>test_host_state() {
+<a href=#323 id=323 data-nosnippet>323</a>		<span class="macro">assert_eq!</span>(HostState::Created, HostState::Created);
+<a href=#324 id=324 data-nosnippet>324</a>		<span class="macro">assert_eq!</span>(HostState::Ready, HostState::Ready);
+<a href=#325 id=325 data-nosnippet>325</a>		<span class="macro">assert_eq!</span>(HostState::Running, HostState::Running);
+<a href=#326 id=326 data-nosnippet>326</a>	}
+<a href=#327 id=327 data-nosnippet>327</a>
+<a href=#328 id=328 data-nosnippet>328</a>	<span class="attr">#[test]
+<a href=#329 id=329 data-nosnippet>329</a>	</span><span class="kw">fn </span>test_host_stats_default() {
+<a href=#330 id=330 data-nosnippet>330</a>		<span class="kw">let </span>stats = HostStats::default();
+<a href=#331 id=331 data-nosnippet>331</a>		<span class="macro">assert_eq!</span>(stats.loaded_extensions, <span class="number">0</span>);
+<a href=#332 id=332 data-nosnippet>332</a>		<span class="macro">assert_eq!</span>(stats.active_extensions, <span class="number">0</span>);
+<a href=#333 id=333 data-nosnippet>333</a>	}
+<a href=#334 id=334 data-nosnippet>334</a>
+<a href=#335 id=335 data-nosnippet>335</a>	<span class="attr">#[test]
+<a href=#336 id=336 data-nosnippet>336</a>	</span><span class="kw">fn </span>test_host_config_default() {
+<a href=#337 id=337 data-nosnippet>337</a>		<span class="kw">let </span>config = HostConfig::default();
+<a href=#338 id=338 data-nosnippet>338</a>		<span class="macro">assert_eq!</span>(config.max_extensions, <span class="number">100</span>);
+<a href=#339 id=339 data-nosnippet>339</a>		<span class="macro">assert_eq!</span>(config.lazy_activation, <span class="bool-val">true</span>);
+<a href=#340 id=340 data-nosnippet>340</a>	}
+<a href=#341 id=341 data-nosnippet>341</a>}
 </code></pre></div></section></main></body></html>
