@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["EnqueueCommandEmit","RegisterCommand"],"static":["COMMAND_EMIT_BATCH"],"struct":["CommandEmitBatch"]};
+window.SIDEBAR_ITEMS = {"fn":["GetOrInitChannel","RegisterCommand"],"static":["CMD_CHANNEL"],"struct":["CommandBatchChannel"]};

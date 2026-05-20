@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["AlertSeverity","Dashboard","DashboardConfig","DashboardStatistics","LogLevel","MetricType","PerformanceAlert","PerformanceMetric","TraceLog","TraceSpan"]};
+window.SIDEBAR_ITEMS = {"mod":["AlertSeverity","Dashboard","DashboardConfig","DashboardHelpers","DashboardStatistics","LogLevel","MetricType","PerformanceAlert","PerformanceMetric","TraceLog","TraceSpan"]};

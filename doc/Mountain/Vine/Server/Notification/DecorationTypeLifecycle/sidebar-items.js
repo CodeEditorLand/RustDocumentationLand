@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DecorationTypeLifecycle","EnqueueDecorationEmit"],"static":["DECORATION_EMIT_BATCH"],"struct":["DecorationEmitBatch"]};
+window.SIDEBAR_ITEMS = {"fn":["DecorationTypeLifecycle","GetOrInitChannel"],"static":["DECO_CH"],"struct":["DecorationChannel","DecorationItem"]};

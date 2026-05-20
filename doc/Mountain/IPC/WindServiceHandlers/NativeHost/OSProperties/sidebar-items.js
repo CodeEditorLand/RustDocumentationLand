@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeOSProperties"]};
+window.SIDEBAR_ITEMS = {"fn":["NativeOSProperties","compute_os_properties"],"static":["OS_PROPERTIES_CACHE"]};
