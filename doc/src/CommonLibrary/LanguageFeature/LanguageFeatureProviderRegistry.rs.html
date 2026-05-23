@@ -288,17 +288,33 @@
 <a href=#288 id=288 data-nosnippet>288</a>		PositionDTO:<a href="DTO/PositionDTO.rs.html#14-20">PositionDTO</a>,
 <a href=#289 id=289 data-nosnippet>289</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value <span class="comment">/* LinkedEditingRangesDTO */</span>&gt;, CommonError&gt;;
 <a href=#290 id=290 data-nosnippet>290</a>
-<a href=#291 id=291 data-nosnippet>291</a>	<span class="doccomment">/// Provides on-type formatting edits.
-<a href=#292 id=292 data-nosnippet>292</a>	</span><span class="kw">async fn </span>ProvideOnTypeFormattingEdits(
-<a href=#293 id=293 data-nosnippet>293</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#291 id=291 data-nosnippet>291</a>	<span class="doccomment">/// Provides file decoration (badge, tooltip, colour) for a resource URI.
+<a href=#292 id=292 data-nosnippet>292</a>	/// Called by the file explorer / SCM tree when rendering resource state.
+<a href=#293 id=293 data-nosnippet>293</a>	</span><span class="kw">async fn </span>ProvideFileDecoration(<span class="kw-2">&amp;</span><span class="self">self</span>, ResourceURI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt;;
 <a href=#294 id=294 data-nosnippet>294</a>
-<a href=#295 id=295 data-nosnippet>295</a>		DocumentURI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
-<a href=#296 id=296 data-nosnippet>296</a>
-<a href=#297 id=297 data-nosnippet>297</a>		PositionDTO:<a href="DTO/PositionDTO.rs.html#14-20">PositionDTO</a>,
-<a href=#298 id=298 data-nosnippet>298</a>
-<a href=#299 id=299 data-nosnippet>299</a>		Character:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#300 id=300 data-nosnippet>300</a>
-<a href=#301 id=301 data-nosnippet>301</a>		OptionsDTO:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
-<a href=#302 id=302 data-nosnippet>302</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Vec&lt;TextEditDTO&gt;&gt;, CommonError&gt;;
-<a href=#303 id=303 data-nosnippet>303</a>}
+<a href=#295 id=295 data-nosnippet>295</a>	<span class="doccomment">/// Provides inline completion items (ghost text) for AI coding assistants
+<a href=#296 id=296 data-nosnippet>296</a>	/// such as GitHub Copilot, Roo Code, and Continue.
+<a href=#297 id=297 data-nosnippet>297</a>	</span><span class="kw">async fn </span>ProvideInlineCompletionItems(
+<a href=#298 id=298 data-nosnippet>298</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#299 id=299 data-nosnippet>299</a>
+<a href=#300 id=300 data-nosnippet>300</a>		DocumentURI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#301 id=301 data-nosnippet>301</a>
+<a href=#302 id=302 data-nosnippet>302</a>		PositionDTO_:<a href="DTO/PositionDTO.rs.html#14-20">PositionDTO</a>,
+<a href=#303 id=303 data-nosnippet>303</a>
+<a href=#304 id=304 data-nosnippet>304</a>		ContextDTO:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#305 id=305 data-nosnippet>305</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt;;
+<a href=#306 id=306 data-nosnippet>306</a>
+<a href=#307 id=307 data-nosnippet>307</a>	<span class="doccomment">/// Provides on-type formatting edits.
+<a href=#308 id=308 data-nosnippet>308</a>	</span><span class="kw">async fn </span>ProvideOnTypeFormattingEdits(
+<a href=#309 id=309 data-nosnippet>309</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#310 id=310 data-nosnippet>310</a>
+<a href=#311 id=311 data-nosnippet>311</a>		DocumentURI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#312 id=312 data-nosnippet>312</a>
+<a href=#313 id=313 data-nosnippet>313</a>		PositionDTO:<a href="DTO/PositionDTO.rs.html#14-20">PositionDTO</a>,
+<a href=#314 id=314 data-nosnippet>314</a>
+<a href=#315 id=315 data-nosnippet>315</a>		Character:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#316 id=316 data-nosnippet>316</a>
+<a href=#317 id=317 data-nosnippet>317</a>		OptionsDTO:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#318 id=318 data-nosnippet>318</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Vec&lt;TextEditDTO&gt;&gt;, CommonError&gt;;
+<a href=#319 id=319 data-nosnippet>319</a>}
 </code></pre></div></section></main></body></html>

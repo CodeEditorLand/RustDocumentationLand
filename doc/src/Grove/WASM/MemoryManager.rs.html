@@ -13,7 +13,7 @@
 <a href=#13 id=13 data-nosnippet>13</a><span class="attr">#[allow(unused_imports)]
 <a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">use </span>wasmtime::{Memory, MemoryType};
 <a href=#15 id=15 data-nosnippet>15</a>
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="../DevLog.rs.html#141-199"><span class="kw">crate</span>::dev_log</a>;
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="../DevLog.rs.html#145-203"><span class="kw">crate</span>::dev_log</a>;
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="doccomment">/// Memory limits for WASM instances
 <a href=#19 id=19 data-nosnippet>19</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -226,7 +226,7 @@
 <a href=#226 id=226 data-nosnippet>226</a>
 <a href=#227 id=227 data-nosnippet>227</a>	<span class="doccomment">/// Allocate memory for a WASM instance
 <a href=#228 id=228 data-nosnippet>228</a>	</span><span class="kw">pub fn </span>allocate_memory(<span class="kw-2">&amp;mut </span><span class="self">self</span>, instance_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, memory_type:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, requested_bytes:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt; {
-<a href=#229 id=229 data-nosnippet>229</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#229 id=229 data-nosnippet>229</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#230 id=230 data-nosnippet>230</a>			<span class="string">"wasm"</span>,
 <a href=#231 id=231 data-nosnippet>231</a>			<span class="string">"Allocating {} bytes for instance {} (type: {})"</span>,
 <a href=#232 id=232 data-nosnippet>232</a>			requested_bytes,
@@ -280,7 +280,7 @@
 <a href=#280 id=280 data-nosnippet>280</a>			<a class="self" href="#228">self</a>.peak_usage.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.store">store</a>(<a href="#275">new_peak</a>, Ordering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>);
 <a href=#281 id=281 data-nosnippet>281</a>		}
 <a href=#282 id=282 data-nosnippet>282</a>
-<a href=#283 id=283 data-nosnippet>283</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#283 id=283 data-nosnippet>283</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#284 id=284 data-nosnippet>284</a>			<span class="string">"wasm"</span>,
 <a href=#285 id=285 data-nosnippet>285</a>			<span class="string">"Memory allocated successfully. Total usage: {} MB"</span>,
 <a href=#286 id=286 data-nosnippet>286</a>			<span class="self">self</span>.current_usage_mb()
@@ -291,7 +291,7 @@
 <a href=#291 id=291 data-nosnippet>291</a>
 <a href=#292 id=292 data-nosnippet>292</a>	<span class="doccomment">/// Deallocate memory for a WASM instance
 <a href=#293 id=293 data-nosnippet>293</a>	</span><span class="kw">pub fn </span>deallocate_memory(<span class="kw-2">&amp;mut </span><span class="self">self</span>, instance_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, memory_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt; {
-<a href=#294 id=294 data-nosnippet>294</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Deallocating memory {} for instance {}"</span>, memory_id, instance_id);
+<a href=#294 id=294 data-nosnippet>294</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Deallocating memory {} for instance {}"</span>, memory_id, instance_id);
 <a href=#295 id=295 data-nosnippet>295</a>
 <a href=#296 id=296 data-nosnippet>296</a>		<span class="kw">let </span>pos = <a class="self" href="#293">self</a>
 <a href=#297 id=297 data-nosnippet>297</a>			.allocations
@@ -304,7 +304,7 @@
 <a href=#304 id=304 data-nosnippet>304</a>			<span class="comment">// Update stats
 <a href=#305 id=305 data-nosnippet>305</a>			</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.make_mut">make_mut</a>(<span class="kw-2">&amp;mut </span><a class="self" href="#293">self</a>.stats).<a href="#167-173">record_deallocation</a>(<a href="#302">allocation</a>.size_bytes);
 <a href=#306 id=306 data-nosnippet>306</a>
-<a href=#307 id=307 data-nosnippet>307</a>			<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#307 id=307 data-nosnippet>307</a>			<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#308 id=308 data-nosnippet>308</a>				<span class="string">"wasm"</span>,
 <a href=#309 id=309 data-nosnippet>309</a>				<span class="string">"Memory deallocated successfully. Remaining usage: {} MB"</span>,
 <a href=#310 id=310 data-nosnippet>310</a>				<span class="self">self</span>.current_usage_mb()
@@ -312,7 +312,7 @@
 <a href=#312 id=312 data-nosnippet>312</a>
 <a href=#313 id=313 data-nosnippet>313</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="bool-val">true</span>)
 <a href=#314 id=314 data-nosnippet>314</a>		} <span class="kw">else </span>{
-<a href=#315 id=315 data-nosnippet>315</a>			<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#315 id=315 data-nosnippet>315</a>			<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#316 id=316 data-nosnippet>316</a>				<span class="string">"wasm"</span>,
 <a href=#317 id=317 data-nosnippet>317</a>				<span class="string">"warn: memory allocation not found: {} for instance {}"</span>,
 <a href=#318 id=318 data-nosnippet>318</a>				memory_id,
@@ -325,7 +325,7 @@
 <a href=#325 id=325 data-nosnippet>325</a>
 <a href=#326 id=326 data-nosnippet>326</a>	<span class="doccomment">/// Deallocate all memory for an instance
 <a href=#327 id=327 data-nosnippet>327</a>	</span><span class="kw">pub fn </span>deallocate_all_for_instance(<span class="kw-2">&amp;mut </span><span class="self">self</span>, instance_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#328 id=328 data-nosnippet>328</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Deallocating all memory for instance {}"</span>, instance_id);
+<a href=#328 id=328 data-nosnippet>328</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Deallocating all memory for instance {}"</span>, instance_id);
 <a href=#329 id=329 data-nosnippet>329</a>
 <a href=#330 id=330 data-nosnippet>330</a>		<span class="kw">let </span>initial_count = <a class="self" href="#327">self</a>.allocations.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>();
 <a href=#331 id=331 data-nosnippet>331</a>
@@ -334,7 +334,7 @@
 <a href=#334 id=334 data-nosnippet>334</a>		<span class="kw">let </span>deallocated_count = <a href="#330">initial_count</a> - <a class="self" href="#327">self</a>.allocations.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>();
 <a href=#335 id=335 data-nosnippet>335</a>
 <a href=#336 id=336 data-nosnippet>336</a>		<span class="kw">if </span><a href="#334">deallocated_count</a> &gt; <span class="number">0 </span>{
-<a href=#337 id=337 data-nosnippet>337</a>			<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#337 id=337 data-nosnippet>337</a>			<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#338 id=338 data-nosnippet>338</a>				<span class="string">"wasm"</span>,
 <a href=#339 id=339 data-nosnippet>339</a>				<span class="string">"Deallocated {} memory allocations for instance {}"</span>,
 <a href=#340 id=340 data-nosnippet>340</a>				deallocated_count,
@@ -347,7 +347,7 @@
 <a href=#347 id=347 data-nosnippet>347</a>
 <a href=#348 id=348 data-nosnippet>348</a>	<span class="doccomment">/// Grow existing memory allocation
 <a href=#349 id=349 data-nosnippet>349</a>	</span><span class="kw">pub fn </span>grow_memory(<span class="kw-2">&amp;mut </span><span class="self">self</span>, instance_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, memory_id:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, additional_bytes:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt; {
-<a href=#350 id=350 data-nosnippet>350</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(
+<a href=#350 id=350 data-nosnippet>350</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(
 <a href=#351 id=351 data-nosnippet>351</a>			<span class="string">"wasm"</span>,
 <a href=#352 id=352 data-nosnippet>352</a>			<span class="string">"Growing memory {} for instance {} by {} bytes"</span>,
 <a href=#353 id=353 data-nosnippet>353</a>			memory_id,
@@ -371,7 +371,7 @@
 <a href=#371 id=371 data-nosnippet>371</a>
 <a href=#372 id=372 data-nosnippet>372</a>		<a href="#361">allocation</a>.size_bytes += <a href="#349">additional_bytes</a>;
 <a href=#373 id=373 data-nosnippet>373</a>
-<a href=#374 id=374 data-nosnippet>374</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Memory grown successfully. New size: {} bytes"</span>, allocation.size_bytes);
+<a href=#374 id=374 data-nosnippet>374</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Memory grown successfully. New size: {} bytes"</span>, allocation.size_bytes);
 <a href=#375 id=375 data-nosnippet>375</a>
 <a href=#376 id=376 data-nosnippet>376</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#361">allocation</a>.size_bytes)
 <a href=#377 id=377 data-nosnippet>377</a>	}
@@ -397,7 +397,7 @@
 <a href=#397 id=397 data-nosnippet>397</a>
 <a href=#398 id=398 data-nosnippet>398</a>		<a class="self" href="#393">self</a>.peak_usage.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.store">store</a>(<span class="number">0</span>, Ordering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>);
 <a href=#399 id=399 data-nosnippet>399</a>
-<a href=#400 id=400 data-nosnippet>400</a>		<a href="../DevLog.rs.html#141-199">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Memory manager reset"</span>);
+<a href=#400 id=400 data-nosnippet>400</a>		<a href="../DevLog.rs.html#145-203">dev_log!</a>(<span class="string">"wasm"</span>, <span class="string">"Memory manager reset"</span>);
 <a href=#401 id=401 data-nosnippet>401</a>	}
 <a href=#402 id=402 data-nosnippet>402</a>}
 <a href=#403 id=403 data-nosnippet>403</a>
