@@ -10,10 +10,10 @@
 <a href=#10 id=10 data-nosnippet>10</a>};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>anyhow::{<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html">Context</a>, <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>};
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>tokio::sync::RwLock;
 <a href=#15 id=15 data-nosnippet>15</a>
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>crate::{<a href="mod.rs.html#24-36">Services::Service</a>, <a href="../DevLog.rs.html#145-203">dev_log</a>};
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>crate::{<a href="mod.rs.html#23-35">Services::Service</a>, <a href="../DevLog.rs.html#145-203">dev_log</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="doccomment">/// Configuration scope
 <a href=#19 id=19 data-nosnippet>19</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>, <a href="https://doc.rust-lang.org/nightly/core/hash/macros/derive.Hash.html">Hash</a>)]
@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
 <a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">pub struct </span><a href="#33-42">ConfigurationValue</a> {
 <a href=#34 id=34 data-nosnippet>34</a>	<span class="doccomment">/// Value
-<a href=#35 id=35 data-nosnippet>35</a>	</span><span class="kw">pub </span>value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#35 id=35 data-nosnippet>35</a>	</span><span class="kw">pub </span>value:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a>	<span class="doccomment">/// Scope
 <a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>scope:<a href="#20-29">ConfigurationScope</a>,
@@ -60,7 +60,7 @@
 <a href=#60 id=60 data-nosnippet>60</a>}
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// Configuration watcher callback
-<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">type </span><a href="../../../Grove/Services/ConfigurationService/type.ConfigurationWatcherCallback.html">ConfigurationWatcherCallback</a> = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;RwLock&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a>&gt;&gt;;
+<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">type </span><a href="../../../Grove/Services/ConfigurationService/type.ConfigurationWatcherCallback.html">ConfigurationWatcherCallback</a> = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;RwLock&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a>&gt;&gt;;
 <a href=#64 id=64 data-nosnippet>64</a>
 <a href=#65 id=65 data-nosnippet>65</a><span class="kw">impl </span><a href="#45-60">ConfigurationServiceImpl</a> {
 <a href=#66 id=66 data-nosnippet>66</a>	<span class="doccomment">/// Create a new configuration service
@@ -92,10 +92,10 @@
 <a href=#92 id=92 data-nosnippet>92</a>	}
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a>	<span class="doccomment">/// Get a configuration value with a default
-<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub async fn </span>get_with_default(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, default:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; Value { <span class="self">self</span>.get(key).<span class="kw">await</span>.unwrap_or(default) }
+<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub async fn </span>get_with_default(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, default:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; Value { <span class="self">self</span>.get(key).<span class="kw">await</span>.unwrap_or(default) }
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a>	<span class="doccomment">/// Set a configuration value
-<a href=#98 id=98 data-nosnippet>98</a>	</span><span class="kw">pub async fn </span>set(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, scope:<a href="#20-29">ConfigurationScope</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#98 id=98 data-nosnippet>98</a>	</span><span class="kw">pub async fn </span>set(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, value:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, scope:<a href="#20-29">ConfigurationScope</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"Setting configuration value: {} = {:?}"</span>, key, value);
 <a href=#100 id=100 data-nosnippet>100</a>
 <a href=#101 id=101 data-nosnippet>101</a>		<span class="kw">let </span>now = std::time::SystemTime::now()
@@ -164,7 +164,7 @@
 <a href=#164 id=164 data-nosnippet>164</a>	}
 <a href=#165 id=165 data-nosnippet>165</a>
 <a href=#166 id=166 data-nosnippet>166</a>	<span class="doccomment">/// Load configuration from a value
-<a href=#167 id=167 data-nosnippet>167</a>	</span><span class="kw">pub async fn </span>load_from_value(<span class="kw-2">&amp;</span><span class="self">self</span>, value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, scope:<a href="#20-29">ConfigurationScope</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#167 id=167 data-nosnippet>167</a>	</span><span class="kw">pub async fn </span>load_from_value(<span class="kw-2">&amp;</span><span class="self">self</span>, value:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, scope:<a href="#20-29">ConfigurationScope</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#168 id=168 data-nosnippet>168</a>		<span class="kw">if let </span>Value::Object(object) = value {
 <a href=#169 id=169 data-nosnippet>169</a>			<span class="kw">let </span><span class="kw-2">mut </span>config = <span class="self">self</span>.config.write().<span class="kw">await</span>;
 <a href=#170 id=170 data-nosnippet>170</a>
@@ -203,7 +203,7 @@
 <a href=#203 id=203 data-nosnippet>203</a>	<span class="doccomment">/// Register a configuration watcher
 <a href=#204 id=204 data-nosnippet>204</a>	</span><span class="kw">pub async fn </span>register_watcher&lt;F&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, callback:F)
 <a href=#205 id=205 data-nosnippet>205</a>	<span class="kw">where
-<a href=#206 id=206 data-nosnippet>206</a>		</span>F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
+<a href=#206 id=206 data-nosnippet>206</a>		</span>F: <a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
 <a href=#207 id=207 data-nosnippet>207</a>		<span class="kw">let </span>key_clone = key.clone();
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a>		<span class="kw">let </span><span class="kw-2">mut </span>watchers = <span class="self">self</span>.watchers.write().<span class="kw">await</span>;
@@ -226,7 +226,7 @@
 <a href=#226 id=226 data-nosnippet>226</a>	}
 <a href=#227 id=227 data-nosnippet>227</a>
 <a href=#228 id=228 data-nosnippet>228</a>	<span class="doccomment">/// Notify watchers of configuration changes
-<a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>notify_watchers(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
+<a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>notify_watchers(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, value:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#230 id=230 data-nosnippet>230</a>		<span class="kw">let </span>watchers = <span class="self">self</span>.watchers.read().<span class="kw">await</span>;
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(callbacks) = watchers.get(<span class="kw-2">&amp;</span>key) {
@@ -244,7 +244,7 @@
 <a href=#244 id=244 data-nosnippet>244</a>	}
 <a href=#245 id=245 data-nosnippet>245</a>}
 <a href=#246 id=246 data-nosnippet>246</a>
-<a href=#247 id=247 data-nosnippet>247</a><span class="kw">impl </span><a href="mod.rs.html#24-36">Service</a> <span class="kw">for </span><a href="#45-60">ConfigurationServiceImpl</a> {
+<a href=#247 id=247 data-nosnippet>247</a><span class="kw">impl </span><a href="mod.rs.html#23-35">Service</a> <span class="kw">for </span><a href="#45-60">ConfigurationServiceImpl</a> {
 <a href=#248 id=248 data-nosnippet>248</a>	<span class="kw">fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> { <span class="kw-2">&amp;</span><a class="self" href="#248">self</a>.name }
 <a href=#249 id=249 data-nosnippet>249</a>
 <a href=#250 id=250 data-nosnippet>250</a>	<span class="kw">async fn </span>start(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {

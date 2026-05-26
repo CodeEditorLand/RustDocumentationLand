@@ -12,7 +12,7 @@
 <a href=#12 id=12 data-nosnippet>12</a>	},
 <a href=#13 id=13 data-nosnippet>13</a>};
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.30/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.30/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.30/log/macro.warn.html">warn</a>};
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>tokio::task::JoinHandle;
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>super::{<a href="SchedulerBuilder.rs.html#13-19">SchedulerBuilder::Concurrency</a>, <a href="Worker.rs.html#16-23">Worker::Worker</a>};
@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a>	/// This is a crate-private function, intended to be called only by the
 <a href=#41 id=41 data-nosnippet>41</a>	/// `SchedulerBuilder`'s `Build` method.
 <a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>Create(WorkerCount:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, _Configuration:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="SchedulerBuilder.rs.html#13-19">Concurrency</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#43 id=43 data-nosnippet>43</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Scheduler] Creating scheduler with {} workers."</span>, WorkerCount);
+<a href=#43 id=43 data-nosnippet>43</a>		<a href="https://docs.rs/log/0.4.30/log/macro.info.html">info!</a>(<span class="string">"[Scheduler] Creating scheduler with {} workers."</span>, WorkerCount);
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a>		<span class="kw">let </span>IsRunning = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/type.AtomicBool.html">AtomicBool</a>::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.new">new</a>(<span class="bool-val">true</span>));
 <a href=#46 id=46 data-nosnippet>46</a>
@@ -105,7 +105,7 @@
 <a href=#105 id=105 data-nosnippet>105</a>	/// scheduler's lifecycle properly.
 <a href=#106 id=106 data-nosnippet>106</a>	</span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
 <a href=#107 id=107 data-nosnippet>107</a>		<span class="kw">if </span><a class="self" href="#106">self</a>.IsRunning.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.load">load</a>(Ordering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>) {
-<a href=#108 id=108 data-nosnippet>108</a>			<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[Scheduler] Dropped without explicit stop. Signaling workers to terminate."</span>);
+<a href=#108 id=108 data-nosnippet>108</a>			<a href="https://docs.rs/log/0.4.30/log/macro.warn.html">warn!</a>(<span class="string">"[Scheduler] Dropped without explicit stop. Signaling workers to terminate."</span>);
 <a href=#109 id=109 data-nosnippet>109</a>
 <a href=#110 id=110 data-nosnippet>110</a>			<a class="self" href="#106">self</a>.IsRunning.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.store">store</a>(<span class="bool-val">false</span>, Ordering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>);
 <a href=#111 id=111 data-nosnippet>111</a>		}

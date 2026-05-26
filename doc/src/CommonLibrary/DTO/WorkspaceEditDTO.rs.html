@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! of changes to be applied across multiple files in the workspace.
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// A serializable struct representing a workspace edit, which is a batch of
 <a href=#10 id=10 data-nosnippet>10</a>/// changes that can include text edits and file operations (create, delete,
@@ -15,6 +15,6 @@
 <a href=#15 id=15 data-nosnippet>15</a></span><span class="kw">pub struct </span><a href="#15-19">WorkspaceEditDTO</a> {
 <a href=#16 id=16 data-nosnippet>16</a>	<span class="doccomment">/// A list of text edits to apply, grouped by resource URI.
 <a href=#17 id=17 data-nosnippet>17</a>	/// The structure is `[ [uri_dto, [text_edit_dto, ...]], ... ]`
-<a href=#18 id=18 data-nosnippet>18</a>	</span><span class="kw">pub </span>Edits:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;)&gt;,
+<a href=#18 id=18 data-nosnippet>18</a>	</span><span class="kw">pub </span>Edits:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;)&gt;,
 <a href=#19 id=19 data-nosnippet>19</a>}
 </code></pre></div></section></main></body></html>

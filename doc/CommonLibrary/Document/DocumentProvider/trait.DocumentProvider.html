@@ -5,7 +5,7 @@
     // Required methods
     fn <a href="#tymethod.OpenDocument" class="fn">OpenDocument</a>&lt;'life0, 'async_trait&gt;(
         &amp;'life0 self,
-        URIComponentsDTO: <a class="enum" href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+        URIComponentsDTO: <a class="enum" href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
         LanguageIdentifier: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
         Content: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
     ) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://docs.rs/url/2.5.7/url/struct.Url.html" title="struct url::Url">Url</a>, <a class="enum" href="../../Error/CommonError/enum.CommonError.html" title="enum CommonLibrary::Error::CommonError::CommonError">CommonError</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;
@@ -34,7 +34,7 @@
         &amp;'life0 self,
         URI: <a class="struct" href="https://docs.rs/url/2.5.7/url/struct.Url.html" title="struct url::Url">Url</a>,
         NewVersionIdentifier: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
-        ChangesDTOCollection: <a class="enum" href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+        ChangesDTOCollection: <a class="enum" href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
         IsDirtyAfterChange: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
         IsUndoing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
         IsRedoing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
@@ -48,7 +48,7 @@ maintaining the “single source of truth” for all open documents, handling
 file I/O, and synchronizing state with the <code>Cocoon</code> sidecar.</p>
 </div></details><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.OpenDocument" class="method"><a class="src rightside" href="../../../src/CommonLibrary/Document/DocumentProvider.rs.html#32-40">Source</a><h4 class="code-header">fn <a href="#tymethod.OpenDocument" class="fn">OpenDocument</a>&lt;'life0, 'async_trait&gt;(
     &amp;'life0 self,
-    URIComponentsDTO: <a class="enum" href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+    URIComponentsDTO: <a class="enum" href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
     LanguageIdentifier: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
     Content: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
 ) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html" title="struct core::pin::Pin">Pin</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html" title="struct alloc::boxed::Box">Box</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://docs.rs/url/2.5.7/url/struct.Url.html" title="struct url::Url">Url</a>, <a class="enum" href="../../Error/CommonError/enum.CommonError.html" title="enum CommonLibrary::Error::CommonError::CommonError">CommonError</a>&gt;&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + 'async_trait&gt;&gt;<div class="where">where
@@ -95,7 +95,7 @@ documents, which will typically trigger a “Save As” dialog for each.</li>
     &amp;'life0 self,
     URI: <a class="struct" href="https://docs.rs/url/2.5.7/url/struct.Url.html" title="struct url::Url">Url</a>,
     NewVersionIdentifier: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
-    ChangesDTOCollection: <a class="enum" href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
+    ChangesDTOCollection: <a class="enum" href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>,
     IsDirtyAfterChange: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
     IsUndoing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
     IsRedoing: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,

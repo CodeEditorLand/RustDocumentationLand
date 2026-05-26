@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! settings.
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// A serializable struct that represents the options controlling the content
 <a href=#10 id=10 data-nosnippet>10</a>/// within a Webview, including script enablement and local resource access.
@@ -28,12 +28,12 @@
 <a href=#28 id=28 data-nosnippet>28</a>	/// Webview to the extension host. Serialized
 <a href=#29 id=29 data-nosnippet>29</a>	/// `Vec&lt;{ webviewPort: number, extensionHostPort: number }&gt;`.
 <a href=#30 id=30 data-nosnippet>30</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#31 id=31 data-nosnippet>31</a>	</span><span class="kw">pub </span>PortMapping:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#31 id=31 data-nosnippet>31</a>	</span><span class="kw">pub </span>PortMapping:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a>	<span class="doccomment">/// An optional array of URIs that define the root paths from which the
 <a href=#34 id=34 data-nosnippet>34</a>	/// Webview is allowed to load local resources. Serialized
 <a href=#35 id=35 data-nosnippet>35</a>	/// `Vec&lt;UriComponents&gt;`.
 <a href=#36 id=36 data-nosnippet>36</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#37 id=37 data-nosnippet>37</a>	</span><span class="kw">pub </span>LocalResourceRoots:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#37 id=37 data-nosnippet>37</a>	</span><span class="kw">pub </span>LocalResourceRoots:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#38 id=38 data-nosnippet>38</a>}
 </code></pre></div></section></main></body></html>

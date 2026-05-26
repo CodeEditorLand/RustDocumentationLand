@@ -3,7 +3,7 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! Defines the DTO for an SourceControlManagement provider itself.
 <a href=#4 id=4 data-nosnippet>4</a>
 <a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="SourceControlInputBoxDTO.rs.html#12-23"><span class="kw">crate</span>::SourceControlManagement::DTO::SourceControlInputBoxDTO::SourceControlInputBoxDTO</a>;
 <a href=#9 id=9 data-nosnippet>9</a>
@@ -27,7 +27,7 @@
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="doccomment">/// The root URI of the repository this provider is managing. Serialized
 <a href=#28 id=28 data-nosnippet>28</a>	/// `UriComponents`.
 <a href=#29 id=29 data-nosnippet>29</a>	</span><span class="attr">#[serde(rename = <span class="string">"rootUri"</span>)]
-<a href=#30 id=30 data-nosnippet>30</a>	</span><span class="kw">pub </span>RootURI:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#30 id=30 data-nosnippet>30</a>	</span><span class="kw">pub </span>RootURI:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#31 id=31 data-nosnippet>31</a>
 <a href=#32 id=32 data-nosnippet>32</a>	<span class="doccomment">/// An optional count of changed resources, often displayed as a badge.
 <a href=#33 id=33 data-nosnippet>33</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a>	<span class="doccomment">/// The command executed when the user accepts the SCM input box (e.g.
 <a href=#41 id=41 data-nosnippet>41</a>	/// Ctrl+Enter).
 <a href=#42 id=42 data-nosnippet>42</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#43 id=43 data-nosnippet>43</a>	</span><span class="kw">pub </span>AcceptInputCommand:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#43 id=43 data-nosnippet>43</a>	</span><span class="kw">pub </span>AcceptInputCommand:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a>	<span class="doccomment">/// The state of the SourceControlManagement input box (commit message
 <a href=#46 id=46 data-nosnippet>46</a>	/// area).

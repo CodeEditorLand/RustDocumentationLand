@@ -157,7 +157,7 @@
 <a href=#157 id=157 data-nosnippet>157</a><span class="doccomment">/// Cloneable trait for objects that can be cloned with context
 <a href=#158 id=158 data-nosnippet>158</a></span><span class="kw">pub trait </span><a href="../../../Grove/Common/Traits/trait.ContextClone.html">ContextClone</a> {
 <a href=#159 id=159 data-nosnippet>159</a>	<span class="doccomment">/// Clone the object with additional context
-<a href=#160 id=160 data-nosnippet>160</a>	</span><span class="kw">fn </span>clone_with_context(<span class="kw-2">&amp;</span><span class="self">self</span>, context:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<span class="self">Self</span>&gt;
+<a href=#160 id=160 data-nosnippet>160</a>	</span><span class="kw">fn </span>clone_with_context(<span class="kw-2">&amp;</span><span class="self">self</span>, context:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<span class="self">Self</span>&gt;
 <a href=#161 id=161 data-nosnippet>161</a>	<span class="kw">where
 <a href=#162 id=162 data-nosnippet>162</a>		</span><span class="self">Self</span>: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a>;
 <a href=#163 id=163 data-nosnippet>163</a>}
@@ -199,19 +199,19 @@
 <a href=#199 id=199 data-nosnippet>199</a></span><span class="kw">pub trait </span><a href="../../../Grove/Common/Traits/trait.Serializable.html">Serializable</a>: <a href="https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html">Serialize</a> + <span class="kw">for</span>&lt;<span class="lifetime">'de</span>&gt; <a href="https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html">Deserialize</a>&lt;<span class="lifetime">'de</span>&gt; {
 <a href=#200 id=200 data-nosnippet>200</a>	<span class="doccomment">/// Serialize to JSON string
 <a href=#201 id=201 data-nosnippet>201</a>	</span><span class="kw">fn </span>to_json(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#202 id=202 data-nosnippet>202</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_string.html">to_string</a>(<a class="self" href="#201">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Serialization failed: {}"</span>, e))
+<a href=#202 id=202 data-nosnippet>202</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/ser/fn.to_string.html">to_string</a>(<a class="self" href="#201">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Serialization failed: {}"</span>, e))
 <a href=#203 id=203 data-nosnippet>203</a>	}
 <a href=#204 id=204 data-nosnippet>204</a>
 <a href=#205 id=205 data-nosnippet>205</a>	<span class="doccomment">/// Serialize to JSON pretty string
 <a href=#206 id=206 data-nosnippet>206</a>	</span><span class="kw">fn </span>to_json_pretty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#207 id=207 data-nosnippet>207</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_string_pretty.html">to_string_pretty</a>(<a class="self" href="#206">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Serialization failed: {}"</span>, e))
+<a href=#207 id=207 data-nosnippet>207</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/ser/fn.to_string_pretty.html">to_string_pretty</a>(<a class="self" href="#206">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Serialization failed: {}"</span>, e))
 <a href=#208 id=208 data-nosnippet>208</a>	}
 <a href=#209 id=209 data-nosnippet>209</a>
 <a href=#210 id=210 data-nosnippet>210</a>	<span class="doccomment">/// Deserialize from JSON string
 <a href=#211 id=211 data-nosnippet>211</a>	</span><span class="kw">fn </span>from_json(json:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<span class="self">Self</span>&gt;
 <a href=#212 id=212 data-nosnippet>212</a>	<span class="kw">where
 <a href=#213 id=213 data-nosnippet>213</a>		</span><span class="self">Self</span>: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a>, {
-<a href=#214 id=214 data-nosnippet>214</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_str.html">from_str</a>(<a href="#211">json</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Deserialization failed: {}"</span>, e))
+<a href=#214 id=214 data-nosnippet>214</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/de/fn.from_str.html">from_str</a>(<a href="#211">json</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Deserialization failed: {}"</span>, e))
 <a href=#215 id=215 data-nosnippet>215</a>	}
 <a href=#216 id=216 data-nosnippet>216</a>}
 <a href=#217 id=217 data-nosnippet>217</a>
@@ -315,8 +315,7 @@
 <a href=#315 id=315 data-nosnippet>315</a>}
 <a href=#316 id=316 data-nosnippet>316</a>
 <a href=#317 id=317 data-nosnippet>317</a><span class="comment">// Helper struct for testing Retryable
-<a href=#318 id=318 data-nosnippet>318</a></span><span class="attr">#[allow(dead_code)]
-<a href=#319 id=319 data-nosnippet>319</a></span><span class="kw">struct </span><a href="../../../Grove/Common/Traits/struct.RetryableTrait.html">RetryableTrait</a>;
-<a href=#320 id=320 data-nosnippet>320</a>
-<a href=#321 id=321 data-nosnippet>321</a><span class="kw">impl </span><a href="#231-260">Retryable</a> <span class="kw">for </span><a href="#319">RetryableTrait</a> {}
+<a href=#318 id=318 data-nosnippet>318</a></span><span class="kw">struct </span><a href="../../../Grove/Common/Traits/struct.RetryableTrait.html">RetryableTrait</a>;
+<a href=#319 id=319 data-nosnippet>319</a>
+<a href=#320 id=320 data-nosnippet>320</a><span class="kw">impl </span><a href="#231-260">Retryable</a> <span class="kw">for </span><a href="#318">RetryableTrait</a> {}
 </code></pre></div></section></main></body></html>

@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! configuration state of the application.
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// A serializable struct that represents the initial configuration data
 <a href=#10 id=10 data-nosnippet>10</a>/// structure.
@@ -18,31 +18,31 @@
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub struct </span><a href="#18-47">ConfigurationInitializationDTO</a> {
 <a href=#19 id=19 data-nosnippet>19</a>	<span class="doccomment">/// The final, merged configuration values after applying all scopes in the
 <a href=#20 id=20 data-nosnippet>20</a>	/// correct order of precedence. This is the "effective" configuration.
-<a href=#21 id=21 data-nosnippet>21</a>	</span><span class="kw">pub </span>Effective:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#21 id=21 data-nosnippet>21</a>	</span><span class="kw">pub </span>Effective:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#22 id=22 data-nosnippet>22</a>
 <a href=#23 id=23 data-nosnippet>23</a>	<span class="doccomment">/// The default values for all configurations, as defined by the application
 <a href=#24 id=24 data-nosnippet>24</a>	/// and its extensions.
-<a href=#25 id=25 data-nosnippet>25</a>	</span><span class="kw">pub </span>Defaults:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#25 id=25 data-nosnippet>25</a>	</span><span class="kw">pub </span>Defaults:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="doccomment">/// User-level settings, typically from a global `settings.json` file.
-<a href=#28 id=28 data-nosnippet>28</a>	</span><span class="kw">pub </span>User:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#28 id=28 data-nosnippet>28</a>	</span><span class="kw">pub </span>User:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a>	<span class="doccomment">/// Workspace-level settings, from a `.code-workspace` file or a folder's
 <a href=#31 id=31 data-nosnippet>31</a>	/// `.vscode/settings.json`.
-<a href=#32 id=32 data-nosnippet>32</a>	</span><span class="kw">pub </span>Workspace:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#32 id=32 data-nosnippet>32</a>	</span><span class="kw">pub </span>Workspace:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a>	<span class="doccomment">/// Settings specific to individual folders in a multi-root workspace.
-<a href=#35 id=35 data-nosnippet>35</a>	</span><span class="kw">pub </span>Folders:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#35 id=35 data-nosnippet>35</a>	</span><span class="kw">pub </span>Folders:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a>	<span class="doccomment">/// Temporary, in-memory settings that are not persisted.
-<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>Memory:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>Memory:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a>	<span class="doccomment">/// Policy-enforced settings that cannot be overridden by the user.
 <a href=#41 id=41 data-nosnippet>41</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">pub </span>Policy:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">pub </span>Policy:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a>	<span class="doccomment">/// Detailed scope information for each configuration key.
 <a href=#45 id=45 data-nosnippet>45</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#46 id=46 data-nosnippet>46</a>	</span><span class="kw">pub </span>ConfigurationScopes:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>)&gt;&gt;,
+<a href=#46 id=46 data-nosnippet>46</a>	</span><span class="kw">pub </span>ConfigurationScopes:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>)&gt;&gt;,
 <a href=#47 id=47 data-nosnippet>47</a>}
 </code></pre></div></section></main></body></html>

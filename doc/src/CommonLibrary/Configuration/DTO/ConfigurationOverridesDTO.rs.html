@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! when retrieving or inspecting values.
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// A serializable struct for specifying overrides when retrieving or inspecting
 <a href=#10 id=10 data-nosnippet>10</a>/// configuration values.
@@ -18,7 +18,7 @@
 <a href=#18 id=18 data-nosnippet>18</a>	/// This is used to resolve resource-specific and folder-specific settings.
 <a href=#19 id=19 data-nosnippet>19</a>	/// The value is a serialized `UriComponents` DTO.
 <a href=#20 id=20 data-nosnippet>20</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#21 id=21 data-nosnippet>21</a>	</span><span class="kw">pub </span>Resource:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#21 id=21 data-nosnippet>21</a>	</span><span class="kw">pub </span>Resource:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#22 id=22 data-nosnippet>22</a>
 <a href=#23 id=23 data-nosnippet>23</a>	<span class="doccomment">/// The language identifier for language-specific overrides.
 <a href=#24 id=24 data-nosnippet>24</a>	/// This is used to resolve `[language]` blocks in `settings.json`.
