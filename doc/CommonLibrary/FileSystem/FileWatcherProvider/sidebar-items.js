@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["WatchEventKind"],"struct":["WatchEvent"],"trait":["FileWatcherProvider"]};

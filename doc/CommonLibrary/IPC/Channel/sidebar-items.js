@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Channel","ChannelPriority"],"macro":[["DefineChannels",1]]};

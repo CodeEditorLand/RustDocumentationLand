@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Copy","CreateDirectory","CreateFile","DTO","Delete","FileSystemReader","FileSystemWriter","FileWatcherProvider","ReadDirectory","ReadFile","Rename","StatFile","WriteFileBytes","WriteFileString"]};

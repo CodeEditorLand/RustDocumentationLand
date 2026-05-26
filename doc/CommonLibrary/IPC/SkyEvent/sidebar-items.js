@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["SkyEvent"],"macro":[["DefineSkyEvents",1]]};
