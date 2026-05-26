@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Telemetry - shared dual-pipe (PostHog + OTLP) for every Rust Element"><title>CommonLibrary::Telemetry - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="CommonLibrary" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Telemetry</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../CommonLibrary/index.html">Common<wbr>Library</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Telemetry</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#telemetry---shared-dual-pipe-posthog--otlp-for-every-rust-element" title="Telemetry - shared dual-pipe (PostHog + OTLP) for every Rust Element">Telemetry - shared dual-pipe (PostHog + OTLP) for every Rust Element</a><ul><li><a href="#layout-one-export-per-file" title="Layout (one export per file)">Layout (one export per file)</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Common<wbr>Library</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">CommonLibrary</a></div><h1>Module <span>Telemetry</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/CommonLibrary/Telemetry/mod.rs.html#1-49">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="telemetry---shared-dual-pipe-posthog--otlp-for-every-rust-element"><a class="doc-anchor" href="#telemetry---shared-dual-pipe-posthog--otlp-for-every-rust-element">§</a>Telemetry - shared dual-pipe (PostHog + OTLP) for every Rust Element</h2>
+<p>Single source of truth for the sidecar telemetry surface. Mountain
+keeps its own compile-time-baked <code>Binary/Build/PostHogPlugin/*</code>
+(the build.rs <code>cargo:rustc-env</code> route guarantees release builds drop
+every byte). All other Rust elements (Air, Echo, Rest, Grove, Mist,
+SideCar) read configuration at runtime through this module:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">use </span>CommonLibrary::Telemetry::{Initialize, Tier};
+Initialize::Fn(Tier::Air);   <span class="comment">// call once during boot</span></code></pre></div>
+<p>All capture functions are no-ops in release builds
+(<code>cfg!(debug_assertions)</code>) and short-circuit on <code>Capture=false</code> / per-pipe
+toggles at runtime.</p>
+<h3 id="layout-one-export-per-file"><a class="doc-anchor" href="#layout-one-export-per-file">§</a>Layout (one export per file)</h3>
+<ul>
+<li><code>Tier::Tier</code> - enum identifying the calling sidecar</li>
+<li><code>Configuration::Fn</code> - runtime env read</li>
+<li><code>IsAllowed::PostHog</code>, <code>IsAllowed::OTLP</code> - gates</li>
+<li><code>Client::CLIENT</code> - <code>OnceLock&lt;posthog_rs::Client&gt;</code></li>
+<li><code>DistinctId::Fn</code> - stable per-machine identity</li>
+<li><code>CaptureEvent::Fn</code>, <code>CaptureError::Fn</code>, <code>CaptureSession::Fn</code> - PostHog</li>
+<li><code>EmitOTLPSpan::Fn</code> - raw HTTP OTLP exporter</li>
+<li><code>Initialize::Fn</code> - <code>Tier</code>-tagged boot</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="CaptureError/index.html" title="mod CommonLibrary::Telemetry::CaptureError">Capture<wbr>Error</a></dt><dd>Emit <code>land:&lt;tier&gt;:error</code> with <code>error_tag</code> + <code>error_message</code>. The
+Errors &amp; Reliability dashboard rolls these up across Mountain /
+Cocoon / Sky / sidecars via <code>event LIKE 'land:%:error'</code>.</dd><dt><a class="mod" href="CaptureEvent/index.html" title="mod CommonLibrary::Telemetry::CaptureEvent">Capture<wbr>Event</a></dt><dd>Emit a named PostHog event. Stamps the calling <code>Tier</code> plus the
+standard Land identity (<code>$app</code>, <code>$app_version</code>, <code>$build_mode</code>,
+<code>$component</code>, <code>$tier</code>) so dashboards can pivot by tier without
+caller changes.</dd><dt><a class="mod" href="CaptureSession/index.html" title="mod CommonLibrary::Telemetry::CaptureSession">Capture<wbr>Session</a></dt><dd>Emit <code>land:&lt;tier&gt;:session:start</code> with pid / OS / arch. Called once
+by <code>Initialize::Fn</code> so the Boot &amp; Startup Performance dashboard
+sees one start event per sidecar process.</dd><dt><a class="mod" href="Client/index.html" title="mod CommonLibrary::Telemetry::Client">Client</a></dt><dd>Process-wide PostHog client singleton. Populated once by
+<code>Initialize::Fn</code>; every <code>Capture*::Fn</code> reads through this static.
+Sidecars share one client per process, like Mountain’s
+<code>Binary/Build/PostHogPlugin/Client</code>.</dd><dt><a class="mod" href="Configuration/index.html" title="mod CommonLibrary::Telemetry::Configuration">Configuration</a></dt><dd>Runtime read of <code>.env.Land.PostHog</code>. Sidecars don’t have their own
+<code>build.rs</code> env-bake (Mountain does, for compile-time tree-shake) -
+they read at boot via <code>std::env::var</code>. Mountain’s <code>HydrateRuntime Environment::Fn</code> populates these into the spawned process’s env so
+sidecars launched as Mountain children pick them up automatically.</dd><dt><a class="mod" href="DistinctId/index.html" title="mod CommonLibrary::Telemetry::DistinctId">Distinct<wbr>Id</a></dt><dd>Stable distinct ID for the dev session. Mirrors Mountain’s
+<code>Binary/Build/PostHogPlugin/DistinctId</code> so a single dev run merges
+into one PostHog person across every sidecar.</dd><dt><a class="mod" href="EmitOTLPSpan/index.html" title="mod CommonLibrary::Telemetry::EmitOTLPSpan">EmitOTLP<wbr>Span</a></dt><dd>Fire-and-forget OTLP span exporter. Lifted from Mountain’s
+<code>IPC/DevLog/EmitOTLPSpan</code> so Air / Echo / Rest / Grove / Mist /
+SideCar all share the same raw HTTP path. Single failed POST flips
+<code>OTLP_AVAILABLE</code> to false so a missing collector doesn’t tax every
+emit. Release builds compile out via <code>cfg!(debug_assertions)</code>.</dd><dt><a class="mod" href="Initialize/index.html" title="mod CommonLibrary::Telemetry::Initialize">Initialize</a></dt><dd>Sidecar boot. Idempotent: subsequent calls are no-ops because
+<code>OnceLock::set</code> returns <code>Err</code>. Pass the <code>Tier</code> so every emitted
+event is tagged correctly without per-call boilerplate.</dd><dt><a class="mod" href="IsAllowed/index.html" title="mod CommonLibrary::Telemetry::IsAllowed">IsAllowed</a></dt><dd>Compile-time + runtime gates. <code>cfg!(debug_assertions)</code> strips both
+pipes from release builds; <code>Capture</code> is the master kill, <code>Report</code> /
+<code>Emit</code> are per-pipe toggles. Cached after first read so the
+hot path is one atomic load.</dd><dt><a class="mod" href="Tier/index.html" title="mod CommonLibrary::Telemetry::Tier">Tier</a></dt><dd>Identifier for the calling Element. Tags every emitted event so the
+Errors &amp; Reliability dashboard can pivot by <code>$tier</code>.</dd><dt><a class="mod" href="Traceparent/index.html" title="mod CommonLibrary::Telemetry::Traceparent">Traceparent</a></dt><dd>W3C <code>traceparent</code> header builder + parser. Used by every emit
+/ RPC site that crosses a tier boundary (Mountain → Sky tauri
+events, Mountain → Cocoon gRPC, Sky → Mountain TauriInvoke,
+Cocoon → Mountain gRPC). The format is the standard
+<code>version-traceid-parentid-flags</code> from
+<a href="https://www.w3.org/TR/trace-context/">https://www.w3.org/TR/trace-context/</a>.</dd></dl></section></div></main></body></html>
