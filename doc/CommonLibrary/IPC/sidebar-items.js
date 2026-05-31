@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Channel","DTO","EstablishHostConnection","IPCProvider","ProxyCallToSideCar","SendNotificationToSideCar","SendRequestToSideCar","SkyEvent"]};
+window.SIDEBAR_ITEMS = {"mod":["Channel","DTO","IPCProvider","SendNotificationToSideCar","SendRequestToSideCar","SkyEvent"]};
